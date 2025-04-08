@@ -1,0 +1,9 @@
+2025-04-08 15:16:00 INFO  [c.s.controller.RegistrationServlet] - File name: Screenshot 2025-03-07 121332.png
+2025-04-08 15:16:00 INFO  [c.s.controller.RegistrationServlet] - Content type: image/png
+2025-04-08 15:16:00 INFO  [c.s.controller.RegistrationServlet] - File size: 245775
+2025-04-08 15:18:06 INFO  [c.s.controller.RegistrationServlet] - File name: Screenshot 2025-03-10 161650.png
+2025-04-08 15:18:06 INFO  [c.s.controller.RegistrationServlet] - Content type: image/png
+2025-04-08 15:18:06 INFO  [c.s.controller.RegistrationServlet] - File size: 362573
+2025-04-08 15:35:32 INFO  [c.s.controller.RegistrationServlet] - File name: Screenshot 2025-03-03 161711.png
+2025-04-08 15:35:32 INFO  [c.s.controller.RegistrationServlet] - Content type: image/png
+2025-04-08 15:35:32 ERROR [c.s.controller.RegistrationServlet] - File size: 496318

@@ -15,9 +15,9 @@ import javax.servlet.http.Part;
 import com.social.dao.RegistrationDao;
 import com.social.model.RegistrationModel;
 
-/**
- * Servlet implementation class RegistrationServlet
- */
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @WebServlet("/registration")
 @MultipartConfig
 public class RegistrationServlet extends HttpServlet {
@@ -26,23 +26,20 @@ public class RegistrationServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+	
+	   private static final Logger logger = LoggerFactory.getLogger(RegistrationServlet.class);
+
     public RegistrationServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/views/registration.jsp").forward(request, response);
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RegistrationModel reg= new RegistrationModel();
 		
@@ -58,12 +55,15 @@ public class RegistrationServlet extends HttpServlet {
 		    request.getRequestDispatcher("/views/registration.jsp").forward(request, response);
 		    return;
 		}
+	
 		
 		System.out.println("File name: " + imagePart.getSubmittedFileName());
 		System.out.println("Content type: " + imagePart.getContentType());
 		System.out.println("File size: " + imagePart.getSize());
 
-
+        logger.info("File name: {}", imagePart.getSubmittedFileName());
+        logger.info("Content type: {}", imagePart.getContentType());
+        logger.error("File size: {}", imagePart.getSize());
 		String imagePath = saveImageToDisk(imagePart);
 		
 		reg.setUname(uname);
@@ -118,7 +118,7 @@ public class RegistrationServlet extends HttpServlet {
 	
 	private String saveImageToDisk(Part imagePart) throws IOException {
 		String imageName = UUID.randomUUID().toString() + ".jpg";
-		String imageDirectory = "D:/java/social_media_app/images/";
+		String imageDirectory = "D:/java/SocialApp/images/";
 		File imageFile = new File(imageDirectory + imageName);
 
 		imagePart.write(imageFile.getAbsolutePath());

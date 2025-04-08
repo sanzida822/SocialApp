@@ -1,6 +1,9 @@
 package com.social.dao;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
 
 import com.social.model.RegistrationModel;
 public class RegistrationDao {
@@ -8,10 +11,25 @@ public class RegistrationDao {
 	
 	public boolean saveUser(RegistrationModel reg)  {
 		boolean status=false;
+	
+		
 		try{
+			//String environment = System.getProperty("env", "dev"); //default run dev env. if run in pilot java -Denv=pilot -jar appame.jar
+
+
+			InputStream input=this.getClass().getClassLoader().getResourceAsStream("config.local.properties");
+			Properties p=new Properties();
+			p.load(input);
+			//load data from config.propertis file
+			String dbUrl=p.getProperty("url");
+			String username=p.getProperty("username");
+			String password=p.getProperty("password");
+			String dbDriver=p.getProperty("Driver");
+			
+			
 			String sql="Insert into users (uname,email,password,image) values(?,?,?,?)";
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/social_media_app","root", "root");
+			Class.forName(dbDriver);
+			Connection con=DriverManager.getConnection(dbUrl,username,password);
 			
 			  if (con != null) {
 			        System.out.println("Database connected successfully!");
