@@ -558,3 +558,262 @@ java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatem
 2025-04-09 15:37:46 INFO  [util.DBConnection] - DB Driver: com.mysql.cj.jdbc.Driver
 2025-04-09 15:37:46 INFO  [util.DBConnection] - Initializing database connection...
 2025-04-09 15:37:46 INFO  [util.DBConnection] - Database connection created .
+2025-04-09 16:37:13 INFO  [c.s.controller.RegistrationServlet] - File name: Screenshot 2025-03-07 121332.png
+2025-04-09 16:37:13 INFO  [c.s.controller.RegistrationServlet] - Content type: image/png
+2025-04-09 16:37:13 ERROR [c.s.controller.RegistrationServlet] - File size: 245775
+2025-04-09 16:37:13 INFO  [util.DBConnection] - url=root ,username=null, password={}jdbc:mysql://localhost:3306/social_media_app
+2025-04-09 16:37:13 ERROR [util.DBConnection] - Error while initializing DBConnection: 
+java.lang.NullPointerException: null
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:421)
+	at java.base/java.lang.Class.forName(Class.java:412)
+	at util.DBConnection.<init>(DBConnection.java:36)
+	at util.DBConnection.getInstance(DBConnection.java:60)
+	at com.social.dao.RegistrationDao.saveUser(RegistrationDao.java:47)
+	at com.social.controller.RegistrationServlet.doPost(RegistrationServlet.java:102)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-04-09 16:37:13 ERROR [com.social.dao.RegistrationDao] - General Exception occurred: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "connection" is null
+2025-04-09 16:37:13 ERROR [com.social.dao.RegistrationDao] - Error stack trace: 
+java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "connection" is null
+	at com.social.dao.RegistrationDao.saveUser(RegistrationDao.java:49)
+	at com.social.controller.RegistrationServlet.doPost(RegistrationServlet.java:102)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-04-09 16:38:36 INFO  [c.s.controller.RegistrationServlet] - File name: Screenshot 2025-03-07 121332.png
+2025-04-09 16:38:36 INFO  [c.s.controller.RegistrationServlet] - Content type: image/png
+2025-04-09 16:38:36 ERROR [c.s.controller.RegistrationServlet] - File size: 245775
+2025-04-09 16:38:36 INFO  [util.DBConnection] - root ,null,{}jdbc:mysql://localhost:3306/social_media_app
+2025-04-09 16:38:36 ERROR [util.DBConnection] - Error while initializing DBConnection: 
+java.lang.NullPointerException: null
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:421)
+	at java.base/java.lang.Class.forName(Class.java:412)
+	at util.DBConnection.<init>(DBConnection.java:36)
+	at util.DBConnection.getInstance(DBConnection.java:60)
+	at com.social.dao.RegistrationDao.saveUser(RegistrationDao.java:47)
+	at com.social.controller.RegistrationServlet.doPost(RegistrationServlet.java:102)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-04-09 16:38:36 ERROR [com.social.dao.RegistrationDao] - General Exception occurred: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "connection" is null
+2025-04-09 16:38:36 ERROR [com.social.dao.RegistrationDao] - Error stack trace: 
+java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "connection" is null
+	at com.social.dao.RegistrationDao.saveUser(RegistrationDao.java:49)
+	at com.social.controller.RegistrationServlet.doPost(RegistrationServlet.java:102)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-04-09 16:39:53 INFO  [c.s.controller.RegistrationServlet] - File name: Screenshot 2025-03-03 161711.png
+2025-04-09 16:39:53 INFO  [c.s.controller.RegistrationServlet] - Content type: image/png
+2025-04-09 16:39:53 ERROR [c.s.controller.RegistrationServlet] - File size: 496318
+2025-04-09 16:39:53 INFO  [util.DBConnection] - jdbc:mysql://localhost:3306/social_media_app ,root,null
+2025-04-09 16:39:53 ERROR [util.DBConnection] - Error while initializing DBConnection: 
+java.lang.NullPointerException: null
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:421)
+	at java.base/java.lang.Class.forName(Class.java:412)
+	at util.DBConnection.<init>(DBConnection.java:36)
+	at util.DBConnection.getInstance(DBConnection.java:60)
+	at com.social.dao.RegistrationDao.saveUser(RegistrationDao.java:47)
+	at com.social.controller.RegistrationServlet.doPost(RegistrationServlet.java:102)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-04-09 16:39:53 ERROR [com.social.dao.RegistrationDao] - General Exception occurred: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "connection" is null
+2025-04-09 16:39:53 ERROR [com.social.dao.RegistrationDao] - Error stack trace: 
+java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "connection" is null
+	at com.social.dao.RegistrationDao.saveUser(RegistrationDao.java:49)
+	at com.social.controller.RegistrationServlet.doPost(RegistrationServlet.java:102)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-04-09 16:41:39 INFO  [c.s.controller.RegistrationServlet] - File name: Screenshot 2025-03-03 161711.png
+2025-04-09 16:41:39 INFO  [c.s.controller.RegistrationServlet] - Content type: image/png
+2025-04-09 16:41:39 ERROR [c.s.controller.RegistrationServlet] - File size: 496318
+2025-04-09 16:41:39 INFO  [util.DBConnection] - jdbc:mysql://localhost:3306/social_media_app ,root,com.mysql.cj.jdbc.Driver
+2025-04-09 16:41:39 INFO  [util.DBConnection] - Initializing database connection...
+2025-04-09 16:41:39 INFO  [util.DBConnection] - Database connection created .
+2025-04-09 16:41:39 INFO  [com.social.dao.RegistrationDao] - Rows affected: 1
+2025-04-09 16:48:32 INFO  [c.s.controller.RegistrationServlet] - File name: Screenshot 2025-03-03 161711.png
+2025-04-09 16:48:32 INFO  [c.s.controller.RegistrationServlet] - Content type: image/png
+2025-04-09 16:48:32 ERROR [c.s.controller.RegistrationServlet] - File size: 496318
+2025-04-09 16:48:32 INFO  [com.social.util.DBConnection] - jdbc:mysql://localhost:3306/social_media_app ,root,com.mysql.cj.jdbc.Driver
+2025-04-09 16:48:32 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-09 16:48:32 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-09 16:48:32 INFO  [com.social.dao.RegistrationDao] - Rows affected: 1
+2025-04-09 16:48:42 INFO  [LoginServlet.class] - user logged in
+2025-04-09 16:48:57 INFO  [LoginServlet.class] - user logged in
+2025-04-09 16:50:02 INFO  [LoginServlet.class] - user logged in
+2025-04-09 16:51:25 INFO  [com.social.util.DBConnection] - jdbc:mysql://localhost:3306/social_media_app ,root,com.mysql.cj.jdbc.Driver
+2025-04-09 16:51:25 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-09 16:51:25 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-09 16:51:25 INFO  [LoginServlet.class] - true
+2025-04-09 16:51:25 INFO  [LoginServlet.class] - user logged in
+2025-04-09 16:51:58 INFO  [LoginServlet.class] - false
+2025-04-09 16:51:58 INFO  [LoginServlet.class] - user logged in
+2025-04-09 16:53:17 INFO  [com.social.util.DBConnection] - jdbc:mysql://localhost:3306/social_media_app ,root,com.mysql.cj.jdbc.Driver
+2025-04-09 16:53:17 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-09 16:53:17 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-09 16:53:17 INFO  [LoginServlet.class] - true
+2025-04-09 16:53:17 INFO  [LoginServlet.class] - user logged in
+2025-04-09 16:53:17 INFO  [LoginServlet.class] - user logged in
+2025-04-09 16:54:57 INFO  [LoginServlet.class] - false
+2025-04-09 16:54:57 INFO  [LoginServlet.class] - user logged in
+2025-04-09 16:55:09 INFO  [LoginServlet.class] - false
+2025-04-09 16:55:09 INFO  [LoginServlet.class] - user logged in
+2025-04-09 16:55:35 INFO  [LoginServlet.class] - false
+2025-04-09 16:55:35 INFO  [LoginServlet.class] - user logged in
+2025-04-09 16:58:16 INFO  [com.social.util.DBConnection] - jdbc:mysql://localhost:3306/social_media_app ,root,com.mysql.cj.jdbc.Driver
+2025-04-09 16:58:16 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-09 16:58:16 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-09 16:58:16 INFO  [LoginServlet.class] - true
+2025-04-09 16:58:16 INFO  [LoginServlet.class] - user logged in
+2025-04-09 16:58:51 INFO  [LoginServlet.class] - false
+2025-04-09 17:01:11 INFO  [com.social.util.DBConnection] - jdbc:mysql://localhost:3306/social_media_app ,root,com.mysql.cj.jdbc.Driver
+2025-04-09 17:01:11 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-09 17:01:11 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-09 17:01:12 INFO  [LoginServlet.class] - true
+2025-04-09 17:01:12 INFO  [LoginServlet.class] - sanzidasultana824@gmail.com, 111111
+2025-04-09 17:01:12 INFO  [LoginServlet.class] - user logged in
+2025-04-09 17:01:52 INFO  [com.social.util.DBConnection] - jdbc:mysql://localhost:3306/social_media_app ,root,com.mysql.cj.jdbc.Driver
+2025-04-09 17:01:52 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-09 17:01:52 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-09 17:01:52 INFO  [LoginServlet.class] - true
+2025-04-09 17:01:52 INFO  [LoginServlet.class] - email:sanzidasultana824@gmail.com, password:111111
+2025-04-09 17:01:52 INFO  [LoginServlet.class] - user logged in
+2025-04-09 17:37:21 INFO  [c.s.controller.RegistrationServlet] - File name: Screenshot 2025-03-07 121332.png
+2025-04-09 17:37:21 INFO  [c.s.controller.RegistrationServlet] - Content type: image/png
+2025-04-09 17:37:21 ERROR [c.s.controller.RegistrationServlet] - File size: 245775
+2025-04-09 17:37:21 INFO  [com.social.util.DBConnection] - jdbc:mysql://localhost:3306/social_media_app ,root,com.mysql.cj.jdbc.Driver
+2025-04-09 17:37:21 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-09 17:37:21 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-09 17:37:21 INFO  [com.social.dao.RegistrationDao] - Rows affected: 1
