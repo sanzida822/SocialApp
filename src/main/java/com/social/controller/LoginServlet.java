@@ -1,5 +1,5 @@
 package com.social.controller;
-
+import com.mysql.cj.log.Slf4JLogger;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -7,6 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.social.dao.LoginDao;
 import com.social.model.LoginModel;
@@ -16,13 +19,12 @@ import com.social.model.LoginModel;
  */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+	private static final Logger logger= LoggerFactory.getLogger("LoginServlet.class");
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
+  
     public LoginServlet() {
-        // TODO Auto-generated constructor stub
+ 
     }
 
 
@@ -42,10 +44,11 @@ public class LoginServlet extends HttpServlet {
 	  
 	  model.setEmail(email);
 	  model.setPassword(password);
-	  System.out.println(model);
-	 LoginDao dao= new LoginDao();
+
+	  
+	 LoginDao dao=  LoginDao.getInstance();
 	 boolean isLogin= dao.validateLogin(model);
-	 System.out.println(isLogin);
+	 logger.info("user logged in");
 	 if(isLogin) {
 		    System.out.println("login successfully");
 			response.sendRedirect(request.getContextPath()+"/views/Home.jsp");

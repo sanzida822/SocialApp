@@ -7,16 +7,39 @@ import java.sql.ResultSet;
 
 import com.social.model.LoginModel;
 
+import util.DBConnection;
+
 public class LoginDao {
 
+	private static LoginDao instance;
+	
+	private LoginDao() {
+		
+	}
+	
+	public static LoginDao getInstance() {
+		if(instance==null) {
+			synchronized (LoginDao.class) {
+				if(instance==null) {
+					instance=new LoginDao();
+				}
+			}
+			
+		}
+		return instance;
+		
+	}
 	
 	public boolean validateLogin(LoginModel model) {
 		boolean status=false;
 		try {
 			String sql="Select email, password from users where email=? and password=?";
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/social_media_app","root","root");
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/social_media_app","root","root");
 			
+			
+			DBConnection dbconnection=DBConnection.getInstance();
+			Connection con=dbconnection.getConnection();
 			
 			PreparedStatement ps= con.prepareStatement(sql);
 			ps.setString(1, model.getEmail());
