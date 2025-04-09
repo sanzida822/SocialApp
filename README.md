@@ -1,37 +1,48 @@
-Social media site:  ShoutOut
+# ShoutOut - Social Media Platform
 
-The purpose of this document is to define the functional requirements of a social media website that allows users to connect, share content, and interact with each other.
-Functional Requirements
-1.1 User Authentication
-•	Users can sign up by providing a username, email, and password.
-•	Users can sign in using their registered email and password.
-•	Users can log out securely.
-•	Users can reset their password via email verification.
+**ShoutOut** is a social media web application that allows users to connect, share posts, and interact with friends. This project provides core social media functionalities such as user authentication, a friend system, posting with privacy control, and real-time notifications.
 
-1.2 Friend System
-•	Users can send friend requests to other users.
-•	Users can accept or decline friend requests.
-•	Users can unfriend a person at any time.
-•	Users can block/unblock another user.
-•	User can view available friend requests.
-•	User can view his/her accepted friends list.
+---
 
-1.3 Posting System
-•	Users can create posts with or without images.
-•	Users can edit or delete their posts.
-•	Users can set visibility of posts to public, private, or friends-only.
-•	Users can view posts based on their privacy settings.
+##  Features
 
-1.4 Comments & Interaction
-•	Users can comment on posts.
-•	Users can delete their own comments.
-•	Users receive updates when their post receives comments.
+###  User Authentication
+- Sign up with username, email, and password
+- Login using registered email and password
+- Secure logout functionality
+- Password reset via email verification
 
-1.5 Notifications
-Users will receive notifications for:
-•	Friend requests received.
-•	Friend request accepted.
-•	Comments on their posts.
+###  Friend System
+- Send, accept, or decline friend requests
+- Unfriend or block/unblock other users
+- View pending friend requests
+- View accepted friends list
 
+###  Posting System
+- Create posts with or without images
+- Edit or delete posts
+- Set post visibility: Public, Private, Friends-only
+- View posts based on user’s privacy settings
+
+###  Comments & Interactions
+- Comment on posts
+- Delete own comments
+- Receive real-time updates when someone comments on a post
+
+###  Notifications
+Users receive notifications for:
+- New friend requests
+- Friend request acceptance
+- New comments on their posts
+
+---
+
+##  Tech Stack
+
+- **Backend:** Java (Servlets, JDBC)
+- **Frontend:** HTML, CSS, Bootstrap (JSP)
+- **Database:** MySQL
+- **Build Tool:** Maven
+- **Web Server:** Apache Tomcat
 
 
