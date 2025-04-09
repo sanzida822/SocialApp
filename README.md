@@ -10,7 +10,7 @@
 - Sign up with username, email, and password
 - Login using registered email and password
 - Secure logout functionality
-- Password reset via email verification
+
 
 ###  Friend System
 - Send, accept, or decline friend requests
