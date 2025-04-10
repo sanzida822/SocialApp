@@ -10,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import com.social.model.LoginModel;
 import com.social.service.AuthenticationService;
 import com.social.validation.AuthenticationValidation;
 
@@ -135,14 +137,20 @@ public class AuthenticationServlet extends HttpServlet {
 		logger.info("received login request");
 
 		logger.info("email:{}, password:{} from servlet", email, password);
-		String loginmsg = authService.AuthenticUser(email, password);
+	    LoginModel loginUser = authService.AuthenticUser(email, password);
 
-		if (loginmsg == null) {
+		if (loginUser != null) {
 			logger.info("user logged in");
+	        HttpSession session = request.getSession();
+	        session.setAttribute("id", loginUser.getId());
+             System.out.println(loginUser);
+	        session.setAttribute("email", loginUser.getEmail());
 
+	        logger.info("User logged in: id={}, username={}, email={}",
+	                     loginUser.getId(),loginUser.getEmail());
 			response.sendRedirect(request.getContextPath() + "/views/Home.jsp");
 		} else {
-			request.setAttribute("error", loginmsg);
+			request.setAttribute("error", "Login Attempt failed");
 
 			request.getRequestDispatcher("/views/login.jsp").forward(request, response);
 

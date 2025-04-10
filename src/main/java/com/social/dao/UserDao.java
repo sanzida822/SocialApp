@@ -129,12 +129,11 @@ public class UserDao {
 		
 	}
 	
-	
-	
-	public boolean validateLogin(LoginModel model) {
-		boolean status=false;
+	public LoginModel getUserByEmailAndPassword(String email, String password) {
+		LoginModel loginModel=null;
+		
 		try {
-			String sql="Select email, password from users where email=? and password=?";
+			String sql = "SELECT id, uname, email, password FROM users WHERE email=? AND password=?";
 //			Class.forName("com.mysql.cj.jdbc.Driver");
 //			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/social_media_app","root","root");
 			
@@ -143,15 +142,18 @@ public class UserDao {
 			Connection con=dbconnection.getConnection();
 			
 			PreparedStatement ps= con.prepareStatement(sql);
-			ps.setString(1, model.getEmail());
-			ps.setString(2, model.getPassword());
+			ps.setString(1, email);
+			ps.setString(2, password);
 			
 			ResultSet rowsAffect=ps.executeQuery();
 			System.out.println(rowsAffect);
 			if(rowsAffect.next()) {
-				System.out.println(rowsAffect.getString("email"));
-				System.out.println(rowsAffect.getString("password"));
-				status =true;
+				loginModel=new LoginModel();
+				loginModel.setId(rowsAffect.getInt("id"));
+				loginModel.setEmail(rowsAffect.getString("email"));
+				
+				
+				
 			}
 			
 			ps.close();
@@ -161,11 +163,9 @@ public class UserDao {
 			System.out.println(e);
 		  e.printStackTrace();
 		}
-		
-		
-		return status;
-		
-		
+		return loginModel;
 		
 	}
+	
+
 }

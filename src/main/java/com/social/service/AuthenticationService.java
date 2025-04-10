@@ -74,21 +74,11 @@ public class AuthenticationService {
 		return imageDirectory + imageName;
 	}
 
-	public String AuthenticUser(String email, String password) {
+	public LoginModel AuthenticUser(String email, String password) {
 
-		boolean status = false;
-
-		login.setEmail(email);
-		login.setPassword(password);
-		status = userDao.validateLogin(login);
-
-		if (status) {
-			logger.info("user logged in");
-			return null;
-		} else {
-			return "Invalid Email or Password";
-
-		}
+		return userDao.getUserByEmailAndPassword(email, password);
 
 	}
+
+	
 }
