@@ -5,16 +5,35 @@ import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
-import com.social.controller.RegistrationServlet;
+import com.social.controller.AuthenticationServlet;
+import com.social.model.LoginModel;
 import com.social.model.RegistrationModel;
+import com.social.util.DBConnection;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import util.DBConnection;
-public class RegistrationDao {
-	 private static final Logger logger = LoggerFactory.getLogger(RegistrationDao.class);
+public class UserDao {
+	 private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
 	
+	 private static UserDao instance;
+		private UserDao() {
+			
+		}
+		
+		public static UserDao getInstance() {
+			if(instance==null) {
+				synchronized (UserDao.class) {
+					if(instance==null) {
+						instance=new UserDao();
+					}
+				}
+				
+			}
+			return instance;
+			
+		}
+		
+		
 	public boolean saveUser(RegistrationModel reg)  {
 		  
 		boolean status=false;
@@ -58,7 +77,7 @@ public class RegistrationDao {
 			logger.info("Rows affected: " + rowsAffect);
 			status=rowsAffect>0; //return 1 if insert a row to table
 			ps.close();
-			connection.close();
+	
 		
 	
 		}
@@ -74,6 +93,78 @@ public class RegistrationDao {
 		}
 		
 		return status;
+		
+		
+	}
+	
+	
+	public boolean ExistEmail(String email) {
+		boolean status=false;
+        
+		
+		String sql="Select 1 from users where email=?";
+		
+		try {
+			DBConnection dbconnection=DBConnection.getInstance();
+			Connection connection=dbconnection.getConnection();
+			PreparedStatement ps=connection.prepareStatement(sql);
+		
+			logger.info("started connectionfor email");
+			ps.setString(1, email);
+			
+			ResultSet rs=ps.executeQuery();
+			
+			logger.info("{}",rs);
+			status=rs.next();
+			logger.info("status={}",status);
+			
+			
+		}catch(Exception e) {
+			logger.error("{}, {}",e.getMessage(),e);
+		}
+				
+				
+				
+		return status;
+		
+	}
+	
+	
+	
+	public boolean validateLogin(LoginModel model) {
+		boolean status=false;
+		try {
+			String sql="Select email, password from users where email=? and password=?";
+//			Class.forName("com.mysql.cj.jdbc.Driver");
+//			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/social_media_app","root","root");
+			
+			
+			DBConnection dbconnection=DBConnection.getInstance();
+			Connection con=dbconnection.getConnection();
+			
+			PreparedStatement ps= con.prepareStatement(sql);
+			ps.setString(1, model.getEmail());
+			ps.setString(2, model.getPassword());
+			
+			ResultSet rowsAffect=ps.executeQuery();
+			System.out.println(rowsAffect);
+			if(rowsAffect.next()) {
+				System.out.println(rowsAffect.getString("email"));
+				System.out.println(rowsAffect.getString("password"));
+				status =true;
+			}
+			
+			ps.close();
+//			con.close();
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		  e.printStackTrace();
+		}
+		
+		
+		return status;
+		
 		
 		
 	}

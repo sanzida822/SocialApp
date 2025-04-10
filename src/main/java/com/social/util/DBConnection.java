@@ -1,4 +1,4 @@
-package util;
+package com.social.util;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -15,7 +15,7 @@ public class DBConnection {
     private DBConnection() {
         try {
             // Load the properties file
-            InputStream is = this.getClass().getClassLoader().getResourceAsStream("config.local.properties");
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream("database.properties");
             if (is == null) {
                 logger.error("config.local.properties file not found.");
                 return; 
@@ -24,34 +24,31 @@ public class DBConnection {
             Properties p = new Properties();
             p.load(is);
 
-            String dbUrl = p.getProperty("url");
-            String username = p.getProperty("username");
-            String password = p.getProperty("password");
-            String dbDriver = p.getProperty("driver");
+            String dbUrl = p.getProperty("mysql.url");
+            String username = p.getProperty("mysql.username");
+            String password = p.getProperty("mysql.password");
+            String dbDriver = p.getProperty("db.driver");
 
-            // Log the database properties for debugging
-            logger.info("DB URL: " + dbUrl);
-            logger.info("DB Username: " + username);
-            logger.info("DB Driver: " + dbDriver);
+            logger.info("Database url:{} DB username: {} DB password:{}",dbUrl, username,password);
 
-            // Load the database driver
+            
             try {
                 Class.forName(dbDriver);
+                if (connection == null) {  // Ensures for the same instance, the same connection is used
+                    logger.info("Initializing database connection...");
+                    connection = DriverManager.getConnection(dbUrl, username, password);
+                   
+                    logger.info("Database connection created .");
+                } else {
+                    logger.info("not.");
+                }
+
             } catch (ClassNotFoundException e) {
                 logger.error("JDBC Driver not found: " + dbDriver, e);
                 throw new Exception("Database driver not found.");
             }
 
-            // Initialize the database connection
-            if (connection == null) {  // Ensures for the same instance, the same connection is used
-                logger.info("Initializing database connection...");
-                connection = DriverManager.getConnection(dbUrl, username, password);
-               
-                logger.info("Database connection created .");
-            } else {
-                logger.info("not.");
-            }
-
+       
         } catch (Exception e) {
             logger.error("Error while initializing DBConnection: ", e);
         }
