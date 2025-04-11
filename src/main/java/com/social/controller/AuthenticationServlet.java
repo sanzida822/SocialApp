@@ -130,12 +130,13 @@ public class AuthenticationServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		System.out.println("email is" + email);
-		;
+		
 //		model.setEmail(email);
 //		model.setPassword(password);
 
 		logger.info("received login request");
-
+	    String path = getServletContext().getRealPath("/");
+	   logger.info(path);
 		logger.info("email:{}, password:{} from servlet", email, password);
 	    LoginModel loginUser = authService.AuthenticUser(email, password);
 
@@ -143,12 +144,13 @@ public class AuthenticationServlet extends HttpServlet {
 			logger.info("user logged in");
 	        HttpSession session = request.getSession();
 	        session.setAttribute("id", loginUser.getId());
+	        session.setAttribute("uname", loginUser.getUname());
              System.out.println(loginUser);
 	        session.setAttribute("email", loginUser.getEmail());
 
 	        logger.info("User logged in: id={}, username={}, email={}",
 	                     loginUser.getId(),loginUser.getEmail());
-			response.sendRedirect(request.getContextPath() + "/views/Home.jsp");
+			response.sendRedirect(request.getContextPath() + "/views/NewFile.jsp");
 		} else {
 			request.setAttribute("error", "Login Attempt failed");
 

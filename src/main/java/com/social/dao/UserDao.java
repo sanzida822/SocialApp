@@ -150,6 +150,7 @@ public class UserDao {
 			if(rowsAffect.next()) {
 				loginModel=new LoginModel();
 				loginModel.setId(rowsAffect.getInt("id"));
+				loginModel.setUname(rowsAffect.getString("uname"));
 				loginModel.setEmail(rowsAffect.getString("email"));
 				
 				

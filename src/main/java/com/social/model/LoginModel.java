@@ -4,7 +4,16 @@ public class LoginModel {
 	String email;
 	String password;
 	int id;
+	String uname;
 	
+
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
 
 	public int getId() {
 		return id;

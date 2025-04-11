@@ -22,3 +22,66 @@
 2025-04-11 00:46:49 INFO  [com.social.util.DBConnection] - Database connection created .
 2025-04-11 00:46:50 INFO  [c.s.controller.AuthenticationServlet] - user logged in
 2025-04-11 00:46:50 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=0, username=null, email={}
+2025-04-11 12:50:04 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-11 12:50:04 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-11 12:50:04 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-11 12:50:04 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-11 12:50:05 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-11 12:50:05 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-11 12:50:05 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=1, username=sanzidasultana824@gmail.com, email={}
+2025-04-11 12:52:52 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-11 12:52:52 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-11 12:52:52 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-11 12:52:52 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-11 12:52:52 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-11 12:52:52 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-11 12:52:52 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=1, username=sanzidasultana824@gmail.com, email={}
+2025-04-11 12:53:33 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-11 12:53:33 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-11 12:53:33 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-11 12:53:33 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-11 12:53:33 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-11 12:53:33 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-11 12:53:33 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=1, username=sanzidasultana824@gmail.com, email={}
+2025-04-11 12:54:26 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-11 12:54:26 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-11 12:54:26 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-11 12:54:26 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=1, username=sanzidasultana824@gmail.com, email={}
+2025-04-11 12:55:09 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-11 12:55:09 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-11 12:55:09 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-11 12:55:09 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-11 12:55:09 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-11 12:55:09 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-11 12:55:09 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=1, username=sanzidasultana824@gmail.com, email={}
+2025-04-11 14:24:35 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-11 14:24:35 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-11 14:24:35 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-11 14:24:35 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=1, username=sanzidasultana824@gmail.com, email={}
+2025-04-11 15:09:21 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-11 15:09:21 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-11 15:09:21 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-11 15:09:21 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-11 15:09:22 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-11 15:09:22 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-11 15:09:22 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=1, username=sanzidasultana824@gmail.com, email={}
+2025-04-11 17:23:39 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-11 17:23:39 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-11 17:23:39 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-11 17:23:39 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=1, username=sanzidasultana824@gmail.com, email={}
+2025-04-11 17:29:12 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-11 17:29:12 INFO  [c.s.controller.AuthenticationServlet] - D:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\SocialApp\
+2025-04-11 17:29:12 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-11 17:29:12 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-11 17:29:12 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-11 17:29:12 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-11 17:29:12 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-11 17:29:12 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=1, username=sanzidasultana824@gmail.com, email={}
+2025-04-11 17:29:54 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-11 17:29:54 INFO  [c.s.controller.AuthenticationServlet] - D:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\SocialApp\
+2025-04-11 17:29:54 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-11 17:29:54 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-11 17:29:54 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-11 17:29:54 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-11 17:29:55 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-11 17:29:55 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=1, username=sanzidasultana824@gmail.com, email={}

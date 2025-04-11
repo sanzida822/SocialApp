@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
 <%
     Integer id = (Integer) session.getAttribute("id");
     String username = (String) session.getAttribute("username");
