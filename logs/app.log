@@ -55,3 +55,18 @@
 2025-04-13 20:32:59 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=8, username=sanzidasultana824@gmail.com, email={}
 2025-04-13 20:33:02 INFO  [c.s.controller.AuthenticationServlet] - logout request comes in...
 2025-04-13 20:33:02 INFO  [c.s.controller.AuthenticationServlet] - session invalidate
+2025-04-13 20:36:19 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-13 20:36:19 INFO  [c.s.controller.AuthenticationServlet] - C:\Users\Laptop view\eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\SocialApp\
+2025-04-13 20:36:19 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-13 20:36:19 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-13 20:36:19 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-13 20:36:19 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-13 20:36:19 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-13 20:36:19 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=8, username=sanzidasultana824@gmail.com, email={}
+2025-04-13 20:36:21 INFO  [c.s.controller.AuthenticationServlet] - logout request comes in...
+2025-04-13 20:36:21 INFO  [c.s.controller.AuthenticationServlet] - session invalidate
+2025-04-13 22:01:12 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-13 22:01:12 INFO  [c.s.controller.AuthenticationServlet] - C:\Users\Laptop view\eclipse-workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\SocialApp\
+2025-04-13 22:01:12 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-13 22:01:12 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-13 22:01:12 INFO  [c.s.controller.AuthenticationServlet] - User logged in: id=8, username=sanzidasultana824@gmail.com, email={}
