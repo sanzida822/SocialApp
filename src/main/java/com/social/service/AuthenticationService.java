@@ -32,19 +32,20 @@ public class AuthenticationService {
 	public String validateAndSaveUser(String uname, String email, String password, String cpassword, Part imagePart)
 			throws IOException {
 		boolean isexist = userDao.ExistEmail(email);
+//
+//		if (isexist) {
+//			return "Email already exists";
+//
+//		}
 
-		if (isexist) {
-			return "Email already exists";
-
-		}
-
-		String imageError = AuthenticationValidation.validateImage(imagePart);
-		if (imageError != null) {
-			return imageError;
-		}
-		String formError = AuthenticationValidation.ValidateRegistration(uname, email, password, cpassword);
-		if (formError != null) {
-			return formError;
+//		String imageError = AuthenticationValidation.validateImage(imagePart);
+//		if (imageError != null) {
+//			return imageError;
+//		}
+		String formeError=AuthenticationValidation.ValidateRegistration(imagePart, uname, email, password, cpassword);
+		//String formError = AuthenticationValidation.ValidateRegistration(Part imagePart,uname, email, password, cpassword);
+		if (formeError != null) {
+			return formeError;
 
 		}
 

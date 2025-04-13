@@ -14,7 +14,7 @@ public class DBConnection {
 
     private DBConnection() {
         try {
-            // Load the properties file
+ 
             InputStream is = this.getClass().getClassLoader().getResourceAsStream("database.properties");
             if (is == null) {
                 logger.error("config.local.properties file not found.");

@@ -2,6 +2,8 @@ package com.social.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -20,7 +22,7 @@ import com.social.validation.AuthenticationValidation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@WebServlet(urlPatterns = { "/registration", "/login" })
+@WebServlet(urlPatterns = { "/registration", "/login", "/logout" })
 @MultipartConfig
 public class AuthenticationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,13 +36,28 @@ public class AuthenticationServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	// request.getRequestDistpatcher -->to SocialApp
+	// requrst.getContextPath--> returns SocialApp(not full url)
+
+//Example output: http://localhost:8080/SocialApp
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+//		String fullUrl = request.getScheme() + "://" +
+//	            request.getServerName() + ":" +
+//	            request.getServerPort() +
+//	            request.getContextPath();
+//
+//	System.out.println(fullUrl);
 		String servletPath = request.getServletPath();
 		if (servletPath.equals("/registration")) {
 			request.getRequestDispatcher("/views/registration.jsp").forward(request, response);
 		} else if (servletPath.equals("/login")) {
 			request.getRequestDispatcher("/views/login.jsp").forward(request, response);
+		} else if (servletPath.equals("/logout")) {
+			ProcessLogout(request, response);
+		//	response.sendRedirect(request.getContextPath() + "/views/login.jsp");
 		}
 
 	}
@@ -57,6 +74,9 @@ public class AuthenticationServlet extends HttpServlet {
 			break;
 		case "/login":
 			processLogin(request, response);
+			break;
+		case "/logout":
+			ProcessLogout(request, response);
 			break;
 
 		default:
@@ -126,37 +146,42 @@ public class AuthenticationServlet extends HttpServlet {
 	public void processLogin(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
-//		LoginModel model = new LoginModel();
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		System.out.println("email is" + email);
-		
-//		model.setEmail(email);
-//		model.setPassword(password);
 
 		logger.info("received login request");
-	    String path = getServletContext().getRealPath("/");
-	   logger.info(path);
+		String path = getServletContext().getRealPath("/");
+		logger.info(path);
 		logger.info("email:{}, password:{} from servlet", email, password);
-	    LoginModel loginUser = authService.AuthenticUser(email, password);
+		LoginModel loginUser = authService.AuthenticUser(email, password);
 
 		if (loginUser != null) {
 			logger.info("user logged in");
-	        HttpSession session = request.getSession();
-	        session.setAttribute("id", loginUser.getId());
-	        session.setAttribute("uname", loginUser.getUname());
-             System.out.println(loginUser);
-	        session.setAttribute("email", loginUser.getEmail());
+			HttpSession session = request.getSession();
+			session.setAttribute("id", loginUser.getId());
+			session.setAttribute("uname", loginUser.getUname());
+			System.out.println(loginUser);
+			session.setAttribute("email", loginUser.getEmail());
 
-	        logger.info("User logged in: id={}, username={}, email={}",
-	                     loginUser.getId(),loginUser.getEmail());
+			logger.info("User logged in: id={}, username={}, email={}", loginUser.getId(), loginUser.getEmail());
 			response.sendRedirect(request.getContextPath() + "/views/NewFile.jsp");
 		} else {
 			request.setAttribute("error", "Login Attempt failed");
-
 			request.getRequestDispatcher("/views/login.jsp").forward(request, response);
 
 		}
+	}
+
+	public void ProcessLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+		logger.info("logout request comes in...");
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			session.invalidate();
+			logger.info("session invalidate");
+		}
+		response.sendRedirect(request.getContextPath() + "/views/login.jsp");
 	}
 
 }
