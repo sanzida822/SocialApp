@@ -11,13 +11,13 @@ import org.slf4j.LoggerFactory;
 
 import com.social.dao.UserDao;
 import com.social.model.LoginModel;
-import com.social.model.RegistrationModel;
+import com.social.model.UserModel;
 import com.social.validation.AuthenticationValidation;
 
 public class AuthenticationService {
 	private static final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
 	private UserDao userDao;
-	private RegistrationModel reg;
+	private UserModel reg;
 	private LoginModel login;
 
 	public AuthenticationService() {
@@ -50,7 +50,7 @@ public class AuthenticationService {
 		}
 
 		String imagePath = saveImageToDisk(imagePart);
-		reg = new RegistrationModel();
+		reg = new UserModel();
 		reg.setUname(uname);
 		reg.setEmail(email);
 		reg.setPassword(password);
@@ -81,5 +81,8 @@ public class AuthenticationService {
 
 	}
 
+	
+	
+	
 	
 }

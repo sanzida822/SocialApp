@@ -44,12 +44,19 @@ public class AuthFilter extends HttpFilter implements Filter {
 	     
 	     String loginUrl=req.getContextPath()+"/login";
 	     String regUrl=req.getContextPath()+"/registration";
-	     
+	     String uri = req.getRequestURI();
+	     System.out.println(uri);
 	     boolean loggedIn=(session!=null && session.getAttribute("id")!=null);
 	     if(loggedIn || req.getRequestURI().equals(loginUrl) || req.getRequestURI().equals(regUrl)) {
 	    	 chain.doFilter(request, response); 
+	    	 return;
 	    	 
-	     }else {
+	     }
+//	     if (uri.endsWith(".jsp") && !uri.contains("login.jsp") && !uri.contains("registration.jsp")) {
+//	    	    res.sendRedirect(req.getContextPath() + "/login.jsp");
+//	    	    return;
+//	    	}
+	     else {
 	    	 res.sendRedirect(loginUrl);
 	    	 
 	     }

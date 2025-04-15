@@ -2,7 +2,7 @@ package com.social.model;
 
 import java.io.Serializable;
 
-public class RegistrationModel implements Serializable {
+public class UserModel implements Serializable {
 	private static final long serialVersionUID = 1L;
 	int id;
 	String uname;

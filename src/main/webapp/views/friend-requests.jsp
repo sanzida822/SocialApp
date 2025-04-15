@@ -8,7 +8,7 @@
 
     Integer id = (Integer) session.getAttribute("id");
     String email = (String) session.getAttribute("email");
-    String uname=(String)session.getAttribute("uname");
+   // String uname=(String)session.getAttribute("uname");
 %>
 
 <%@ include file="header.jsp" %>

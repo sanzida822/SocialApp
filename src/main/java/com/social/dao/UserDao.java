@@ -7,7 +7,7 @@ import java.util.Properties;
 
 import com.social.controller.AuthenticationServlet;
 import com.social.model.LoginModel;
-import com.social.model.RegistrationModel;
+import com.social.model.UserModel;
 import com.social.util.DBConnection;
 
 import org.slf4j.Logger;
@@ -34,7 +34,7 @@ public class UserDao {
 		}
 		
 		
-	public boolean saveUser(RegistrationModel reg)  {
+	public boolean saveUser(UserModel reg)  {
 		  
 		boolean status=false;
 	
@@ -133,11 +133,7 @@ public class UserDao {
 		LoginModel loginModel=null;
 		
 		try {
-			String sql = "SELECT id, uname, email, password FROM users WHERE email=? AND password=?";
-//			Class.forName("com.mysql.cj.jdbc.Driver");
-//			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/social_media_app","root","root");
-			
-			
+			String sql = "SELECT id, uname, email, password FROM users WHERE email=? AND password=?";		
 			DBConnection dbconnection=DBConnection.getInstance();
 			Connection con=dbconnection.getConnection();
 			
@@ -168,5 +164,39 @@ public class UserDao {
 		
 	}
 	
+	
+
+	public UserModel findById(int id) {
+		UserModel user= null;
+		try {
+			String sql="Select uname, email, image,created_at,updated_at from users where id=?";
+			DBConnection dbconnection= DBConnection.getInstance();
+			Connection con=dbconnection.getConnection();
+			
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rowsAffect=ps.executeQuery();
+			if(rowsAffect.next()) {
+				user= new UserModel();
+				user.setId(id);
+				user.setUname(rowsAffect.getString("uname"));
+				user.setEmail(rowsAffect.getString("email"));
+				user.setImage(rowsAffect.getString("image"));
+				user.setCreated_at(rowsAffect.getString("created_at"));
+				
+				
+			}
+			ps.close();
+			
+		}
+		
+		catch(Exception e) {
+			logger.error("User not found with id {}", id, e.getMessage());
+			
+		}
+		
+		
+		return user;
+	}
 
 }

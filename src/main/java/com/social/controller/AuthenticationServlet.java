@@ -164,8 +164,9 @@ public class AuthenticationServlet extends HttpServlet {
 			System.out.println(loginUser);
 			session.setAttribute("email", loginUser.getEmail());
 
-			logger.info("User logged in: id={}, username={}, email={}", loginUser.getId(), loginUser.getEmail());
-			response.sendRedirect(request.getContextPath() + "/views/NewFile.jsp");
+			logger.info("User logged in: username={}, email={}", loginUser.getUname(), loginUser.getEmail());
+			response.sendRedirect(request.getContextPath() + "/UserProfileServlet");
+		//	response.sendRedirect(request.getContextPath() + "/views/NewFile.jsp");
 		} else {
 			request.setAttribute("error", "Login Attempt failed");
 			request.getRequestDispatcher("/views/login.jsp").forward(request, response);
@@ -183,5 +184,6 @@ public class AuthenticationServlet extends HttpServlet {
 		}
 		response.sendRedirect(request.getContextPath() + "/views/login.jsp");
 	}
+
 
 }
