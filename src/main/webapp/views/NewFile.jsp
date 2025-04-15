@@ -13,7 +13,7 @@ out.println(user);
 <%@ include file="navbar.jsp"%>
 
 <div class="container mt-5">
-	<h2 class="text-center mb-4">Home Page</h2>
+
 
 	<div class="row justify-content-center">
 		<div class="col-md-6">
