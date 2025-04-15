@@ -383,3 +383,14 @@
 2025-04-15 18:48:48 INFO  [c.s.controller.AuthenticationServlet] - userprofile servlet called
 2025-04-15 18:48:48 INFO  [c.s.controller.AuthenticationServlet] - User id:1 
 2025-04-15 18:48:48 INFO  [c.s.controller.AuthenticationServlet] - user is:Registration [id=1, uname=nitu, email=sanzidasultana824@gmail.com, password=null, image=D:/java/SocialApp/images/19fa7402-4bc3-47ea-b759-9a19c35d8d7f.jpg, created_at=2025-04-08 11:38:17, updated_at=null]
+2025-04-15 19:16:05 INFO  [c.s.controller.AuthenticationServlet] - received login request
+2025-04-15 19:16:05 INFO  [c.s.controller.AuthenticationServlet] - D:\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\SocialApp\
+2025-04-15 19:16:05 INFO  [c.s.controller.AuthenticationServlet] - email:sanzidasultana824@gmail.com, password:111111 from servlet
+2025-04-15 19:16:05 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-15 19:16:05 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-15 19:16:06 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-15 19:16:06 INFO  [c.s.controller.AuthenticationServlet] - user logged in
+2025-04-15 19:16:06 INFO  [c.s.controller.AuthenticationServlet] - User logged in: username=nitu, email=sanzidasultana824@gmail.com
+2025-04-15 19:16:06 INFO  [c.s.controller.AuthenticationServlet] - userprofile servlet called
+2025-04-15 19:16:06 INFO  [c.s.controller.AuthenticationServlet] - User id:1 
+2025-04-15 19:16:06 INFO  [c.s.controller.AuthenticationServlet] - user is:Registration [id=1, uname=nitu, email=sanzidasultana824@gmail.com, password=null, image=D:/java/SocialApp/images/19fa7402-4bc3-47ea-b759-9a19c35d8d7f.jpg, created_at=2025-04-08 11:38:17, updated_at=null]
