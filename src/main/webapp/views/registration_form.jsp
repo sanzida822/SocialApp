@@ -80,7 +80,7 @@
    <div class="form-check d-flex justify-content-center mb-5">
                     <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
                     <label class="form-check-label" for="form2Example3">
-                      Already have an account? <a href="<%= request.getContextPath()%>/login">Log in</a> here
+                      Already have an account? <a href="<%= request.getContextPath()%>/auth/login">Log in</a> here
                     </label>
                   </div>
               </div>

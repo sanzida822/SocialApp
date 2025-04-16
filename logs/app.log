@@ -98,3 +98,11 @@
 2025-04-17 02:00:53 INFO  [com.social.dao.UserDao] - com.mysql.cj.jdbc.result.ResultSetImpl@1fd035fc
 2025-04-17 02:00:53 INFO  [com.social.dao.UserDao] - status=false
 2025-04-17 02:00:53 INFO  [com.social.dao.UserDao] - User saved: 1
+2025-04-17 03:25:33 INFO  [c.s.controller.AuthenticationServlet] - Received login request for emailsanzidasultana824@gmail.com,
+2025-04-17 03:25:33 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_site DB username: root DB password:root
+2025-04-17 03:25:33 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 03:25:34 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 03:25:34 INFO  [c.s.controller.AuthenticationServlet] - User logged in: username=Nitu, email=sanzidasultana824@gmail.com
+2025-04-17 03:25:34 INFO  [c.s.controller.AuthenticationServlet] - userprofile servlet called
+2025-04-17 03:25:34 INFO  [c.s.controller.AuthenticationServlet] - User id:27 
+2025-04-17 03:25:34 INFO  [c.s.controller.AuthenticationServlet] - user is:Registration [id=27, uname=Nitu, email=sanzidasultana824@gmail.com, password=null, image=D:/java/SocialApp/images/4644f638-3568-42f2-9b26-db79e3481eb9.jpg, created_at=2025-04-15 23:58:57, updated_at=null]

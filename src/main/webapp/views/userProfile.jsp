@@ -18,7 +18,7 @@ out.println(user);
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
               <img src="<%=user.getImage() %>>"
                 alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-              <h5><%=user.getUname() %></h5>
+              <h5><%=user.getUsername() %></h5>
               <p>Web Designer</p>
               <i class="far fa-edit mb-5"></i>
             </div>
