@@ -71,6 +71,8 @@ public class PostServlet extends HttpServlet {
 		String post_content= request.getParameter("post_content");
 		logger.info("privacy is:{},post content:{}, posted by id:{}" ,privacy, post_content, posted_by);
 		
+		postservice.savePost(privacy, post_content, posted_by);
+		
 		
 		
 		doGet(request, response);

@@ -18,7 +18,8 @@ public class PostService {
 	
 	
 	public PostModel savePost(String privacy, String post_content,int posted_by) {
-		
+		postmodel.setPosted_by(posted_by);
+		postmodel.setPrivacy()
 		return postmodel;
 		
 	}

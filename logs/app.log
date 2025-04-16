@@ -271,3 +271,7 @@ java.sql.SQLSyntaxErrorException: Unknown database 'social_media_site'
 2025-04-16 19:55:01 INFO  [c.s.controller.AuthenticationServlet] - Screenshot 2025-03-14 155826.png
 2025-04-16 19:55:01 INFO  [c.s.controller.AuthenticationServlet] - images/Screenshot 2025-03-14 155826.png
 2025-04-16 19:55:01 INFO  [c.s.controller.AuthenticationServlet] - privacy is:Public,post content:cxcx, posted by id:
+2025-04-16 19:55:30 INFO  [c.s.controller.AuthenticationServlet] - enter post servlet post request..
+2025-04-16 19:55:31 INFO  [c.s.controller.AuthenticationServlet] - Screenshot 2025-03-10 161724.png
+2025-04-16 19:55:31 INFO  [c.s.controller.AuthenticationServlet] - images/Screenshot 2025-03-10 161724.png
+2025-04-16 19:55:31 INFO  [c.s.controller.AuthenticationServlet] - privacy is:Public,post content:xcxcx, posted by id:1
