@@ -17,11 +17,11 @@ out.println(user);
 
 	<div class="row justify-content-center">
 		<div class="col-md-6">
-			<form>
+			<form action="<%=request.getContextPath()%>/PostServlet" method="post" enctype="multipart/form-data">
 
 				<div class="form-group">
 					<label for="exampleFormControlSelect1">Privacy</label>
-					<select class="form-control" id="exampleFormControlSelect1">
+					<select class="form-control" id="exampleFormControlSelect1" name="privacy">
 						<option>Public</option>
 						<option>Friends</option>
 						<option>Only me</option>
@@ -30,12 +30,12 @@ out.println(user);
 
 				<div class="form-group mt-3">
 					<textarea class="form-control" id="exampleFormControlTextarea1"
-						placeholder="Share your thoughts" rows="3"></textarea>
+						placeholder="Share your thoughts" rows="3" name="post_content"></textarea>
 				</div>
 
 				<div class="form-group mt-3">
 					<label for="images">Upload Images</label>
-					<input type="file" name="images" id="images" multiple class="form-control-file">
+					<input type="file" name="images" id="images" multiple class="form-control-file" name="images">
 				</div>
 
 				<button type="submit" class="btn btn-primary mt-4 w-100">Post</button>

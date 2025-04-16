@@ -1,6 +1,8 @@
 <%@page import="com.social.model.UserModel"%>
 
 <%
+
+response.setHeader("Cache-Control", "no-cache, no-store,must-revaldate");
 //UserModel user= (UserModel)request.getAttribute("user");
 //UserModel user= (UserModel)request.getAttribute("user");
 String uname = (String) session.getAttribute("uname"); 

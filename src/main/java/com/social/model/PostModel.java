@@ -1,17 +1,24 @@
 package com.social.model;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 public class PostModel {
 	public enum Privacy {
 		ONLY_ME, FRIENDS, PUBLIC
 	}
+	
+	
 
 	int id;
 	String content;
 	int posted_by;
-	String post_image;
-	String created_at;
-	String updated_at;
+    List<PostImageModel> post_images;
+    Timestamp created_at;
+	Timestamp updated_at;
 	Privacy privacy;
+	
+	
 
 	public int getId() {
 		return id;
@@ -37,27 +44,31 @@ public class PostModel {
 		this.posted_by = posted_by;
 	}
 
-	public String getPost_image() {
-		return post_image;
+
+
+	public List<PostImageModel> getPost_images() {
+		return post_images;
 	}
 
-	public void setPost_image(String post_image) {
-		this.post_image = post_image;
+	public void setPost_images(List<PostImageModel> post_images) {
+		this.post_images = post_images;
 	}
 
-	public String getCreated_at() {
+
+
+	public Timestamp getCreated_at() {
 		return created_at;
 	}
 
-	public void setCreated_at(String created_at) {
+	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
 	}
 
-	public String getUpdated_at() {
+	public Timestamp getUpdated_at() {
 		return updated_at;
 	}
 
-	public void setUpdated_at(String updated_at) {
+	public void setUpdated_at(Timestamp updated_at) {
 		this.updated_at = updated_at;
 	}
 
@@ -71,8 +82,8 @@ public class PostModel {
 
 	@Override
 	public String toString() {
-		return "PostModel [id=" + id + ", content=" + content + ", posted_by=" + posted_by + ", post_image="
-				+ post_image + ", created_at=" + created_at + ", updated_at=" + updated_at + ", privacy=" + privacy
+		return "PostModel [id=" + id + ", content=" + content + ", posted_by=" + posted_by + ", post_images="
+				+ post_images + ", created_at=" + created_at + ", updated_at=" + updated_at + ", privacy=" + privacy
 				+ "]";
 	}
 

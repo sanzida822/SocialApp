@@ -74,7 +74,7 @@ public class UserDao {
 		    
 		//status=	ps.executeQuery(sql)>0;  //execute query use for select statement
 			int rowsAffect= ps.executeUpdate();
-			logger.info("Rows affected: " + rowsAffect);
+			logger.info("User saved: " + rowsAffect);
 			status=rowsAffect>0; //return 1 if insert a row to table
 			ps.close();
 	
