@@ -24,32 +24,21 @@ public class UserProfileServlet extends HttpServlet {
 
 	private static final Logger logger = LoggerFactory.getLogger(AuthenticationServlet.class);
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	UserService userservice = null;
 	UserModel user = null;
 
 	public UserProfileServlet() {
 		super();
 
-		// user = new UserModel();
-
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Integer UserId = (Integer) request.getSession().getAttribute("id");
 		logger.info("userprofile servlet called");
 		if (UserId != null) {
 			logger.info("User id:{} ", UserId);
-
 			userservice = new UserService();
 			user = userservice.FindUserById(UserId);
 			if (user != null) {
@@ -58,7 +47,6 @@ public class UserProfileServlet extends HttpServlet {
 				request.getRequestDispatcher("/views/userProfile.jsp").forward(request, response);
 			} else {
 				logger.error("user not found");
-
 				response.sendRedirect(request.getContextPath() + "/views/error.jsp");
 			}
 

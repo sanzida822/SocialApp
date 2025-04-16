@@ -6,8 +6,6 @@ import java.util.Collection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.social.model.PostModel;
-import com.social.service.PostService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -26,16 +24,16 @@ import javax.servlet.http.Part;
 @WebServlet("/PostServlet")
 @MultipartConfig
 public class PostServlet extends HttpServlet {
-	private static final Logger logger = LoggerFactory.getLogger(AuthenticationServlet.class);
+	private static final Logger logger = LoggerFactory.getLogger(PostServlet.class);
 	private static final long serialVersionUID = 1L;
-	PostService postservice=null;
+	//PostService postservice=null;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public PostServlet() {
     	super();
-    	postservice=new PostService();
+    //	postservice=new PostService();
 
     }
 
@@ -61,8 +59,6 @@ public class PostServlet extends HttpServlet {
 				String uploadPath="images/"+imageName;
 				logger.info(uploadPath);
 				
-				
-				
 			}
 		}
 		HttpSession session = request.getSession(false);
@@ -70,8 +66,7 @@ public class PostServlet extends HttpServlet {
 		String privacy=request.getParameter("privacy");
 		String post_content= request.getParameter("post_content");
 		logger.info("privacy is:{},post content:{}, posted by id:{}" ,privacy, post_content, posted_by);
-		
-		postservice.savePost(privacy, post_content, posted_by);
+
 		
 		
 		

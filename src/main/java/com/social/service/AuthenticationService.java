@@ -17,66 +17,55 @@ import com.social.validation.AuthenticationValidation;
 public class AuthenticationService {
 	private static final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
 	private UserDao userDao;
-	private UserModel reg;
+	private UserModel userModel;
 	private LoginModel login;
 
 	public AuthenticationService() {
 		this.userDao = UserDao.getInstance();
 		this.login = new LoginModel();
 	}
-//	public AuthenticationService() {
-//		regDao = new UserDao();
-//
-//	}
-
-	public String validateAndSaveUser(String uname, String email, String password, String cpassword, Part imagePart)
+	public String validateAndSaveUser(String username, String email, String password, String confirm_password, Part imagePart)
 			throws IOException {
-		boolean isexist = userDao.ExistEmail(email);
-//
-//		if (isexist) {
-//			return "Email already exists";
-//
-//		}
-
-//		String imageError = AuthenticationValidation.validateImage(imagePart);
-//		if (imageError != null) {
-//			return imageError;
-//		}
-		String formeError=AuthenticationValidation.ValidateRegistration(imagePart, uname, email, password, cpassword);
-		//String formError = AuthenticationValidation.ValidateRegistration(Part imagePart,uname, email, password, cpassword);
-		if (formeError != null) {
-			return formeError;
+	//	boolean existEmail = userDao.findByEmail(email);
+		String validationError=AuthenticationValidation.ValidateRegistration(imagePart, username, email, password, confirm_password);
+		if (validationError != null) {
+			logger.error("Validaion error:{} occured for user:{}, email:{}", validationError,username,email);
+			return validationError;
 
 		}
 
 		String imagePath = saveImageToDisk(imagePart);
-		reg = new UserModel();
-		reg.setUname(uname);
-		reg.setEmail(email);
-		reg.setPassword(password);
-		reg.setCpassword(cpassword);
-		reg.setImage(imagePath);
-		boolean saveUser = userDao.saveUser(reg);
+		userModel = new UserModel();
+		userModel.setUsername(username);
+		userModel.setEmail(email);
+		userModel.setPassword(password);
+		userModel.setConfirmPassword(confirm_password);
+		userModel.setImage(imagePath);
+		boolean saveUser = userDao.save(userModel);
 
 		if (saveUser) {
 			return null; // Registration successful
 		} else {
+			logger.error("Registration failed");
 			return "Registration failed"; // Return error if registration failed
 		}
 
 	}
 
 	private String saveImageToDisk(Part imagePart) throws IOException {
-		String imageName = UUID.randomUUID().toString() + ".jpg";
-		String imageDirectory = "D:/java/SocialApp/images/";
-		File imageFile = new File(imageDirectory + imageName);
-		imagePart.write(imageFile.getAbsolutePath());
-		System.out.println(imageDirectory + imageName);
-		return imageDirectory + imageName;
+	    String imageName = UUID.randomUUID().toString() + ".jpg";
+	    File uploadDir = new File("images");
+	    
+	    if (!uploadDir.exists()) {
+	        uploadDir.mkdirs();
+	    }
+
+	    File imageFile = new File(uploadDir, imageName);
+	    imagePart.write(imageFile.getAbsolutePath());
+	    return "images/" + imageName;
 	}
 
 	public LoginModel AuthenticUser(String email, String password) {
-
 		return userDao.getUserByEmailAndPassword(email, password);
 
 	}

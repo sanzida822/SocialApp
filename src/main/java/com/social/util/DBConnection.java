@@ -15,9 +15,9 @@ public class DBConnection {
     private DBConnection() {
         try {
  
-            InputStream is = this.getClass().getClassLoader().getResourceAsStream("mysql_database.properties");
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream("application.properties");
             if (is == null) {
-                logger.error("mysql_database.properties file not found.");
+                logger.error("application.properties file not found.");
                 return; 
             }
 

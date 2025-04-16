@@ -5,7 +5,7 @@
 response.setHeader("Cache-Control", "no-cache, no-store,must-revaldate");
 //UserModel user= (UserModel)request.getAttribute("user");
 //UserModel user= (UserModel)request.getAttribute("user");
-String uname = (String) session.getAttribute("uname"); 
+String uname = (String) session.getAttribute("username"); 
 
 %>
 
@@ -32,7 +32,7 @@ if (uname == null) {
                 
              <!-- pageContext.request.contextPath return SocialApp   -->   
 
-                    <a class="nav-link" href="${pageContext.request.contextPath}/views/NewFile.jsp">Home</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/views/home_page.jsp">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/views/friends.jsp">Friends</a>
@@ -41,7 +41,7 @@ if (uname == null) {
                     <a class="nav-link" href="${pageContext.request.contextPath}/views/friend-requests.jsp">Friend Requests</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="${pageContext.request.contextPath}/logout">Logout</a>
+                    <a class="nav-link text-danger" href="${pageContext.request.contextPath}/auth/logout">Logout</a>
                 </li>
             </ul>
         </div>

@@ -2,13 +2,13 @@ package com.social.model;
 
 import java.io.Serializable;
 
-public class UserModel implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class UserModel {
+
 	int id;
-	String uname;
+	String username;
 	String email;
 	String password;
-	String cpassword;
+	String confirm_password;
 	String image;
 	String created_at;
 	String updated_at;
@@ -21,12 +21,14 @@ public class UserModel implements Serializable {
 		this.id = id;
 	}
 
-	public String getUname() {
-		return uname;
+
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUname(String uname) {
-		this.uname = uname;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {
@@ -37,12 +39,12 @@ public class UserModel implements Serializable {
 		this.email = email;
 	}
 
-	public void setCpassword(String cpassword) {
-		this.cpassword = cpassword;
+	public void setConfirmPassword(String confirm_password) {
+		this.confirm_password = confirm_password;
 	}
 
-	public String getCpassword() {
-		return cpassword;
+	public String getConfirmpassword() {
+		return confirm_password;
 	}
 
 	public String getPassword() {
@@ -79,7 +81,7 @@ public class UserModel implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Registration [id=" + id + ", uname=" + uname + ", email=" + email + ", password=" + password
+		return "Registration [id=" + id + ", uname=" + username + ", email=" + email + ", password=" + password
 				+ ", image=" + image + ", created_at=" + created_at + ", updated_at=" + updated_at + "]";
 	}
 

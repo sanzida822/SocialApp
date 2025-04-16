@@ -42,8 +42,8 @@ public class AuthFilter extends HttpFilter implements Filter {
 	     HttpServletResponse res=(HttpServletResponse) response;
 	     HttpSession session=req.getSession(false); //Only get the session if it already exists, otherwise give  null
 	     
-	     String loginUrl=req.getContextPath()+"/login";
-	     String regUrl=req.getContextPath()+"/registration";
+	     String loginUrl=req.getContextPath()+"/auth/login";
+	     String regUrl=req.getContextPath()+"/auth/registration";
 	     String uri = req.getRequestURI();
 	     System.out.println(uri);
 	     boolean loggedIn=(session!=null && session.getAttribute("id")!=null);
