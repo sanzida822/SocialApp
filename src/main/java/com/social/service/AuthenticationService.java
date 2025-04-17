@@ -2,6 +2,8 @@ package com.social.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.UUID;
 
 import javax.servlet.http.Part;
@@ -26,13 +28,22 @@ public class AuthenticationService {
 	}
 	public String validateAndSaveUser(String username, String email, String password, String confirm_password, Part imagePart)
 			throws IOException {
-	//	boolean existEmail = userDao.findByEmail(email);
 		String validationError=AuthenticationValidation.ValidateRegistration(imagePart, username, email, password, confirm_password);
+		Properties messageProperties  = new Properties();
 		if (validationError != null) {
 			logger.error("Validaion error:{} occured for user:{}, email:{}", validationError,username,email);
 			return validationError;
 
 		}
+		try(InputStream messagePropertiesStream  = AuthenticationService.class.getClassLoader().getResourceAsStream("messages.properties"))
+		{
+			messageProperties .load(messagePropertiesStream);			
+		}
+		catch(Exception e) {
+			logger.error("messages.properties file not found");
+			
+		}
+		
 
 		String imagePath = saveImageToDisk(imagePart);
 		userModel = new UserModel();
@@ -42,12 +53,11 @@ public class AuthenticationService {
 		userModel.setConfirmPassword(confirm_password);
 		userModel.setImage(imagePath);
 		boolean saveUser = userDao.save(userModel);
-
 		if (saveUser) {
 			return null; // Registration successful
 		} else {
 			logger.error("Registration failed");
-			return "Registration failed"; // Return error if registration failed
+			return messageProperties.getProperty("error.registration_failed"); // Return error if registration failed
 		}
 
 	}

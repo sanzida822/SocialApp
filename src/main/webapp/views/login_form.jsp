@@ -52,10 +52,6 @@
 								<button data-mdb-button-init data-mdb-ripple-init
 									class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
 							</form>
-
-
-
-
 						</div>
 					</div>
 				</div>

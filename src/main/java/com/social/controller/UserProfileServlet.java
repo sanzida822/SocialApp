@@ -32,7 +32,6 @@ public class UserProfileServlet extends HttpServlet {
 
 	}
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Integer UserId = (Integer) request.getSession().getAttribute("id");
@@ -57,10 +56,6 @@ public class UserProfileServlet extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub

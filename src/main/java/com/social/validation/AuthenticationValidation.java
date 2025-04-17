@@ -24,36 +24,44 @@ public class AuthenticationValidation {
 
 	public static String ValidateRegistration(Part imagePart, String username, String email, String password,
 			String cpassword) throws IOException {
-		InputStream is = AuthenticationValidation.class.getClassLoader().getResourceAsStream("messages.properties");
-		if (is == null) {
-			logger.error("messages.properties file not found");
+
+		Properties messageProperties  = new Properties();
+
+		try (InputStream messagePropertiesStream = AuthenticationValidation.class.getClassLoader()
+				.getResourceAsStream("messages.properties");) {
+			messageProperties .load(messagePropertiesStream);
+			if (messagePropertiesStream == null) {
+				logger.error("messages.properties file not found");
+
+			}
 		}
 
-		Properties p = new Properties();
-		p.load(is);
+		catch (Exception e) {
+			logger.error("Error occurred while loading messages.properties: {}", e.getMessage());
+		}
 
 		if (username == null || email == null || password == null || cpassword == null || username.isEmpty()
 				|| email.isEmpty() || cpassword.isEmpty()) {
 
-			return p.getProperty("error.validation.all_fields_required");
+			return messageProperties.getProperty("error.validation.all_fields_required");
 
 		}
 
 		if (imagePart == null || imagePart.getSize() == 0) {
-			return p.getProperty("error.image.no_image");
+			return messageProperties.getProperty("error.image.no_image");
 
 		}
 		if (userdao.findByEmail(email)) {
-			return p.getProperty("error.email.exists");
+			return messageProperties.getProperty("error.email.exists");
 		}
 
 		if (password.length() < 6) {
 
-			return p.getProperty("error.password.length");
+			return messageProperties.getProperty("error.password.length");
 
 		}
 		if (!password.equals(cpassword)) {
-			return p.getProperty("error.password.mismatch");
+			return messageProperties.getProperty("error.password.mismatch");
 
 		}
 		return null;

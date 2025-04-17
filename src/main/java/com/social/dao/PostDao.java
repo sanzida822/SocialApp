@@ -13,7 +13,7 @@ import com.social.util.DBConnection;
 public class PostDao {
 	private static final Logger logger=LoggerFactory.getLogger(PostDao.class);
 	private PostModel postModel;
-	public void PostDao(PostModel postModel) {
+	public PostDao(PostModel postModel) {
 		
 		this.postModel=new PostModel();
 		

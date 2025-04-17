@@ -13,37 +13,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet Filter implementation class AuthFilter
- */
 @WebFilter("/*")
 public class AuthFilter extends HttpFilter implements Filter {
-       
-    /**
-     * @see HttpFilter#HttpFilter()
-     */
+
     public AuthFilter() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see Filter#destroy()
-	 */
 	public void destroy() {
 		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 	     HttpServletRequest req=(HttpServletRequest) request;
 	     HttpServletResponse res=(HttpServletResponse) response;
-	     HttpSession session=req.getSession(false); //Only get the session if it already exists, otherwise give  null
-	     
+	     HttpSession session=req.getSession(false); //Only get the session if it already exists, otherwise give  null	     
 	     String loginUrl=req.getContextPath()+"/auth/login";
-	     String regUrl=req.getContextPath()+"/auth/registration";
+	     String regUrl=req.getContextPath()+"/auth/register";
 	     String uri = req.getRequestURI();
 	     System.out.println(uri);
 	     boolean loggedIn=(session!=null && session.getAttribute("id")!=null);
@@ -52,10 +39,6 @@ public class AuthFilter extends HttpFilter implements Filter {
 	    	 return;
 	    	 
 	     }
-//	     if (uri.endsWith(".jsp") && !uri.contains("login.jsp") && !uri.contains("registration.jsp")) {
-//	    	    res.sendRedirect(req.getContextPath() + "/login.jsp");
-//	    	    return;
-//	    	}
 	     else {
 	    	 res.sendRedirect(loginUrl);
 	    	 

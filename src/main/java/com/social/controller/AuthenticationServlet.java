@@ -39,7 +39,7 @@ public class AuthenticationServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String servletPath = request.getServletPath();
 		if (servletPath.equals("/auth/register")) {
-			request.getRequestDispatcher("/views/registration__form.jsp").forward(request, response);
+			request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
 		} else if (servletPath.equals("/auth/login")) {
 			request.getRequestDispatcher("/views/login_form.jsp").forward(request, response);
 		} else if (servletPath.equals("/auth/logout")) {
@@ -61,9 +61,6 @@ public class AuthenticationServlet extends HttpServlet {
 			processLogin(request, response);
 			break;
 			
-		case "/auth/logout":
-			ProcessLogout(request, response);
-			break;
 
 		default:
 			break;
@@ -72,7 +69,6 @@ public class AuthenticationServlet extends HttpServlet {
 
 	public void processRegistration(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -96,10 +92,9 @@ public class AuthenticationServlet extends HttpServlet {
 
 	public void processLogin(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		logger.info("Received login request for email{},",email);
+		logger.info("Received login request for email:{}",email);
 		LoginModel loginUser = authService.AuthenticUser(email, password);
 
 		if (loginUser != null) {
@@ -108,23 +103,23 @@ public class AuthenticationServlet extends HttpServlet {
 			session.setAttribute("username", loginUser.getUsername());
 			session.setAttribute("email", loginUser.getEmail());
 			logger.info("User logged in: username={}, email={}", loginUser.getUsername(), loginUser.getEmail());
-			response.sendRedirect(request.getContextPath() + "/UserProfileServlet");
+			response.sendRedirect(request.getContextPath() + "/views/home_page.jsp");
 		//	response.sendRedirect(request.getContextPath() + "/views/home_page.jsp");
 		} else {
 			request.setAttribute("error", "Login Attempt failed");
 			logger.error("login attemp failed for user:{}",loginUser.getUsername());
 			request.getRequestDispatcher("/views/login_form.jsp").forward(request, response);
-
 		}
 	}
 
 	public void ProcessLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-		logger.info("logout request comes in...");
 		HttpSession session = request.getSession(false);
+		String username=(String)session.getAttribute("username");
+		String email=(String)session.getAttribute("email");
+		logger.info("logout request comes in for user:{}, email:{}",username,email);		
 		if (session != null) {
 			session.invalidate();
-			logger.info("user session invalidated");
+			logger.info("user:{} session invalidated", username);
 		}
 		response.sendRedirect(request.getContextPath() + "/views/login_form.jsp");
 	}

@@ -106,3 +106,397 @@
 2025-04-17 03:25:34 INFO  [c.s.controller.AuthenticationServlet] - userprofile servlet called
 2025-04-17 03:25:34 INFO  [c.s.controller.AuthenticationServlet] - User id:27 
 2025-04-17 03:25:34 INFO  [c.s.controller.AuthenticationServlet] - user is:Registration [id=27, uname=Nitu, email=sanzidasultana824@gmail.com, password=null, image=D:/java/SocialApp/images/4644f638-3568-42f2-9b26-db79e3481eb9.jpg, created_at=2025-04-15 23:58:57, updated_at=null]
+2025-04-17 11:54:32 INFO  [c.s.controller.AuthenticationServlet] - Received login request for emailsanzidasultana824@gmail.com,
+2025-04-17 11:54:32 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 11:54:32 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 11:54:32 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 11:54:32 INFO  [c.s.controller.AuthenticationServlet] - User logged in: username=nitu, email=sanzidasultana824@gmail.com
+2025-04-17 11:54:32 INFO  [c.s.controller.AuthenticationServlet] - userprofile servlet called
+2025-04-17 11:54:32 INFO  [c.s.controller.AuthenticationServlet] - User id:1 
+2025-04-17 11:54:32 INFO  [c.s.controller.AuthenticationServlet] - user is:Registration [id=1, uname=nitu, email=sanzidasultana824@gmail.com, password=null, image=D:/java/SocialApp/images/19fa7402-4bc3-47ea-b759-9a19c35d8d7f.jpg, created_at=2025-04-08 11:38:17, updated_at=null]
+2025-04-17 12:41:19 INFO  [c.s.controller.AuthenticationServlet] - Received login request for emailsanzidasultana824@gmail.com,
+2025-04-17 12:41:19 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 12:41:19 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 12:41:20 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 12:41:20 INFO  [c.s.controller.AuthenticationServlet] - User logged in: username=nitu, email=sanzidasultana824@gmail.com
+2025-04-17 12:41:20 INFO  [c.s.controller.AuthenticationServlet] - userprofile servlet called
+2025-04-17 12:41:20 INFO  [c.s.controller.AuthenticationServlet] - User id:1 
+2025-04-17 12:41:20 INFO  [c.s.controller.AuthenticationServlet] - user is:Registration [id=1, uname=nitu, email=sanzidasultana824@gmail.com, password=null, image=D:/java/SocialApp/images/19fa7402-4bc3-47ea-b759-9a19c35d8d7f.jpg, created_at=2025-04-08 11:38:17, updated_at=null]
+2025-04-17 12:41:25 INFO  [c.s.controller.AuthenticationServlet] - logout request comes in for user:nitu, email:sanzidasultana824@gmail.com
+2025-04-17 12:41:25 INFO  [c.s.controller.AuthenticationServlet] - user:nitu session invalidated
+2025-04-17 13:51:16 INFO  [c.s.controller.AuthenticationServlet] - Received login request for emailsanzidasultana824@gmail.com,
+2025-04-17 13:51:16 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 13:51:16 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 13:51:17 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 13:53:22 INFO  [c.s.controller.AuthenticationServlet] - Received login request for emailsanzidasultana824@gmail.com,
+2025-04-17 13:55:01 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com,111111
+2025-04-17 13:55:01 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 13:55:01 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 13:55:01 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 13:57:38 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
+2025-04-17 13:57:38 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 13:57:38 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 13:57:38 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 14:00:36 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
+2025-04-17 14:00:36 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 14:00:36 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 14:00:36 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 14:00:36 INFO  [com.social.dao.UserDao] - User found for email:sanzidasultana824@gmail.com
+2025-04-17 14:00:36 INFO  [com.social.dao.UserDao] - Get User for email:
+2025-04-17 14:00:36 INFO  [c.s.controller.AuthenticationServlet] - User logged in: username=nitu, email=sanzidasultana824@gmail.com
+2025-04-17 14:00:36 INFO  [c.s.controller.AuthenticationServlet] - userprofile servlet called
+2025-04-17 14:00:36 INFO  [c.s.controller.AuthenticationServlet] - User id:1 
+2025-04-17 14:00:36 ERROR [com.social.dao.UserDao] - User not found with id 1
+2025-04-17 14:00:36 ERROR [c.s.controller.AuthenticationServlet] - user not found
+2025-04-17 14:03:15 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
+2025-04-17 14:03:15 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 14:03:15 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 14:03:16 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 14:03:16 INFO  [com.social.dao.UserDao] - User found for email:sanzidasultana824@gmail.com
+2025-04-17 14:03:16 INFO  [com.social.dao.UserDao] - Get User for email:sanzidasultana824@gmail.com
+2025-04-17 14:03:16 INFO  [c.s.controller.AuthenticationServlet] - User logged in: username=nitu, email=sanzidasultana824@gmail.com
+2025-04-17 14:03:16 INFO  [c.s.controller.AuthenticationServlet] - userprofile servlet called
+2025-04-17 14:03:16 INFO  [c.s.controller.AuthenticationServlet] - User id:1 
+2025-04-17 14:03:16 ERROR [com.social.dao.UserDao] - User not found with id 1
+2025-04-17 14:03:16 ERROR [c.s.controller.AuthenticationServlet] - user not found
+2025-04-17 14:04:20 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
+2025-04-17 14:04:20 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 14:04:20 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 14:04:21 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 14:04:21 INFO  [com.social.dao.UserDao] - User found for email:sanzidasultana824@gmail.com
+2025-04-17 14:04:21 INFO  [com.social.dao.UserDao] - Get User for email:sanzidasultana824@gmail.com
+2025-04-17 14:04:21 INFO  [c.s.controller.AuthenticationServlet] - User logged in: username=nitu, email=sanzidasultana824@gmail.com
+2025-04-17 14:09:45 INFO  [c.s.controller.AuthenticationServlet] - Registration request for username:mnm,Email:sanzjnn824@gmail.com, File name: Screenshot 2025-03-10 161724.png, Content type: image/png:, "File size: 146938
+2025-04-17 14:09:45 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 14:09:45 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 14:09:46 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 14:09:46 ERROR [com.social.dao.UserDao] - Error occurred while checking duplicate email for 'sanzjnn824@gmail.com': No value specified for parameter 1
+java.sql.SQLException: No value specified for parameter 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:989)
+	at com.social.dao.UserDao.findByEmail(UserDao.java:71)
+	at com.social.validation.AuthenticationValidation.ValidateRegistration(AuthenticationValidation.java:54)
+	at com.social.service.AuthenticationService.validateAndSaveUser(AuthenticationService.java:31)
+	at com.social.controller.AuthenticationServlet.processRegistration(AuthenticationServlet.java:82)
+	at com.social.controller.AuthenticationServlet.doPost(AuthenticationServlet.java:57)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at com.social.filter.AuthFilter.doFilter(AuthFilter.java:38)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-04-17 14:09:46 ERROR [com.social.dao.UserDao] - SQL Exception occurred while saving user: mnm, error message:
+2025-04-17 14:09:46 ERROR [com.social.dao.UserDao] - Error stack trace: 
+java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:111)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:98)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:90)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:64)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:74)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:73)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1621)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1535)
+	at com.social.dao.UserDao.save(UserDao.java:42)
+	at com.social.service.AuthenticationService.validateAndSaveUser(AuthenticationService.java:55)
+	at com.social.controller.AuthenticationServlet.processRegistration(AuthenticationServlet.java:82)
+	at com.social.controller.AuthenticationServlet.doPost(AuthenticationServlet.java:57)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at com.social.filter.AuthFilter.doFilter(AuthFilter.java:38)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.mysql.cj.exceptions.ConnectionIsClosedException: No operations allowed after connection closed.
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.NativeSession.checkClosed(NativeSession.java:753)
+	at com.mysql.cj.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:565)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1550)
+	... 32 common frames omitted
+2025-04-17 14:09:46 ERROR [c.s.service.AuthenticationService] - Registration failed
+2025-04-17 14:09:46 INFO  [c.s.controller.AuthenticationServlet] - registration failed for user: username:mnm,Email:sanzjnn824@gmail.com
+2025-04-17 14:17:20 INFO  [c.s.controller.AuthenticationServlet] - Registration request for username:sdfghjkl,Email:sanzidasultana824@gmail.com, File name: Screenshot 2025-03-07 121332.png, Content type: image/png:, "File size: 245775
+2025-04-17 14:17:20 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 14:17:20 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 14:17:20 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 14:17:20 INFO  [com.social.dao.UserDao] - checking duplicate email for email:sanzidasultana824@gmail.com 
+2025-04-17 14:17:20 INFO  [com.social.dao.UserDao] - duplicate email for:sanzidasultana824@gmail.com status:true 
+2025-04-17 14:17:20 ERROR [c.s.service.AuthenticationService] - Validaion error:email already exists occured for user:sdfghjkl, email:sanzidasultana824@gmail.com
+2025-04-17 14:17:20 INFO  [c.s.controller.AuthenticationServlet] - registration failed for user: username:sdfghjkl,Email:sanzidasultana824@gmail.com
+2025-04-17 14:17:38 INFO  [c.s.controller.AuthenticationServlet] - Registration request for username:sdfghjkl,Email:544@gmail.com, File name: Screenshot 2025-03-10 161650.png, Content type: image/png:, "File size: 362573
+2025-04-17 14:17:38 ERROR [com.social.dao.UserDao] - Error occurred while checking duplicate email for '544@gmail.com': No operations allowed after connection closed.
+java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:111)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:98)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:90)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:64)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:74)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:73)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1621)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1535)
+	at com.social.dao.UserDao.findByEmail(UserDao.java:70)
+	at com.social.validation.AuthenticationValidation.ValidateRegistration(AuthenticationValidation.java:54)
+	at com.social.service.AuthenticationService.validateAndSaveUser(AuthenticationService.java:31)
+	at com.social.controller.AuthenticationServlet.processRegistration(AuthenticationServlet.java:82)
+	at com.social.controller.AuthenticationServlet.doPost(AuthenticationServlet.java:57)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at com.social.filter.AuthFilter.doFilter(AuthFilter.java:38)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.mysql.cj.exceptions.ConnectionIsClosedException: No operations allowed after connection closed.
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.NativeSession.checkClosed(NativeSession.java:753)
+	at com.mysql.cj.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:565)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1550)
+	... 33 common frames omitted
+2025-04-17 14:17:38 ERROR [com.social.dao.UserDao] - SQL Exception occurred while saving user: sdfghjkl, error message:
+2025-04-17 14:17:38 ERROR [com.social.dao.UserDao] - Error stack trace: 
+java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:111)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:98)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:90)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:64)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:74)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:73)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1621)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1535)
+	at com.social.dao.UserDao.save(UserDao.java:42)
+	at com.social.service.AuthenticationService.validateAndSaveUser(AuthenticationService.java:55)
+	at com.social.controller.AuthenticationServlet.processRegistration(AuthenticationServlet.java:82)
+	at com.social.controller.AuthenticationServlet.doPost(AuthenticationServlet.java:57)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at com.social.filter.AuthFilter.doFilter(AuthFilter.java:38)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.mysql.cj.exceptions.ConnectionIsClosedException: No operations allowed after connection closed.
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.NativeSession.checkClosed(NativeSession.java:753)
+	at com.mysql.cj.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:565)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1550)
+	... 32 common frames omitted
+2025-04-17 14:17:38 ERROR [c.s.service.AuthenticationService] - Registration failed
+2025-04-17 14:17:38 INFO  [c.s.controller.AuthenticationServlet] - registration failed for user: username:sdfghjkl,Email:544@gmail.com
+2025-04-17 16:30:14 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
+2025-04-17 16:30:14 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 16:30:14 INFO  [com.social.util.DBConnection] - JDBC Driver loaded successfully.
+2025-04-17 16:30:14 INFO  [com.social.dao.UserDao] - User found for email:sanzidasultana824@gmail.com
+2025-04-17 16:30:14 INFO  [com.social.dao.UserDao] - Get User for email:sanzidasultana824@gmail.com
+2025-04-17 16:30:14 INFO  [c.s.controller.AuthenticationServlet] - User logged in: username=nitu, email=sanzidasultana824@gmail.com
+2025-04-17 16:30:16 INFO  [c.s.controller.AuthenticationServlet] - logout request comes in for user:nitu, email:sanzidasultana824@gmail.com
+2025-04-17 16:30:16 INFO  [c.s.controller.AuthenticationServlet] - user:nitu session invalidated
+2025-04-17 16:47:47 INFO  [c.s.controller.AuthenticationServlet] - Registration request for username:sas,Email:aq1@gmail.com, File name: Screenshot 2025-03-07 121332.png, Content type: image/png:, "File size: 245775
+2025-04-17 16:47:47 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 16:47:47 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 16:47:48 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 16:47:48 INFO  [com.social.dao.UserDao] - checking duplicate email for email:aq1@gmail.com 
+2025-04-17 16:47:48 INFO  [com.social.dao.UserDao] - duplicate email for:aq1@gmail.com status:false 
+2025-04-17 16:47:48 ERROR [com.social.dao.UserDao] - SQL Exception occurred while saving user: sas, error message:
+2025-04-17 16:47:48 ERROR [com.social.dao.UserDao] - Error stack trace: 
+java.sql.SQLNonTransientConnectionException: No operations allowed after connection closed.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:111)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:98)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:90)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:64)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:74)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:73)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1621)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1535)
+	at com.social.dao.UserDao.save(UserDao.java:42)
+	at com.social.service.AuthenticationService.validateAndSaveUser(AuthenticationService.java:55)
+	at com.social.controller.AuthenticationServlet.processRegistration(AuthenticationServlet.java:79)
+	at com.social.controller.AuthenticationServlet.doPost(AuthenticationServlet.java:57)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at com.social.filter.AuthFilter.doFilter(AuthFilter.java:38)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.mysql.cj.exceptions.ConnectionIsClosedException: No operations allowed after connection closed.
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:62)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:150)
+	at com.mysql.cj.NativeSession.checkClosed(NativeSession.java:753)
+	at com.mysql.cj.jdbc.ConnectionImpl.checkClosed(ConnectionImpl.java:565)
+	at com.mysql.cj.jdbc.ConnectionImpl.prepareStatement(ConnectionImpl.java:1550)
+	... 32 common frames omitted
+2025-04-17 16:47:48 ERROR [c.s.service.AuthenticationService] - Registration failed
+2025-04-17 16:47:48 INFO  [c.s.controller.AuthenticationServlet] - registration failed for user: username:sas,Email:aq1@gmail.com
+2025-04-17 17:03:46 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 17:03:46 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 17:03:46 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 17:04:11 INFO  [c.s.controller.AuthenticationServlet] - Registration request for username:sdfghjkl,Email:43s824@gmail.com, File name: Screenshot 2025-03-10 161650.png, Content type: image/png:, "File size: 362573
+2025-04-17 17:04:11 INFO  [com.social.dao.UserDao] - checking duplicate email for email:43s824@gmail.com 
+2025-04-17 17:04:11 INFO  [com.social.dao.UserDao] - duplicate email for:43s824@gmail.com status:false 
+2025-04-17 17:04:11 INFO  [com.social.dao.UserDao] - User saved: 1
+2025-04-17 17:12:07 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 17:12:07 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 17:12:07 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 17:12:33 INFO  [c.s.controller.AuthenticationServlet] - Registration request for username:sdfghjkl,Email:8724@gmail.com, File name: Screenshot 2025-03-10 161650.png, Content type: image/png:, "File size: 362573
+2025-04-17 17:12:33 INFO  [com.social.dao.UserDao] - checking duplicate email for email:8724@gmail.com 
+2025-04-17 17:12:33 INFO  [com.social.dao.UserDao] - duplicate email for:8724@gmail.com status:false 
+2025-04-17 17:12:33 INFO  [com.social.dao.UserDao] - User saved: 1
+2025-04-17 17:12:42 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
+2025-04-17 17:12:42 INFO  [com.social.dao.UserDao] - User found for email:sanzidasultana824@gmail.com
+2025-04-17 17:12:42 INFO  [com.social.dao.UserDao] - Get User for email:sanzidasultana824@gmail.com
+2025-04-17 17:12:42 INFO  [c.s.controller.AuthenticationServlet] - User logged in: username=nitu, email=sanzidasultana824@gmail.com
+2025-04-17 17:13:11 INFO  [c.s.controller.AuthenticationServlet] - logout request comes in for user:nitu, email:sanzidasultana824@gmail.com
+2025-04-17 17:13:11 INFO  [c.s.controller.AuthenticationServlet] - user:nitu session invalidated
+2025-04-17 17:13:36 INFO  [c.s.controller.AuthenticationServlet] - Registration request for username:sdfhjkl;,Email:872j4@gmail.com, File name: Screenshot 2025-03-10 161650.png, Content type: image/png:, "File size: 362573
+2025-04-17 17:13:36 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 17:13:36 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 17:13:36 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 17:13:36 INFO  [com.social.dao.UserDao] - checking duplicate email for email:872j4@gmail.com 
+2025-04-17 17:13:37 INFO  [com.social.dao.UserDao] - duplicate email for:872j4@gmail.com status:false 
+2025-04-17 17:13:37 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-17 17:13:37 INFO  [com.social.dao.UserDao] - User saved: 1
+2025-04-17 17:13:46 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
+2025-04-17 17:13:46 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-17 17:13:46 INFO  [com.social.dao.UserDao] - User found for email:sanzidasultana824@gmail.com
+2025-04-17 17:13:46 INFO  [com.social.dao.UserDao] - Get User for email:sanzidasultana824@gmail.com
+2025-04-17 17:13:46 INFO  [c.s.controller.AuthenticationServlet] - User logged in: username=nitu, email=sanzidasultana824@gmail.com
+2025-04-17 17:30:29 INFO  [c.s.controller.AuthenticationServlet] - Registration request for username:dzcxc,Email:sanzidasultana824@gmail.com, File name: Screenshot 2025-03-10 161650.png, Content type: image/png:, "File size: 362573
+2025-04-17 17:30:29 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
+2025-04-17 17:30:29 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-17 17:30:30 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-17 17:30:30 INFO  [com.social.dao.UserDao] - checking duplicate email for email:sanzidasultana824@gmail.com 
+2025-04-17 17:30:30 INFO  [com.social.dao.UserDao] - duplicate email for:sanzidasultana824@gmail.com status:true 
+2025-04-17 17:30:30 ERROR [c.s.service.AuthenticationService] - Validaion error:email already exists occured for user:dzcxc, email:sanzidasultana824@gmail.com
+2025-04-17 17:30:30 INFO  [c.s.controller.AuthenticationServlet] - registration failed for user: username:dzcxc,Email:sanzidasultana824@gmail.com
+2025-04-17 17:31:02 INFO  [c.s.controller.AuthenticationServlet] - Registration request for username:sas,Email:zaq4@gmail.com, File name: Screenshot 2025-03-10 161650.png, Content type: image/png:, "File size: 362573
+2025-04-17 17:31:02 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-17 17:31:02 INFO  [com.social.dao.UserDao] - checking duplicate email for email:zaq4@gmail.com 
+2025-04-17 17:31:02 INFO  [com.social.dao.UserDao] - duplicate email for:zaq4@gmail.com status:false 
+2025-04-17 17:31:02 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-17 17:31:02 INFO  [com.social.dao.UserDao] - User saved: 1
+2025-04-17 17:31:17 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
+2025-04-17 17:31:17 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-17 17:31:17 INFO  [com.social.dao.UserDao] - User found for email:sanzidasultana824@gmail.com
+2025-04-17 17:31:17 INFO  [com.social.dao.UserDao] - Get User for email:sanzidasultana824@gmail.com
+2025-04-17 17:31:17 INFO  [c.s.controller.AuthenticationServlet] - User logged in: username=nitu, email=sanzidasultana824@gmail.com
