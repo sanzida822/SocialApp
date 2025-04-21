@@ -38,9 +38,9 @@ public class UserDao {
 
 	public UserModel save(UserModel userModel) {
 		String sql = "Insert into users (user_name,user_email,password,user_image,salt) values(?,?,?,?,?)";
-		boolean status = false;
+		//boolean status = false;
 		try (Connection connection = DBConnection.getInstance().getConnection();
-				PreparedStatement ps = connection.prepareStatement(sql)
+				PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)
 
 		) {
 			String salt = PasswordUtil.generateSalt();
@@ -52,8 +52,20 @@ public class UserDao {
 			ps.setString(4, userModel.getImage());
 			ps.setString(5, salt);
 			int rowsAffect = ps.executeUpdate();
+			
+	        if (rowsAffect > 0) {
+	            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+	                if (generatedKeys.next()) {
+	                    userModel.setId(generatedKeys.getInt(1));
+	                }
+	            }
+	            logger.info("Registration completed successfully for user: {}", userModel.getUsername());
+	        } else {
+	            logger.warn("No rows affected during user registration for: {}", userModel.getUsername());
+	            return null;
+	        }
 			logger.info("Registration completed successfully for user: " + userModel);
-			status = rowsAffect > 0; // return 1 if insert a row to table
+			//status = rowsAffect > 0; // return 1 if insert a row to table
 
 		} catch (SQLException e) {
 			logger.error("SQL Exception occurred while saving user: {}, error message:", userModel.getUsername(),

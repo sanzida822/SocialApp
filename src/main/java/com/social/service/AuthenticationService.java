@@ -12,6 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.social.dao.UserDao;
+import com.social.dto.LoginRequestDto;
+import com.social.dto.RegistrationRequestDTO;
+import com.social.mapper.UserMapper;
 import com.social.model.LoginModel;
 import com.social.model.UserModel;
 import com.social.validation.AuthenticationValidation;
@@ -26,12 +29,12 @@ public class AuthenticationService {
 		this.userDao = UserDao.getInstance();
 		this.login = new LoginModel();
 	}
-	public String validateAndSaveUser(String username, String email, String password, String confirm_password, Part imagePart)
+	public String validateAndSaveUser(RegistrationRequestDTO registrationDto)
 			throws IOException {
-		String validationError=AuthenticationValidation.ValidateRegistration(imagePart, username, email, password, confirm_password);
+		String validationError=AuthenticationValidation.ValidateRegistration(registrationDto);
 		Properties messageProperties  = new Properties();
 		if (validationError != null) {
-			logger.error("Validaion error:{} occured for user:{}, email:{}", validationError,username,email);
+			logger.error("Validaion error:{} occured for user:{}, email:{}", validationError,registrationDto.getUsername(),registrationDto.getEmail());
 			return validationError;
 
 		}
@@ -45,15 +48,18 @@ public class AuthenticationService {
 		}
 		
 
-		String imagePath = saveImageToDisk(imagePart);
-		userModel = new UserModel();
-		userModel.setUsername(username);
-		userModel.setEmail(email);
-		userModel.setPassword(password);
-		userModel.setConfirmPassword(confirm_password);
-		userModel.setImage(imagePath);
-		UserModel saveUser = userDao.save(userModel);
-		if (saveUser!=null) {
+		//String imagePath = saveImageToDisk(imagePart);
+//		userModel = new UserModel();
+//		userModel.setUsername(registrationDto.getUsername());
+//		userModel.setEmail(registrationDto.getEmail());
+//		userModel.setPassword(registrationDto.getPassword());
+//		//userModel.setConfirmPassword(registrationDto.getConfirm_password());
+//		userModel.setImage(registrationDto.getImage());
+//		UserModel saveUser = userDao.save(userModel);
+		
+		   UserModel userModel = UserMapper.toEntity(registrationDto);
+		   UserModel savedUser = userDao.save(userModel);
+		if (savedUser!=null) {
 			return null; // Registration successful
 		} else {
 			logger.error("Registration failed");
@@ -62,7 +68,7 @@ public class AuthenticationService {
 
 	}
 
-	private String saveImageToDisk(Part imagePart) throws IOException {
+	public static String saveImageToDisk(Part imagePart) throws IOException {
 	    String imageName = UUID.randomUUID().toString() + ".jpg";
 	    File uploadDir = new File("images");
 	    
@@ -75,8 +81,10 @@ public class AuthenticationService {
 	    return "images/" + imageName;
 	}
 
-	public LoginModel AuthenticUser(String email, String password) {
-		return userDao.getUserByEmailAndPassword(email, password);
+	public LoginModel AuthenticUser(LoginRequestDto loginDto) {
+		UserModel userModel=UserMapper.toEntity(loginDto);
+		
+		return userDao.getUserByEmailAndPassword(userModel.getEmail(),userModel.getPassword());
 
 	}
 

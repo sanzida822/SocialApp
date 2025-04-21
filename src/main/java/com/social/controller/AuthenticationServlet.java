@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import com.social.dto.LoginRequestDto;
+import com.social.dto.RegistrationRequestDTO;
 import com.social.model.LoginModel;
 import com.social.service.AuthenticationService;
 import com.social.validation.AuthenticationValidation;
@@ -74,16 +76,26 @@ public class AuthenticationServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String confirm_password = request.getParameter("confirm_password");
 		Part imagePart = request.getPart("image"); 
+		String imagePath=AuthenticationService.saveImageToDisk(imagePart);
 		logger.info("Registration request for username:{},Email:{}, File name: {}, Content type: {}:, \"File size: {}",username,email,  imagePart.getSubmittedFileName(),
 				imagePart.getContentType(), imagePart.getSize());
-		String result = authService.validateAndSaveUser(username, email, password, confirm_password, imagePart);
+		
+		RegistrationRequestDTO registrationDTO=new RegistrationRequestDTO();
+		registrationDTO.setUsername(username);
+		registrationDTO.setEmail(email);
+		registrationDTO.setPassword(password);
+		registrationDTO.setConfirm_password(confirm_password);
+		registrationDTO.setImage(imagePath);
+		String result = authService.validateAndSaveUser(registrationDTO);
+		
 		if (result != null) {
-			logger.info("registration failed for user: username:{},Email:{}",username,email);
+			logger.error("registration failed for user: username:{},Email:{}",username,email);
 			request.setAttribute("error", result);
 			request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
 			return;
 
 		} else {
+			logger.info("Registered successfully for user: username:{},Email:{}",username,email);
 			response.sendRedirect(request.getContextPath() + "/views/login_form.jsp");
 
 		}
@@ -96,8 +108,12 @@ public class AuthenticationServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		logger.info("Received login request for email:{}",email);
-		LoginModel loginUser = authService.AuthenticUser(email, password);
-		logger.info("login user:{}", loginUser);
+		
+		LoginRequestDto loginDto= new LoginRequestDto();
+		loginDto.setEmail(email);
+		loginDto.setPassword(password);
+		LoginModel loginUser = authService.AuthenticUser(loginDto);
+		logger.info("login user data:{}", loginUser);
         
 		if (loginUser != null) {
 			HttpSession session = request.getSession();
@@ -109,7 +125,7 @@ public class AuthenticationServlet extends HttpServlet {
 
 		} else {
 			request.setAttribute("error", "Login Attempt failed");
-			logger.error("login attemp failed for user:{}",email);
+			logger.error("Login attemp failed for user:{}",email);
 			request.getRequestDispatcher("/auth/login_form.jsp").forward(request, response);
 		}
 	}
