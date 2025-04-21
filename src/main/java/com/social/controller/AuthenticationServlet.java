@@ -90,25 +90,27 @@ public class AuthenticationServlet extends HttpServlet {
 
 	}
 
+
 	public void processLogin(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		logger.info("Received login request for email:{}",email);
 		LoginModel loginUser = authService.AuthenticUser(email, password);
-
+		logger.info("login user:{}", loginUser);
+        
 		if (loginUser != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", loginUser.getId());
 			session.setAttribute("username", loginUser.getUsername());
 			session.setAttribute("email", loginUser.getEmail());
 			logger.info("User logged in: username={}, email={}", loginUser.getUsername(), loginUser.getEmail());
-			response.sendRedirect(request.getContextPath() + "/views/home_page.jsp");
-		//	response.sendRedirect(request.getContextPath() + "/views/home_page.jsp");
+			response.sendRedirect(request.getContextPath() + "/user/home");
+
 		} else {
 			request.setAttribute("error", "Login Attempt failed");
-			logger.error("login attemp failed for user:{}",loginUser.getUsername());
-			request.getRequestDispatcher("/views/login_form.jsp").forward(request, response);
+			logger.error("login attemp failed for user:{}",email);
+			request.getRequestDispatcher("/auth/login_form.jsp").forward(request, response);
 		}
 	}
 
@@ -121,7 +123,7 @@ public class AuthenticationServlet extends HttpServlet {
 			session.invalidate();
 			logger.info("user:{} session invalidated", username);
 		}
-		response.sendRedirect(request.getContextPath() + "/views/login_form.jsp");
+		response.sendRedirect(request.getContextPath() + "/auth/login");
 	}
 
 

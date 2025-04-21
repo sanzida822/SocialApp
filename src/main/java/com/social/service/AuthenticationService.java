@@ -52,8 +52,8 @@ public class AuthenticationService {
 		userModel.setPassword(password);
 		userModel.setConfirmPassword(confirm_password);
 		userModel.setImage(imagePath);
-		boolean saveUser = userDao.save(userModel);
-		if (saveUser) {
+		UserModel saveUser = userDao.save(userModel);
+		if (saveUser!=null) {
 			return null; // Registration successful
 		} else {
 			logger.error("Registration failed");

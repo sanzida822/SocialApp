@@ -51,7 +51,7 @@ public class AuthenticationValidation {
 			return messageProperties.getProperty("error.image.no_image");
 
 		}
-		if (userdao.findByEmail(email)) {
+		if (userdao.findByEmail(email)!=null) {		
 			return messageProperties.getProperty("error.email.exists");
 		}
 

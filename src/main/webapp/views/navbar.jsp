@@ -1,8 +1,10 @@
 <%@page import="com.social.model.UserModel"%>
 
+
 <%
 
 response.setHeader("Cache-Control", "no-cache, no-store,must-revaldate");
+
 //UserModel user= (UserModel)request.getAttribute("user");
 //UserModel user= (UserModel)request.getAttribute("user");
 String uname = (String) session.getAttribute("username"); 
@@ -19,20 +21,14 @@ String uname = (String) session.getAttribute("username");
             <span class="navbar-toggler-icon"></span>
         </button>
 
-<%
-if (uname == null) {
-    out.println("Session uname is null.");
-} else {
-    out.println("Session uname: " + uname);
-}
-%>
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                 
              <!-- pageContext.request.contextPath return SocialApp   -->   
 
-                    <a class="nav-link" href="${pageContext.request.contextPath}/views/home_page.jsp">Home</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/user/home">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/views/friends.jsp">Friends</a>

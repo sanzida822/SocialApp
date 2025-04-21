@@ -6,7 +6,7 @@
 Integer id = (Integer) session.getAttribute("id");
 String email = (String) session.getAttribute("email");
 UserModel user = (UserModel) request.getAttribute("user");
-out.println(user);
+
 %>
 
 <%@ include file="header.jsp"%>

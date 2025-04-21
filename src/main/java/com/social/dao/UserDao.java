@@ -9,6 +9,7 @@ import com.social.controller.AuthenticationServlet;
 import com.social.model.LoginModel;
 import com.social.model.UserModel;
 import com.social.util.DBConnection;
+import com.social.util.PasswordUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,21 +36,25 @@ public class UserDao {
 
 	}
 
-	public boolean save(UserModel userModel) {
-		String sql = "Insert into users (uname,email,password,image) values(?,?,?,?)";
+	public UserModel save(UserModel userModel) {
+		String sql = "Insert into users (user_name,user_email,password,user_image,salt) values(?,?,?,?,?)";
 		boolean status = false;
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql)
 
 		) {
+			String salt = PasswordUtil.generateSalt();
+			String hashedPassword = PasswordUtil.hashPassword(userModel.getPassword(), salt);
 
 			ps.setString(1, userModel.getUsername());
 			ps.setString(2, userModel.getEmail());
-			ps.setString(3, userModel.getPassword());
+			ps.setString(3, hashedPassword);
 			ps.setString(4, userModel.getImage());
+			ps.setString(5, salt);
 			int rowsAffect = ps.executeUpdate();
-			logger.info("User saved: " + rowsAffect);
+			logger.info("Registration completed successfully for user: " + userModel);
 			status = rowsAffect > 0; // return 1 if insert a row to table
+
 		} catch (SQLException e) {
 			logger.error("SQL Exception occurred while saving user: {}, error message:", userModel.getUsername(),
 					e.getMessage());
@@ -59,62 +64,81 @@ public class UserDao {
 			logger.error("Error stack trace: ", e);
 
 		}
-		return status;
+		return userModel;
 
 	}
 
-	public boolean findByEmail(String email) {
-		boolean status = false;
-		String sql = "Select 1 from users where email=?";
+	public LoginModel findByEmail(String email) {
+		LoginModel loginModel = null;
+		String sql = "Select 1 from users where user_email=?";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);
-				
+
 		) {
 
 			logger.info("checking duplicate email for email:{} ", email);
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
-			status = rs.next();
-			logger.info("duplicate email for:{} status:{} ", email, status);
+			if (rs.next()) {
+				loginModel = new LoginModel();
+				loginModel.setId(rs.getInt("id"));
+				loginModel.setUsername(rs.getString("uname"));
+				loginModel.setEmail(rs.getString("email"));
+				logger.info("user is found for email:{} and user object is:{}", email, loginModel);
+
+			}
+			logger.info("duplicate email for:{} user object:{} ", email, loginModel);
 		} catch (Exception e) {
 			logger.error("Error occurred while checking duplicate email for '{}': {}", email, e.getMessage(), e);
 		}
-		return status;
+		return loginModel;
 	}
 
 	public LoginModel getUserByEmailAndPassword(String email, String password) {
 		LoginModel loginModel = null;
-		String sql = "SELECT id, uname, email, password FROM users WHERE email=? AND password=?";
+		String sql = "SELECT id, user_name, user_email, password,salt FROM users WHERE user_email=?";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);
-			
-			) {
+
+		) {
 			ps.setString(1, email);
-			ps.setString(2, password);
 			ResultSet rowsAffect = ps.executeQuery();
-			System.out.println(rowsAffect);
-			if (rowsAffect.next()) {
-				loginModel = new LoginModel();
-				logger.info("User found for email:{}",email);
-			
-				loginModel.setId(rowsAffect.getInt("id"));
-				loginModel.setUsername(rowsAffect.getString("uname"));
-				loginModel.setEmail(rowsAffect.getString("email"));
-				logger.info("Get User for email:{}", loginModel.getEmail());
+			boolean hasResult = rowsAffect.next();
+			logger.info("Login resultSet has result? {}, for user email:{}", hasResult, email);
+			if (hasResult) {
+				String Storedpassword = rowsAffect.getString("password");
+				String storedsalt = rowsAffect.getString("salt");
+				String hashedInputPassword = PasswordUtil.hashPassword(password, storedsalt);
+				if (Storedpassword.equals(hashedInputPassword)) {
+					loginModel = new LoginModel();
+					loginModel.setId(rowsAffect.getInt("id"));
+					loginModel.setUsername(rowsAffect.getString("user_name"));
+					loginModel.setEmail(rowsAffect.getString("user_email"));
+					logger.info("Login successful for user: {}", email);
+
+				} else {
+
+					logger.warn("Password mismatch for user: {}", email);
+				}
+
+			} else {
+				logger.warn("No user found with email: {}", email);
+
 			}
 		} catch (Exception e) {
-		    logger.error("Error checking user for email: {}, message: {}", email, e.getMessage());
+			logger.error("Error checking user for email: {}, message: {}", email, e.getMessage());
 
 		}
+
 		return loginModel;
 
 	}
 
 	public UserModel findById(int id) {
 		UserModel user = null;
-		String sql = "Select uname, email, image,created_at,updated_at from users where id=?";
+		String sql = "Select user_name, user_email, user_image,created_at,updated_at from users where id=?";
 		try (Connection connection = DBConnection.getInstance().getConnection();
-				PreparedStatement ps = connection.prepareStatement(sql);		
+				PreparedStatement ps = connection.prepareStatement(sql);
 
 		) {
 			ps.setInt(1, id);
