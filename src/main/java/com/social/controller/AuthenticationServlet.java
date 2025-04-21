@@ -91,6 +91,7 @@ public class AuthenticationServlet extends HttpServlet {
 			registrationDto.setEmail(email);
 			registrationDto.setPassword(password);
 			registrationDto.setConfirm_password(confirm_password);
+			registrationDto.setImage(imagePart);
 			//registrationDto.setImage(imagePath);
 			
 			AuthenticationValidation authValidator=new AuthenticationValidation();
