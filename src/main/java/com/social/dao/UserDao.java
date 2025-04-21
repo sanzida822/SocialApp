@@ -1,18 +1,17 @@
 package com.social.dao;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.*;
-import java.util.Properties;
-
-import com.social.controller.AuthenticationServlet;
-import com.social.model.LoginModel;
-import com.social.model.UserModel;
-import com.social.util.DBConnection;
-import com.social.util.PasswordUtil;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.social.model.LoginModel;
+import com.social.model.UserModel;
+import com.social.util.DAOUtil;
+import com.social.util.DBConnection;
+import com.social.util.PasswordUtil;
 
 public class UserDao {
 	private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
@@ -36,48 +35,24 @@ public class UserDao {
 
 	}
 
-	public UserModel save(UserModel userModel) {
+	public boolean save(UserModel userModel) throws Exception {
 		String sql = "Insert into users (user_name,user_email,password,user_image,salt) values(?,?,?,?,?)";
-		//boolean status = false;
+		boolean status = false;
 		try (Connection connection = DBConnection.getInstance().getConnection();
-				PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)
+				PreparedStatement ps = connection.prepareStatement(sql)
 
 		) {
-			String salt = PasswordUtil.generateSalt();
-			String hashedPassword = PasswordUtil.hashPassword(userModel.getPassword(), salt);
-
-			ps.setString(1, userModel.getUsername());
-			ps.setString(2, userModel.getEmail());
-			ps.setString(3, hashedPassword);
-			ps.setString(4, userModel.getImage());
-			ps.setString(5, salt);
+			DAOUtil.setUserParams(ps, userModel);
 			int rowsAffect = ps.executeUpdate();
-			
-	        if (rowsAffect > 0) {
-	            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
-	                if (generatedKeys.next()) {
-	                    userModel.setId(generatedKeys.getInt(1));
-	                }
-	            }
-	            logger.info("Registration completed successfully for user: {}", userModel.getUsername());
-	        } else {
-	            logger.warn("No rows affected during user registration for: {}", userModel.getUsername());
-	            return null;
-	        }
-			logger.info("Registration completed successfully for user: " + userModel);
-			//status = rowsAffect > 0; // return 1 if insert a row to table
-
-		} catch (SQLException e) {
-			logger.error("SQL Exception occurred while saving user: {}, error message:", userModel.getUsername(),
-					e.getMessage());
-			logger.error("Error stack trace: ", e);
-		} catch (Exception e) {
-			logger.error("General Exception occurred: " + e.getMessage());
-			logger.error("Error stack trace: ", e);
-
+            if(rowsAffect>0) {
+            	status=true;
+            	logger.info("Registration completed successfully for user: " + userModel);
+            	
+            }else {
+                logger.error("Registration failed for user: " + userModel);
+            }
+			return status;
 		}
-		return userModel;
-
 	}
 
 	public LoginModel findByEmail(String email) {

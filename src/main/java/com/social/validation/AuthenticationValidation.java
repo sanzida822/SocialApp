@@ -1,18 +1,16 @@
 package com.social.validation;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import javax.servlet.http.Part;
-
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.social.dao.UserDao;
 import com.social.dto.RegistrationRequestDTO;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.social.util.MessageUtil;
 
 public class AuthenticationValidation {
 
@@ -23,47 +21,39 @@ public class AuthenticationValidation {
 //		this.userdao=UserDao.getInstance();
 	}
 
-	public static String ValidateRegistration(RegistrationRequestDTO registrationDTO) throws IOException {
+	public Map<String,String> AuthenticationValidator(RegistrationRequestDTO registrationDto) throws IOException {
+		
+	    Map<String,String> errorMessages = new HashMap<>();
+	    
 
-		Properties messageProperties  = new Properties();
+	    if(registrationDto.getUsername()==null || registrationDto.getUsername().isEmpty()) {
+	    	errorMessages.put("username_required", MessageUtil.getErrorMessage("error.username.required"));
+	    }
+	    
+	    if(registrationDto.getEmail()==null || registrationDto.getEmail().isEmpty()) {
+	    errorMessages.put("email_required", MessageUtil.getErrorMessage("error.email.required"));    	
+	    	
+	    }
+	    
+	    if(registrationDto.getPassword()==null || registrationDto.getPassword().isEmpty()) {
+	    errorMessages.put("password_required", MessageUtil.getErrorMessage("error.password.required"));    		    	
+	    }
+	    
+	    if(registrationDto.getConfirm_password()==null || registrationDto.getConfirm_password().isEmpty()) {
+	    errorMessages.put("confirm_password_required", MessageUtil.getErrorMessage("error.confirm_password.required"));    		    	
+	    }
 
-		try (InputStream messagePropertiesStream = AuthenticationValidation.class.getClassLoader()
-				.getResourceAsStream("messages.properties");) {
-			messageProperties .load(messagePropertiesStream);
-			if (messagePropertiesStream == null) {
-				logger.error("messages.properties file not found");
-
-			}
-		}
-
-		catch (Exception e) {
-			logger.error("Error occurred while loading messages.properties: {}", e.getMessage());
-		}
-
-		if (registrationDTO.getUsername() == null || registrationDTO.getEmail() == null || registrationDTO.getPassword() == null || registrationDTO.getConfirm_password() == null || registrationDTO.getUsername().isEmpty()
-				|| registrationDTO.getEmail().isEmpty() || registrationDTO.getPassword().isEmpty()||registrationDTO.getConfirm_password().isEmpty()) {
-
-			return messageProperties.getProperty("error.validation.all_fields_required");
-
-		}
-
-//		if (imagePart == null || imagePart.getSize() == 0) {
-//			return messageProperties.getProperty("error.image.no_image");
-//
-//		}
-		if (userdao.findByEmail(registrationDTO.getEmail())!=null) {		
-			return messageProperties.getProperty("error.email.exists");
-		}
-
-		if (registrationDTO.getPassword().length() < 6) {
-
-			return messageProperties.getProperty("error.password.length");
+		if (registrationDto.getPassword().length() < 6) {
+			errorMessages.put("password_length",MessageUtil.getErrorMessage("error.password.length")) ;
 
 		}
-		if (!registrationDTO.getPassword().equals(registrationDTO.getConfirm_password())) {
-			return messageProperties.getProperty("error.password.mismatch");
+		if (!registrationDto.getPassword().equals(registrationDto.getConfirm_password())) {
+			errorMessages.put("password_mismatch",MessageUtil.getErrorMessage("error.password.mismatch")) ;
 
 		}
-		return null;
+		if (registrationDto.getImage() == null || registrationDto.getImage().getSize() == 0) {
+		    errorMessages.put("no_image", MessageUtil.getErrorMessage("error.image.no_image"));
+		}
+		return errorMessages;
 	}
 }

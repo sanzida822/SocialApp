@@ -1,5 +1,7 @@
 package com.social.dto;
 
+import javax.servlet.http.Part;
+
 public class RegistrationRequestDTO {
 
 	int id;
@@ -7,7 +9,7 @@ public class RegistrationRequestDTO {
 	String email;
 	String password;
 	String confirm_password;
-	String image;
+	Part image;
 	public int getId() {
 		return id;
 	}
@@ -38,10 +40,13 @@ public class RegistrationRequestDTO {
 	public void setConfirm_password(String confirm_password) {
 		this.confirm_password = confirm_password;
 	}
-	public String getImage() {
+	
+	
+
+	public Part getImage() {
 		return image;
 	}
-	public void setImage(String image) {
+	public void setImage(Part image) {
 		this.image = image;
 	}
 	@Override
@@ -49,6 +54,6 @@ public class RegistrationRequestDTO {
 		return "RegistrationRequestDTO [id=" + id + ", username=" + username + ", email=" + email + ", password="
 				+ password + ", confirm_password=" + confirm_password + ", image=" + image + "]";
 	}
-	
+
 	
 }

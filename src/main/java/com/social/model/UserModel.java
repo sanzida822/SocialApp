@@ -1,5 +1,6 @@
 package com.social.model;
 
+import javax.servlet.http.Part;
 
 public class UserModel {
 
@@ -7,8 +8,8 @@ public class UserModel {
 	String username;
 	String email;
 	String password;
-
-	String image;
+    String salt;
+	Part image;
 	String created_at;
 	String updated_at;
 
@@ -45,11 +46,15 @@ public class UserModel {
 		this.password = password;
 	}
 
-	public String getImage() {
+
+
+
+
+	public Part getImage() {
 		return image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(Part image) {
 		this.image = image;
 	}
 
@@ -69,10 +74,21 @@ public class UserModel {
 		this.updated_at = updated_at;
 	}
 
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
 	@Override
 	public String toString() {
-		return "Registration [id=" + id + ", uname=" + username + ", email=" + email + ", password=" + password
-				+ ", image=" + image + ", created_at=" + created_at + ", updated_at=" + updated_at + "]";
+		return "UserModel [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
+				+ ", salt=" + salt + ", image=" + image + ", created_at=" + created_at + ", updated_at=" + updated_at
+				+ "]";
 	}
+
+
 
 }
