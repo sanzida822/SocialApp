@@ -1,6 +1,7 @@
 package com.social.model;
 
-import javax.servlet.http.Part;
+import java.util.Arrays;
+
 
 public class UserModel {
 
@@ -8,8 +9,8 @@ public class UserModel {
 	String username;
 	String email;
 	String password;
-    String salt;
-	Part image;
+	String salt;
+	byte[] image;
 	String created_at;
 	String updated_at;
 
@@ -37,7 +38,6 @@ public class UserModel {
 		this.email = email;
 	}
 
-
 	public String getPassword() {
 		return password;
 	}
@@ -46,15 +46,11 @@ public class UserModel {
 		this.password = password;
 	}
 
-
-
-
-
-	public Part getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(Part image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 
@@ -85,10 +81,8 @@ public class UserModel {
 	@Override
 	public String toString() {
 		return "UserModel [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
-				+ ", salt=" + salt + ", image=" + image + ", created_at=" + created_at + ", updated_at=" + updated_at
-				+ "]";
+				+ ", salt=" + salt + ", image=" + Arrays.toString(image) + ", created_at=" + created_at
+				+ ", updated_at=" + updated_at + "]";
 	}
-
-
 
 }

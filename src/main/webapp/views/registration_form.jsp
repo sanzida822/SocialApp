@@ -21,11 +21,11 @@
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-		<% String error= (String)request.getAttribute("error") ;
-		if(error!=null){	
+		<% String globalError= (String)request.getAttribute("globalError") ;
+		if(globalError!=null){	
 		
 		%>
-		<div class="alert alert-danger"><%= error %></div>
+		<div class="alert alert-danger"><%= globalError %></div>
 		<% }%>
 
                <form class="mx-1 mx-md-4" action="<%= request.getContextPath() %>/auth/register" method="post" enctype="multipart/form-data">

@@ -3,6 +3,7 @@ package com.social.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,20 +14,20 @@ import com.social.util.DAOUtil;
 import com.social.util.DBConnection;
 import com.social.util.PasswordUtil;
 
-public class UserDao {
-	private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
+public class User {
+	private static final Logger logger = LoggerFactory.getLogger(User.class);
 
-	private static UserDao instance;
+	private static User instance;
 
-	private UserDao() {
+	private User() {
 
 	}
 
-	public static UserDao getInstance() {
+	public static User getInstance() {
 		if (instance == null) {
-			synchronized (UserDao.class) {
+			synchronized (User.class) {
 				if (instance == null) {
-					instance = new UserDao();
+					instance = new User();
 				}
 			}
 
@@ -55,30 +56,29 @@ public class UserDao {
 		}
 	}
 
-	public LoginModel findByEmail(String email) {
-		LoginModel loginModel = null;
-		String sql = "Select 1 from users where user_email=?";
+	public UserModel findByEmail(String email) throws SQLException, Exception {
+		logger.info("Request comes for checking duplicate email for email:", email);
+		UserModel userModel = null;
+		String sql = "SELECT * FROM users WHERE user_email = ?";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);
 
 		) {
 
-			logger.info("checking duplicate email for email:{} ", email);
+
 			ps.setString(1, email);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				loginModel = new LoginModel();
-				loginModel.setId(rs.getInt("id"));
-				loginModel.setUsername(rs.getString("uname"));
-				loginModel.setEmail(rs.getString("email"));
-				logger.info("user is found for email:{} and user object is:{}", email, loginModel);
-
+				logger.info("user is found for email:{} and user object is:{}", email, userModel);
+			    return DAOUtil.mapResultSetToUser(rs);
+			
+			}else {
+				
+				logger.info("duplicate email for:{} user object:{} ", email, userModel);
 			}
-			logger.info("duplicate email for:{} user object:{} ", email, loginModel);
-		} catch (Exception e) {
-			logger.error("Error occurred while checking duplicate email for '{}': {}", email, e.getMessage(), e);
-		}
-		return loginModel;
+
+		} 
+		return userModel;
 	}
 
 	public LoginModel getUserByEmailAndPassword(String email, String password) {
@@ -135,7 +135,7 @@ public class UserDao {
 				user.setId(id);
 				user.setUsername(rowsAffect.getString("uname"));
 				user.setEmail(rowsAffect.getString("email"));
-				user.setImage(rowsAffect.getString("image"));
+				//user.setImage(rowsAffect.getString("image"));
 				user.setCreated_at(rowsAffect.getString("created_at"));
 				logger.info("User found for user id:{}", id);
 			}

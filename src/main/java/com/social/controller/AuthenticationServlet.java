@@ -1,14 +1,10 @@
 package com.social.controller;
 
-import java.io.File;
+
 import java.io.IOException;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.HashMap;
+
 import java.util.Map;
-import java.util.UUID;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -61,7 +57,12 @@ public class AuthenticationServlet extends HttpServlet {
 
 		switch (servletPath) {
 		case "/auth/register":
-			processRegistration(request, response);
+			try {
+				processRegistration(request, response);
+			} catch (Exception e) {
+				logger.error("Exception occurred while processing user registration at /auth/register", e);
+
+			}
 			break;
 
 		case "/auth/login":
@@ -73,49 +74,50 @@ public class AuthenticationServlet extends HttpServlet {
 		}
 	}
 
-	public void processRegistration(HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		
+	public void processRegistration(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
 		try {
 			String username = request.getParameter("username");
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 			String confirm_password = request.getParameter("confirm_password");
-			Part imagePart = request.getPart("image"); 
-			//String imagePath=AuthenticationService.saveImageToDisk(imagePart);
-			logger.info("Registration request for username:{},Email:{}, File name: {}, Content type: {}:, \"File size: {}",username,email,  imagePart.getSubmittedFileName(),
-					imagePart.getContentType(), imagePart.getSize());
-			
-			registrationDto=new RegistrationRequestDTO();
+			Part imagePart = request.getPart("image");
+			// String imagePath=AuthenticationService.saveImageToDisk(imagePart);
+			logger.info(
+					"Registration request for username:{},Email:{}, \"File size: {}",
+					username, email, imagePart.getSize());
+
+			registrationDto = new RegistrationRequestDTO();
 			registrationDto.setUsername(username);
 			registrationDto.setEmail(email);
 			registrationDto.setPassword(password);
 			registrationDto.setConfirm_password(confirm_password);
-			registrationDto.setImage(imagePart);
-			//registrationDto.setImage(imagePath);
-			
-			AuthenticationValidation authValidator=new AuthenticationValidation();
-			
-		    Map<String, String> errorMessages= authValidator.AuthenticationValidator(registrationDto);
-			if(CommonUtil.isMapEmpty(errorMessages)) {
-				boolean isRegister=authService.registerUser(registrationDto);
-				if(isRegister) {
-					logger.info("Registered successfully for user: username:{},Email:{}",username,email);
-					response.sendRedirect(request.getContextPath() + "/views/login_form.jsp");	
-					
-				}
+			byte[] imageBytes = CommonUtil.extractImageBytes(imagePart);
+			registrationDto.setImage(imageBytes);
 
-				
-			}
-			else {
+			AuthenticationValidation authValidator = new AuthenticationValidation();
+
+			Map<String, String> errorMessages = authValidator.AuthenticationValidator(registrationDto);
+			logger.info("error messages for validation for user:{} and error messages is:{}",
+					registrationDto.getEmail(), errorMessages);
+			if (CommonUtil.isMapEmpty(errorMessages)) {
+
+				boolean isRegister = authService.registerUser(registrationDto);
+				if (isRegister) {
+					logger.info("Registered successfully for user: username:{},Email:{}", username, email);
+					response.sendRedirect(request.getContextPath() + "/views/login_form.jsp");
+
+				}
+			} else {
 				request.setAttribute("errorMessages", errorMessages);
 				request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
-			}	
+			}
+		} catch (Exception e) {
+			request.setAttribute("globalError", "Something went wrong. Please try again.");
+			logger.error("An unexpected error occurred during registration for user:{}, error message:{}, error{} ",
+					registrationDto, e.getMessage(), e);
+			request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
 		}
-		catch(Exception e) {
-			logger.error("An unexpected error occurred during registration for user:{}, error message:{}, error{} ", registrationDto, e.getMessage(),e);
-		}
-
 
 	}
 

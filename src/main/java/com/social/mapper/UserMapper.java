@@ -32,8 +32,8 @@ public class UserMapper {
 		UserModel userModel= new UserModel();
 		userModel.setUsername(registrationDto.getUsername());
 		userModel.setEmail(registrationDto.getEmail());
-		userModel.setImage(registrationDto.getImage());
 		userModel.setPassword(registrationDto.getPassword());
+		userModel.setImage(registrationDto.getImage());
 		//userModel.setConfirmPassword(registrationDto.getConfirm_password());
 		return userModel;
 		
