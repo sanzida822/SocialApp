@@ -18,6 +18,7 @@ import javax.servlet.http.Part;
 import com.social.dto.LoginRequestDto;
 import com.social.dto.RegistrationRequestDTO;
 import com.social.model.LoginModel;
+import com.social.model.UserModel;
 import com.social.service.AuthenticationService;
 import com.social.util.CommonUtil;
 import com.social.validation.AuthenticationValidation;
@@ -61,12 +62,22 @@ public class AuthenticationServlet extends HttpServlet {
 				processRegistration(request, response);
 			} catch (Exception e) {
 				logger.error("Exception occurred while processing user registration at /auth/register", e);
-
+				request.setAttribute("globalError", "Something went wrong. Please try again.");
+				logger.error("An unexpected error occurred during registration for user:{}, error message:{}, error{} ",
+						registrationDto, e.getMessage(), e);
+				request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
 			}
 			break;
 
 		case "/auth/login":
-			processLogin(request, response);
+			try {
+				processLogin(request, response);
+			}
+			catch(Exception e) {
+				request.setAttribute("globalError", "Something went wrong. Please try again.");
+				request.getRequestDispatcher("/views/login_form.jsp").forward(request, response);
+			}
+
 			break;
 
 		default:
@@ -76,7 +87,7 @@ public class AuthenticationServlet extends HttpServlet {
 
 	public void processRegistration(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		try {
+//		try {
 			String username = request.getParameter("username");
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
@@ -88,18 +99,18 @@ public class AuthenticationServlet extends HttpServlet {
 					username, email, imagePart.getSize());
 
 			registrationDto = new RegistrationRequestDTO();
-			registrationDto.setUsername(username);
-			registrationDto.setEmail(email);
+			registrationDto.setUser_name(username);
+			registrationDto.setUser_email(email);
 			registrationDto.setPassword(password);
 			registrationDto.setConfirm_password(confirm_password);
 			byte[] imageBytes = CommonUtil.extractImageBytes(imagePart);
-			registrationDto.setImage(imageBytes);
+			registrationDto.setUser_image(imageBytes);
 
 			AuthenticationValidation authValidator = new AuthenticationValidation();
 
 			Map<String, String> errorMessages = authValidator.AuthenticationValidator(registrationDto);
 			logger.info("error messages for validation for user:{} and error messages is:{}",
-					registrationDto.getEmail(), errorMessages);
+					registrationDto.getUser_email(), errorMessages);
 			if (CommonUtil.isMapEmpty(errorMessages)) {
 
 				boolean isRegister = authService.registerUser(registrationDto);
@@ -112,33 +123,34 @@ public class AuthenticationServlet extends HttpServlet {
 				request.setAttribute("errorMessages", errorMessages);
 				request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
 			}
-		} catch (Exception e) {
-			request.setAttribute("globalError", "Something went wrong. Please try again.");
-			logger.error("An unexpected error occurred during registration for user:{}, error message:{}, error{} ",
-					registrationDto, e.getMessage(), e);
-			request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
-		}
+//		}
+//		catch (Exception e) {
+//			request.setAttribute("globalError", "Something went wrong. Please try again.");
+//			logger.error("An unexpected error occurred during registration for user:{}, error message:{}, error{} ",
+//					registrationDto, e.getMessage(), e);
+//			request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
+//		}
 
 	}
 
 	public void processLogin(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
+			throws Exception {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		logger.info("Received login request for email:{}", email);
 
 		LoginRequestDto loginDto = new LoginRequestDto();
-		loginDto.setEmail(email);
+		loginDto.setUser_email(email);
 		loginDto.setPassword(password);
-		LoginModel loginUser = authService.AuthenticUser(loginDto);
+		UserModel loginUser = authService.AuthenticUser(loginDto);
 		logger.info("login user data:{}", loginUser);
 
 		if (loginUser != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", loginUser.getId());
-			session.setAttribute("username", loginUser.getUsername());
-			session.setAttribute("email", loginUser.getEmail());
-			logger.info("User logged in: username={}, email={}", loginUser.getUsername(), loginUser.getEmail());
+			session.setAttribute("username", loginUser.getUser_name());
+			session.setAttribute("email", loginUser.getUser_email());
+			logger.info("User logged in: username={}, email={}", loginUser.getUser_name(), loginUser.getUser_email());
 			response.sendRedirect(request.getContextPath() + "/user/home");
 
 		} else {

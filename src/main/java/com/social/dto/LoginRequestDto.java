@@ -1,13 +1,13 @@
 package com.social.dto;
 
 public class LoginRequestDto {
-	String email;
-	String password;
-	public String getEmail() {
-		return email;
+	private String user_email;
+	private String password;
+	public String getUser_email() {
+		return user_email;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
 	}
 	public String getPassword() {
 		return password;
@@ -17,8 +17,9 @@ public class LoginRequestDto {
 	}
 	@Override
 	public String toString() {
-		return "LoginRequestDto [email=" + email + ", password=" + password + "]";
+		return "LoginRequestDto [user_email=" + user_email + ", password=" + password + "]";
 	}
+	
 	
 
 }

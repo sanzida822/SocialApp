@@ -81,8 +81,8 @@ public class User {
 		return userModel;
 	}
 
-	public LoginModel getUserByEmailAndPassword(String email, String password) {
-		LoginModel loginModel = null;
+	public UserModel findUserByEmailAndPassword(String email, String password) throws Exception {
+		UserModel userModel = null;
 		String sql = "SELECT id, user_name, user_email, password,salt FROM users WHERE user_email=?";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);
@@ -97,10 +97,8 @@ public class User {
 				String storedsalt = rowsAffect.getString("salt");
 				String hashedInputPassword = PasswordUtil.hashPassword(password, storedsalt);
 				if (Storedpassword.equals(hashedInputPassword)) {
-					loginModel = new LoginModel();
-					loginModel.setId(rowsAffect.getInt("id"));
-					loginModel.setUsername(rowsAffect.getString("user_name"));
-					loginModel.setEmail(rowsAffect.getString("user_email"));
+					 userModel = new UserModel();
+                    DAOUtil.setUserParams(ps, userModel);
 					logger.info("Login successful for user: {}", email);
 
 				} else {
@@ -112,12 +110,9 @@ public class User {
 				logger.warn("No user found with email: {}", email);
 
 			}
-		} catch (Exception e) {
-			logger.error("Error checking user for email: {}, message: {}", email, e.getMessage());
+		} 
 
-		}
-
-		return loginModel;
+		return userModel;
 
 	}
 
@@ -133,8 +128,8 @@ public class User {
 			if (rowsAffect.next()) {
 				user = new UserModel();
 				user.setId(id);
-				user.setUsername(rowsAffect.getString("uname"));
-				user.setEmail(rowsAffect.getString("email"));
+				user.setUser_name(rowsAffect.getString("user_name"));
+				user.setUser_email(rowsAffect.getString("user_email"));
 				//user.setImage(rowsAffect.getString("image"));
 				user.setCreated_at(rowsAffect.getString("created_at"));
 				logger.info("User found for user id:{}", id);

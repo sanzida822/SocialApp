@@ -11,7 +11,7 @@ public class UserMapper {
 			return null;
 		}		
 		UserModel userModel=new UserModel();
-		userModel.setEmail(loginDto.getEmail());
+		userModel.setUser_email(loginDto.getEmail());
 		userModel.setPassword(loginDto.getPassword());		
 		return userModel;
 	}
@@ -21,7 +21,7 @@ public class UserMapper {
 			return null;
 		}
 		LoginRequestDto loginDto=new LoginRequestDto();
-		loginDto.setEmail(userModel.getEmail());
+	//	loginDto.setEmail(userModel.setUser_email(null));
 		loginDto.setPassword(userModel.getPassword());
 		return loginDto;
 	}
@@ -30,24 +30,24 @@ public class UserMapper {
 	public static UserModel toEntity(RegistrationRequestDTO registrationDto) {
 		if(registrationDto==null) {return null;}
 		UserModel userModel= new UserModel();
-		userModel.setUsername(registrationDto.getUsername());
-		userModel.setEmail(registrationDto.getEmail());
+		userModel.setUser_name(registrationDto.getUser_name());
+		userModel.setUser_email(registrationDto.getUser_email());
 		userModel.setPassword(registrationDto.getPassword());
-		userModel.setImage(registrationDto.getImage());
+		userModel.setUser_image(registrationDto.getUser_image());
+
 		//userModel.setConfirmPassword(registrationDto.getConfirm_password());
 		return userModel;
-		
-		
 	}
+	
 	public static RegistrationRequestDTO toRegistrationRequestDTO(UserModel userModel) {
 		if(userModel==null) {
 			return null;
 		}
 		RegistrationRequestDTO registrationDto=new RegistrationRequestDTO();
-		registrationDto.setEmail(userModel.getEmail());
+		registrationDto.setUser_email(userModel.getUser_email());
 		registrationDto.setPassword(userModel.getPassword());
 	//	registrationDto.setConfirm_password(userModel.getConfirmpassword());
-		registrationDto.setImage(userModel.getImage());
+		registrationDto.setUser_image(userModel.getUser_image());
 		return registrationDto;
 	}
 }

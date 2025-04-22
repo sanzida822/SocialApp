@@ -6,57 +6,66 @@ import javax.servlet.http.Part;
 
 public class RegistrationRequestDTO {
 
-	int id;
-	String username;
-	String email;
-	String password;
-	String confirm_password;
-    byte[] image;
+	private int id;
+	private String user_name;
+	private String user_email;
+	private String password;
+	private String confirm_password;
+	private byte[] user_image;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUsername() {
-		return username;
+
+	public String getUser_name() {
+		return user_name;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
-	public String getEmail() {
-		return email;
+
+	public String getUser_email() {
+		return user_email;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getConfirm_password() {
 		return confirm_password;
 	}
+
 	public void setConfirm_password(String confirm_password) {
 		this.confirm_password = confirm_password;
 	}
-	
-	
 
-	public byte[] getImage() {
-		return image;
+	public byte[] getUser_image() {
+		return user_image;
 	}
-	public void setImage(byte[] image) {
-		this.image = image;
+
+	public void setUser_image(byte[] user_image) {
+		this.user_image = user_image;
 	}
+
 	@Override
 	public String toString() {
-		return "RegistrationRequestDTO [id=" + id + ", username=" + username + ", email=" + email + ", password="
-				+ password + ", confirm_password=" + confirm_password + ", image=" + Arrays.toString(image) + "]";
+		return "RegistrationRequestDTO [id=" + id + ", user_name=" + user_name + ", user_email=" + user_email
+				+ ", password=" + password + ", confirm_password=" + confirm_password + ", user_image="
+				+ Arrays.toString(user_image) + "]";
 	}
-	
 
-	
 }

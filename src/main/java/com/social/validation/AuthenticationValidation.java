@@ -26,16 +26,16 @@ public class AuthenticationValidation {
 
 		Map<String, String> errorMessages = new HashMap<>();
 
-		if (CommonUtil.isNullOrEmpty(registrationDto.getUsername())) {
+		if (CommonUtil.isNullOrEmpty(registrationDto.getUser_name())) {
 			errorMessages.put("username_required", MessageUtil.getErrorMessage("error.username.required"));
 		}
 
-		if (CommonUtil.isNullOrEmpty(registrationDto.getEmail())) {
+		if (CommonUtil.isNullOrEmpty(registrationDto.getUser_email())) {
 			errorMessages.put("email_required", MessageUtil.getErrorMessage("error.email.required"));
 
 		}else {
 			   AuthenticationService authService = new AuthenticationService();
-               if (authService.getUserByEmail(registrationDto.getEmail()) != null) {
+               if (authService.getUserByEmail(registrationDto.getUser_email()) != null) {
                    errorMessages.put("email_duplicate", MessageUtil.getErrorMessage("error.email.duplicate"));
                }
 			

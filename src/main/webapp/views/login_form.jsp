@@ -14,7 +14,7 @@
 	integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
 	crossorigin="anonymous"></script>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Form</title>
 </head>
 <body>
 	<section class="vh-100" style="background-color: #508bfc;">
@@ -25,7 +25,7 @@
 					<div class="card shadow-2-strong" style="border-radius: 1rem;">
 						<div class="card-body p-5 text-center">
 							<%
-							String error = (String) request.getAttribute("error");
+							String error = (String) request.getAttribute("globalError");
 							if (error != null) {
 							%>
 							<div class="alert alert-danger"><%=error%></div>

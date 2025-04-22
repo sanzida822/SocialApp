@@ -1,16 +1,9 @@
 package com.social.service;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Properties;
-import java.util.UUID;
+
 
 import javax.servlet.http.Part;
 
-import org.apache.catalina.startup.PasswdUserDatabase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,10 +50,9 @@ public class AuthenticationService {
 
 	}
 
-	public LoginModel AuthenticUser(LoginRequestDto loginDto) {
-		UserModel userModel = UserMapper.toEntity(loginDto);
-
-		return user.getUserByEmailAndPassword(userModel.getEmail(), userModel.getPassword());
+	public  AuthenticUser(LoginRequestDto loginDto) throws Exception {
+        UserModel userModel= user.findUserByEmailAndPassword(loginDto.getUser_email(), loginDto.getPassword());
+		return user.findUserByEmailAndPassword(loginDto.getUser_email(),loginDto.getPassword());
 
 	}
 
