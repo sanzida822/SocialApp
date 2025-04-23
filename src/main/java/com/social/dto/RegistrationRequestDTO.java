@@ -5,36 +5,36 @@ import java.util.Arrays;
 import javax.servlet.http.Part;
 
 public class RegistrationRequestDTO {
-
-	private int id;
-	private String user_name;
-	private String user_email;
+	private String username;
+	private String email;
 	private String password;
-	private String confirm_password;
-	private byte[] user_image;
+	private String confirmPassword;
+	private byte[] profileImage;
 
-	public int getId() {
-		return id;
+	public RegistrationRequestDTO(String username, String email, String password, String confirmPassword,
+			byte[] profileImage) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
+		this.profileImage = profileImage;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String getUsername() {
+		return username;
 	}
 
-	public String getUser_name() {
-		return user_name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public String getEmail() {
+		return email;
 	}
 
-	public String getUser_email() {
-		return user_email;
-	}
-
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -45,27 +45,26 @@ public class RegistrationRequestDTO {
 		this.password = password;
 	}
 
-	public String getConfirm_password() {
-		return confirm_password;
+	public String getConfirmPassword() {
+		return confirmPassword;
 	}
 
-	public void setConfirm_password(String confirm_password) {
-		this.confirm_password = confirm_password;
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
-	public byte[] getUser_image() {
-		return user_image;
+	public byte[] getProfileImage() {
+		return profileImage;
 	}
 
-	public void setUser_image(byte[] user_image) {
-		this.user_image = user_image;
+	public void setProfileImage(byte[] profileImage) {
+		this.profileImage = profileImage;
 	}
 
 	@Override
 	public String toString() {
-		return "RegistrationRequestDTO [id=" + id + ", user_name=" + user_name + ", user_email=" + user_email
-				+ ", password=" + password + ", confirm_password=" + confirm_password + ", user_image="
-				+ Arrays.toString(user_image) + "]";
+		return "RegistrationRequestDTO [username=" + username + ", email=" + email + ", password=" + password
+				+ ", confirmPassword=" + confirmPassword + ", profileImage=" + Arrays.toString(profileImage) + "]";
 	}
 
 }

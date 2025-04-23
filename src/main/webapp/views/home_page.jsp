@@ -1,11 +1,11 @@
-<%@page import="com.social.model.UserModel"%>
+<%@page import="com.social.model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="true"%>
 
 <%
-Integer id = (Integer) session.getAttribute("id");
+
 String email = (String) session.getAttribute("email");
-UserModel user = (UserModel) request.getAttribute("user");
+
 %>
 
 <%@ include file="header.jsp"%>

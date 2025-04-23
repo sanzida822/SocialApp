@@ -1,4 +1,4 @@
-<%@page import="com.social.model.UserModel"%>
+<%@page import="com.social.model.User"%>
 
 
 <%

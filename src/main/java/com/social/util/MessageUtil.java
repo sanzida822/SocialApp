@@ -6,14 +6,14 @@ import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.social.validation.AuthenticationValidation;
+import com.social.validation.AuthenticationValidator;
 
 public class MessageUtil {
 	private static final Logger logger = LoggerFactory.getLogger(MessageUtil.class);
 	private static final Properties messageProperties = new Properties();
 	static {
 
-		try (InputStream messagePropertiesStream = AuthenticationValidation.class.getClassLoader()
+		try (InputStream messagePropertiesStream = AuthenticationValidator.class.getClassLoader()
 				.getResourceAsStream("messages.properties");) {
 
 			if (messagePropertiesStream != null) {
@@ -34,9 +34,8 @@ public class MessageUtil {
 	private MessageUtil() {
 	}
 
-	public static String getErrorMessage(String key) {
+	public static String getMessage(String key) {
 		return messageProperties.getProperty(key);
-
 	}
 
 }

@@ -28,6 +28,15 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String servletPath=request.getServerName();
+		switch(servletPath){
+		case "/user/home":
+			
+			
+			
+		
+		}
+			
 		request.getRequestDispatcher("/views/home_page.jsp").forward(request, response);
 	
 	}
@@ -39,5 +48,8 @@ public class HomeServlet extends HttpServlet {
 
 		doGet(request, response);
 	}
+	
+	
+	public void  getUserById() {}
 
 }

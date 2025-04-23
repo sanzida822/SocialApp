@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +26,17 @@
 				<div class="col-12 col-md-8 col-lg-6 col-xl-5">
 					<div class="card shadow-2-strong" style="border-radius: 1rem;">
 						<div class="card-body p-5 text-center">
+							<c:if test="${not empty errorMessages}">
+								<div class="alert alert-danger">
+									<c:forEach var="error" items="${errorMessages}">
+										<p>${error.value}</p>
+									</c:forEach>
+								</div>
+							</c:if>
+
 							<%
 							String error = (String) request.getAttribute("globalError");
+
 							if (error != null) {
 							%>
 							<div class="alert alert-danger"><%=error%></div>

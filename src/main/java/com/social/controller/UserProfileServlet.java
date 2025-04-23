@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.LoggerFactory;
 
-import com.social.model.UserModel;
+import com.social.model.User;
 import com.social.service.AuthenticationService;
 import com.social.service.UserService;
 
@@ -25,7 +25,7 @@ public class UserProfileServlet extends HttpServlet {
 	private static final Logger logger = LoggerFactory.getLogger(AuthenticationServlet.class);
 	private static final long serialVersionUID = 1L;
 	UserService userservice = null;
-	UserModel user = null;
+	User user = null;
 
 	public UserProfileServlet() {
 		super();

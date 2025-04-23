@@ -1,20 +1,15 @@
 package com.social.service;
 
-import com.social.dao.User;
-import com.social.model.UserModel;
+import com.social.dao.UserDao;
+import com.social.model.User;
 
 public class UserService {
-private User userDao=null;
+private UserDao userDao=null;
 	public UserService(){
-		userDao=User.getInstance();
+		userDao=UserDao.getInstance();
 		
 	}
 
-	public UserModel FindUserById(int id) {
-		return userDao.findById(id);
 
-	}
-	
-	
 	
 }

@@ -1,25 +1,34 @@
 package com.social.dto;
 
 public class LoginRequestDto {
-	private String user_email;
+	private String email;
 	private String password;
-	public String getUser_email() {
-		return user_email;
+
+	public LoginRequestDto(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
 	}
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+
+	public String getEmail() {
+		return email;
 	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	@Override
 	public String toString() {
-		return "LoginRequestDto [user_email=" + user_email + ", password=" + password + "]";
+		return "LoginRequestDto [email=" + email + ", password=" + password + "]";
 	}
-	
-	
 
 }

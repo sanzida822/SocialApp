@@ -2,21 +2,21 @@ package com.social.mapper;
 
 import com.social.dto.LoginRequestDto;
 import com.social.dto.RegistrationRequestDTO;
-import com.social.model.LoginModel;
-import com.social.model.UserModel;
+import com.social.dto.UserDto;
+import com.social.model.User;
 
 public class UserMapper {
-	public static UserModel toEntity(LoginRequestDto loginDto) {
+	public static User toEntity(LoginRequestDto loginDto) {
 		if(loginDto==null) {
 			return null;
 		}		
-		UserModel userModel=new UserModel();
-		userModel.setUser_email(loginDto.getEmail());
-		userModel.setPassword(loginDto.getPassword());		
-		return userModel;
+		User user=new User();
+		user.setUser_email(loginDto.getUser_email());
+		user.setPassword(loginDto.getPassword());		
+		return user;
 	}
 	
-	public static LoginRequestDto toLoginRequstDTO(UserModel userModel) {
+	public static LoginRequestDto toLoginRequstDTO(User userModel) {
 		if(userModel==null) {
 			return null;
 		}
@@ -27,27 +27,41 @@ public class UserMapper {
 	}
 	
 	
-	public static UserModel toEntity(RegistrationRequestDTO registrationDto) {
+	public static User toEntity(RegistrationRequestDTO registrationDto) {
 		if(registrationDto==null) {return null;}
-		UserModel userModel= new UserModel();
-		userModel.setUser_name(registrationDto.getUser_name());
-		userModel.setUser_email(registrationDto.getUser_email());
-		userModel.setPassword(registrationDto.getPassword());
-		userModel.setUser_image(registrationDto.getUser_image());
+		User user= new User();
+		user.setUser_name(registrationDto.getUser_name());
+		user.setUser_email(registrationDto.getUser_email());
+		user.setPassword(registrationDto.getPassword());
+		user.setUser_image(registrationDto.getUser_image());
 
 		//userModel.setConfirmPassword(registrationDto.getConfirm_password());
-		return userModel;
+		return user;
 	}
 	
-	public static RegistrationRequestDTO toRegistrationRequestDTO(UserModel userModel) {
-		if(userModel==null) {
+	public static RegistrationRequestDTO toRegistrationRequestDTO(User user) {
+		if(user==null) {
 			return null;
 		}
 		RegistrationRequestDTO registrationDto=new RegistrationRequestDTO();
-		registrationDto.setUser_email(userModel.getUser_email());
-		registrationDto.setPassword(userModel.getPassword());
+		registrationDto.setUser_email(user.getUser_email());
+		registrationDto.setPassword(user.getPassword());
 	//	registrationDto.setConfirm_password(userModel.getConfirmpassword());
-		registrationDto.setUser_image(userModel.getUser_image());
+		registrationDto.setUser_image(user.getUser_image());
 		return registrationDto;
 	}
+	
+	
+//	public static UserModel toEntity(UserDto userDto) {
+//		if(userDto==null) {
+//			return null;
+//		}
+//		
+//		UserModel user=new UserModel();
+//		user.setUser_name(userDto.getUser_name());
+//		user.setUser_email(userDto.getUser_email());
+//		user.setUser_image(userDto.getUser_image());
+//		
+//		
+//	}
 }

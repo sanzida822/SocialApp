@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +28,13 @@
 
 									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign
 										up</p>
+									<c:if test="${not empty errorMessages}">
+										<div class="alert alert-danger">
+											<c:forEach var="error" items="${errorMessages}">
+												<p>${error.value}</p>
+											</c:forEach>
+										</div>
+									</c:if>
 									<%
 									String globalError = (String) request.getAttribute("globalError");
 
