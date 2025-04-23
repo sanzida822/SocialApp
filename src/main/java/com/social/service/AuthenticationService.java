@@ -45,7 +45,7 @@ public class AuthenticationService {
 		String inputHashPassword = PasswordUtil.hashPassword(inputPassword, storedSalt);
 		if (storedHashPassword.equals(inputHashPassword)) {
 			logger.info("Authentication successful for user: {}", user.getEmail());
-			UserDto authenticatedUser = new UserDto();
+			UserDto authenticatedUser = new UserDto(inputPassword, storedHashPassword, null, storedSalt, inputHashPassword);
 			authenticatedUser.setEmail(inputHashPassword);
 			authenticatedUser.setUsername(inputHashPassword);
 			return authenticatedUser;

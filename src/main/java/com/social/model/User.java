@@ -12,7 +12,7 @@ public class User {
 	private byte[] image;
 	private String createdAt;
 	private String updatedAt;
-	
+
 	public User(int id, String username, String email, String password, String salt, byte[] image, String createdAt,
 			String updatedAt) {
 		super();
@@ -25,60 +25,76 @@ public class User {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getSalt() {
 		return salt;
 	}
+
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
+
 	public byte[] getImage() {
 		return image;
 	}
+
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
+
 	public String getCreatedAt() {
 		return createdAt;
 	}
+
 	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
+
 	public String getUpdatedAt() {
 		return updatedAt;
 	}
+
 	public void setUpdatedAt(String updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", salt="
 				+ salt + ", image=" + Arrays.toString(image) + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
 				+ "]";
 	}
-
 
 }

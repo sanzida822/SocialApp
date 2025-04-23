@@ -7,18 +7,14 @@ public class PostModel {
 	public enum Privacy {
 		ONLY_ME, FRIENDS, PUBLIC
 	}
-	
-	
 
 	int id;
 	String content;
 	int posted_by;
-    List<PostImageModel> post_images;
-    Timestamp created_at;
+	List<PostImageModel> post_images;
+	Timestamp created_at;
 	Timestamp updated_at;
 	Privacy privacy;
-	
-	
 
 	public int getId() {
 		return id;
@@ -44,8 +40,6 @@ public class PostModel {
 		this.posted_by = posted_by;
 	}
 
-
-
 	public List<PostImageModel> getPost_images() {
 		return post_images;
 	}
@@ -53,8 +47,6 @@ public class PostModel {
 	public void setPost_images(List<PostImageModel> post_images) {
 		this.post_images = post_images;
 	}
-
-
 
 	public Timestamp getCreated_at() {
 		return created_at;

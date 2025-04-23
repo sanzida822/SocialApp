@@ -12,7 +12,6 @@ public class MessageUtil {
 	private static final Logger logger = LoggerFactory.getLogger(MessageUtil.class);
 	private static final Properties messageProperties = new Properties();
 	static {
-
 		try (InputStream messagePropertiesStream = AuthenticationValidator.class.getClassLoader()
 				.getResourceAsStream("messages.properties");) {
 
