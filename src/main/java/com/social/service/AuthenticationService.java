@@ -14,31 +14,31 @@ public class AuthenticationService {
 	private static final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
 	private static AuthenticationService authenticationService;
 	private UserDao userDao=UserDao.getInstance();	
+	private UserMapper userMapper=UserMapper.getInstance();
 	
 	private AuthenticationService() {}
-	public static AuthenticationService getInstance() {
+	public static AuthenticationService getInstance() {  
 		if(authenticationService==null) {
 			authenticationService=new AuthenticationService();
 		}
 		return authenticationService;
 	}	
-	public RegistrationRequestDTO getUserByEmail(String email) throws Exception {
+	
+	public User getUserByEmail(String email) throws Exception {
 		User user = userDao.findByEmail(email);
 		if (user != null) {
 			logger.warn("Duplicate user found for email: {}", email);
-			return UserMapper.toRegistrationRequestDTO(user);
+			return user;
 		}
 		logger.info("No user found for email: {}", email);
 		return null;
 	}
+	
 	public boolean register(RegistrationRequestDTO registrationDto) throws Exception {
-		String salt = PasswordUtil.generateSalt();
-		String hashedPassword = PasswordUtil.hashPassword(registrationDto.getPassword(), salt);
-		User user = UserMapper.toEntity(registrationDto);
-		user.setPassword(hashedPassword);
-		user.setSalt(salt);
+		User user = userMapper.toEntity(registrationDto);
 		return this.userDao.save(user);
 	}
+	
 	public UserDto authenticate(User user,String inputPassword) throws Exception {
 		String storedHashPassword = user.getPassword();
 		String storedSalt = user.getSalt();
@@ -54,6 +54,7 @@ public class AuthenticationService {
 			throw new CustomException.AuthenticationPasswordException("Incorrect Password for email:"+user.getEmail());
 		}
 	}
+	
 	public User getUserById(int id) throws Exception {	
 		return userDao.findById(id);
 	}

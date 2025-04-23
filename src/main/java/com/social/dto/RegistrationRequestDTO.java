@@ -11,6 +11,7 @@ public class RegistrationRequestDTO {
 	private String confirmPassword;
 	private byte[] profileImage;
 
+	public RegistrationRequestDTO() {}
 	public RegistrationRequestDTO(String username, String email, String password, String confirmPassword,
 			byte[] profileImage) {
 		super();
@@ -20,7 +21,15 @@ public class RegistrationRequestDTO {
 		this.confirmPassword = confirmPassword;
 		this.profileImage = profileImage;
 	}
+	
 
+	public RegistrationRequestDTO(String username, String email, String password, byte[] profileImage) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.profileImage = profileImage;
+	}
 	public String getUsername() {
 		return username;
 	}

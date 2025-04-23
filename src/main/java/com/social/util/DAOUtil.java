@@ -10,14 +10,6 @@ import ch.qos.logback.classic.Logger;
 
 public class DAOUtil {
 
-	public static void setUserParams(PreparedStatement ps, User user) throws SQLException {
-		ps.setString(1, user.getUser_name());
-		ps.setString(2, user.getUser_email());
-		ps.setString(3, user.getPassword());
-		ps.setBytes(4, user.getUser_image());	
-		ps.setString(5, user.getSalt());
-
-	}
 
 	public static User mapResultSetToUser(ResultSet rs) throws SQLException {
 		User user = new User();

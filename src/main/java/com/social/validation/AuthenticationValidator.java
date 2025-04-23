@@ -3,11 +3,12 @@ package com.social.validation;
 import java.util.HashMap;
 import java.util.Map;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.social.dto.LoginRequestDto;
 import com.social.dto.RegistrationRequestDTO;
+import com.social.model.User;
 import com.social.service.AuthenticationService;
 import com.social.util.CommonUtil;
 import com.social.util.MessageUtil;
@@ -36,6 +37,8 @@ public class AuthenticationValidator {
 		Map<String, String> errorMessages = new HashMap<>();
 		if (commonUtil.isNullOrEmpty(registrationDto.getUsername())) {
 			errorMessages.put("username", MessageUtil.getMessage("error.username.required"));
+		}else if(registrationDto.getUsername().length()<5 || registrationDto.getUsername().length()>30) {
+			errorMessages.put("username", MessageUtil.getMessage("error.username.length"));
 		}
 		if (commonUtil.isNullOrEmpty(registrationDto.getEmail())) {
 			errorMessages.put("email", MessageUtil.getMessage("error.email.required"));
@@ -57,13 +60,17 @@ public class AuthenticationValidator {
 		return errorMessages;
 	}
 
-	public Map<String, String> validateLogin(LoginRequestDto loginDto) {
+	public Map<String, String> validateLogin(LoginRequestDto loginDto) throws Exception {
 		Map<String, String> errorMessages = new HashMap<>();
 		if (commonUtil.isNullOrEmpty(loginDto.getEmail())) {
 			errorMessages.put("email", MessageUtil.getMessage("error.email.required"));
 		}
 		if (commonUtil.isNullOrEmpty(loginDto.getPassword())) {
 			errorMessages.put("password", MessageUtil.getMessage("error.password.required"));
+		}
+		if(errorMessages.isEmpty()) {
+			User user=authenticationService.getUserByEmail(loginDto.getEmail());
+			errorMessages.put("email", MessageUtil.getMessage("error.email.notfound"));
 		}
 		return errorMessages;
 	}

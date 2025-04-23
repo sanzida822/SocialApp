@@ -30,10 +30,10 @@ import com.social.validation.AuthenticationValidator;
 public class AuthenticationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(AuthenticationServlet.class);
-	private static final AuthenticationValidator authenticationValidator = AuthenticationValidator.getInstance();
-	private static final AuthenticationService authenticationService = AuthenticationService.getInstance();
-	private static final CommonUtil commonUtil = CommonUtil.getInstance();
-	private static final UserDao userDao = UserDao.getInstance();
+	private AuthenticationValidator authenticationValidator = AuthenticationValidator.getInstance();
+	private  AuthenticationService authenticationService = AuthenticationService.getInstance();
+	private CommonUtil commonUtil = CommonUtil.getInstance();
+	private UserDao userDao = UserDao.getInstance();
 	public RegistrationRequestDTO registrationDto;
 
 	public AuthenticationServlet() {
@@ -82,15 +82,11 @@ public class AuthenticationServlet extends HttpServlet {
 	}
 
 	public void processRegistration(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String username = request.getParameter("username");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String confirm_password = request.getParameter("confirm_password");
 		Part imagePart = request.getPart("image");
-		logger.info("Registration request for username:{}, Email:{}, File size: {}", username, email,
+		logger.info("Registration request for username:{}, Email:{}, File size: {}", request.getParameter("username"), request.getParameter("email"),
 				imagePart.getSize());
 		byte[] imageBytes = commonUtil.extractImageBytes(imagePart);
-		registrationDto = new RegistrationRequestDTO(username, email, confirm_password, password, imageBytes);
+		registrationDto = new RegistrationRequestDTO(request.getParameter("username"), request.getParameter("email"), request.getParameter("password"), request.getParameter("confirm_password"), imageBytes);
 		Map<String, String> errorMessages = authenticationValidator.validateRegistration(registrationDto);
 		logger.info("error messages for validation of user:{} and error messages is:{}", registrationDto.getEmail(),
 				errorMessages);
@@ -98,7 +94,7 @@ public class AuthenticationServlet extends HttpServlet {
 		if (commonUtil.isEmpty(errorMessages)) {
 			boolean isRegistered = authenticationService.register(registrationDto);
 			if (isRegistered) {
-				logger.info("Registered successfully for user: username:{},Email:{}", username, email);
+				logger.info("Registered successfully for user: username:{},Email:{}", registrationDto.getUsername(), registrationDto.getEmail());
 				response.sendRedirect(request.getContextPath() + "/views/login_form.jsp");
 			}
 		} else {
@@ -108,12 +104,8 @@ public class AuthenticationServlet extends HttpServlet {
 	}
 
 	public void processLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		logger.info("Received login request for email:{}", email);
-		LoginRequestDto loginDto = new LoginRequestDto(email, password);
-		loginDto.setEmail(email);
-		loginDto.setPassword(password);
+		logger.info("Received login request for email:{}", request.getParameter("email"));
+		LoginRequestDto loginDto = new LoginRequestDto(request.getParameter("email"), request.getParameter("password"));
 		Map<String, String> errorMessages = authenticationValidator.validateLogin(loginDto);
 
 		if (commonUtil.isEmpty(errorMessages)) {
@@ -124,7 +116,7 @@ public class AuthenticationServlet extends HttpServlet {
 					UserDto authenticUser = authenticationService.authenticate(user, loginDto.getPassword());
 					logger.info("login user data:{}", authenticUser);
 					HttpSession session = request.getSession();
-					session.setAttribute("email", email);
+					//session.setAttribute("email", email);
 					response.sendRedirect(request.getContextPath() + "/user/home");
 				} catch (AuthenticationPasswordException e) {
 					request.setAttribute("globalError", e.getMessage());

@@ -3,7 +3,6 @@ package com.social.model;
 import java.util.Arrays;
 
 public class User {
-
 	private int id;
 	private String username;
 	private String email;
@@ -13,9 +12,22 @@ public class User {
 	private String createdAt;
 	private String updatedAt;
 
-	public User(int id, String username, String email, String password, String salt, byte[] image, String createdAt,
-			String updatedAt) {
+	public User(String email, String password) {  //for login dto conversion
+		this.email = email;
+		this.password = password;
+	}
+
+	public User(String username, String email, String password, byte[] image,String salt) {   //for registration dto conversion
 		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.image = image;
+		this.salt=salt;
+	}
+
+	public User(int id, String username, String email, String password, String salt, byte[] image, String createdAt,
+			String updatedAt) {    //for resultset
 		this.id = id;
 		this.username = username;
 		this.email = email;
