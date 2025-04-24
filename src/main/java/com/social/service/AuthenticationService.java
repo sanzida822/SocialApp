@@ -40,10 +40,12 @@ public class AuthenticationService {
 	
 	public boolean authenticate(String email,String inputPassword) throws Exception {
 		User user=userDao.findByEmail(email);
+		logger.info("user is now:{}",user);
+		logger.info("user is:{}",user);
 			String storedHashPassword = user.getPassword();
 			String storedSalt = user.getSalt();
 			String inputHashPassword = PasswordUtil.hashPassword(inputPassword, storedSalt);
-			if (storedHashPassword.equals(inputHashPassword)) {
+			if (storedHashPassword.equals(inputHashPassword)){
 				logger.info("Authentication successful for user: {}", user.getEmail());
 				return true;
 			}else {
