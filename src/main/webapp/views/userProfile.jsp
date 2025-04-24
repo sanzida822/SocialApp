@@ -1,3 +1,4 @@
+<%@page import="com.social.dto.UserDto"%>
 <%@page import="ch.qos.logback.core.joran.action.IncludeAction"%>
 <%@page import="com.social.model.User"%>
 <%@ include file ="header.jsp"%>
@@ -5,8 +6,7 @@
 <%@ include file="navbar.jsp" %>
 
 <%
-User user= (User)request.getAttribute("user");
-out.println(user);
+
 %>
 <section class="vh-100" style="background-color: #f4f5f7;">
   <div class="container py-5 h-100">

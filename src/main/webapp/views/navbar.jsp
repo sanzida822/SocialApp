@@ -1,3 +1,4 @@
+<%@page import="com.social.dto.UserDto"%>
 <%@page import="com.social.model.User"%>
 
 
@@ -7,14 +8,14 @@ response.setHeader("Cache-Control", "no-cache, no-store,must-revaldate");
 
 //UserModel user= (UserModel)request.getAttribute("user");
 //UserModel user= (UserModel)request.getAttribute("user");
-String uname = (String) session.getAttribute("username"); 
+UserDto user = (UserDto)request.getAttribute("user"); 
 
 %>
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/UserProfileServlet">Hello,<%=uname %></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/UserProfileServlet">Hello,<%=user.getUsername() %></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
                 data-bs-target="#navbarNav" aria-controls="navbarNav" 
                 aria-expanded="false" aria-label="Toggle navigation">

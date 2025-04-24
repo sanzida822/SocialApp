@@ -22,14 +22,6 @@ public class RegistrationRequestDTO {
 		this.profileImage = profileImage;
 	}
 	
-
-	public RegistrationRequestDTO(String username, String email, String password, byte[] profileImage) {
-		super();
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.profileImage = profileImage;
-	}
 	public String getUsername() {
 		return username;
 	}

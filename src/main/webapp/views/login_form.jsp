@@ -33,7 +33,6 @@
 									</c:forEach>
 								</div>
 							</c:if>
-
 							<%
 							String error = (String) request.getAttribute("globalError");
 

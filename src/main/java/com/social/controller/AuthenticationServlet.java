@@ -1,8 +1,7 @@
 package com.social.controller;
-
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -11,18 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.social.dao.UserDao;
 import com.social.dto.LoginRequestDto;
 import com.social.dto.RegistrationRequestDTO;
-import com.social.dto.UserDto;
-import com.social.exception.CustomException.AuthenticationPasswordException;
-import com.social.model.User;
 import com.social.service.AuthenticationService;
 import com.social.util.CommonUtil;
+import com.social.util.MessageUtil;
 import com.social.validation.AuthenticationValidator;
 
 @WebServlet(urlPatterns = { "/auth/register", "/auth/login", "/auth/logout" })
@@ -30,25 +24,33 @@ import com.social.validation.AuthenticationValidator;
 public class AuthenticationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(AuthenticationServlet.class);
-	private AuthenticationValidator authenticationValidator = AuthenticationValidator.getInstance();
-	private  AuthenticationService authenticationService = AuthenticationService.getInstance();
-	private CommonUtil commonUtil = CommonUtil.getInstance();
-	private UserDao userDao = UserDao.getInstance();
+	private static AuthenticationValidator authenticationValidator = AuthenticationValidator.getInstance();
+	private static AuthenticationService authenticationService = AuthenticationService.getInstance();
+	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	public RegistrationRequestDTO registrationDto;
+	private static final String REGISTRATION_PAGE="/auth/register";
+	private static final String LOGIN_PAGE="/auth/login";
+	private static final String LOGOUT_PAGE="/auth/logout";
 
 	public AuthenticationServlet() {
 		super();
+	}
+	
+	private static  Map<String, String> error_views = new HashMap<>();
 
+	static {
+		error_views.put(REGISTRATION_PAGE, "/views/registration_form.jsp");
+		error_views.put(REGISTRATION_PAGE, "/views/login_form.jsp");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String servletPath = request.getServletPath();
-		if (servletPath.equals("/auth/register")) {
+		if (servletPath.equals(REGISTRATION_PAGE)) {
 			request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
-		} else if (servletPath.equals("/auth/login")) {
+		} else if (servletPath.equals(LOGIN_PAGE)) {
 			request.getRequestDispatcher("/views/login_form.jsp").forward(request, response);
-		} else if (servletPath.equals("/auth/logout")) {
+		} else if (servletPath.equals(LOGOUT_PAGE)) {
 			ProcessLogout(request, response);
 		}
 	}
@@ -56,37 +58,33 @@ public class AuthenticationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String servletPath = request.getServletPath();
-		switch (servletPath) {
-		case "/auth/register":
-			try {
+		try {
+			switch (servletPath) {
+			case REGISTRATION_PAGE:
 				processRegistration(request, response);
-			} catch (Exception e) {
-				logger.error("Exception occurred while processing user registration at /auth/register", e);
-				request.setAttribute("globalError", "Something went wrong. Please try again.");
-				logger.error("An unexpected error occurred during registration for user:{}, error message:{}, error{} ",
-						registrationDto, e.getMessage(), e);
-				request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
-			}
-			break;
-		case "/auth/login":
-			try {
+				break;
+			case LOGIN_PAGE:
 				processLogin(request, response);
-			} catch (Exception e) {
-				request.setAttribute("globalError", "Something went wrong. Please try again.");
-				request.getRequestDispatcher("/views/login_form.jsp").forward(request, response);
+				break;				
+			default:
+				break;
 			}
-			break;
-		default:
-			break;
+		}
+		catch(Exception e) {
+			logger.error("Exception occurred while processing request at {}", servletPath, e);
+			String view=error_views.getOrDefault(servletPath,"/views/error_page.jsp");
+	        request.setAttribute("globalError", MessageUtil.getMessage("error.global.unexpected"));
+	        request.getRequestDispatcher(view).forward(request, response);
 		}
 	}
 
 	public void processRegistration(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Part imagePart = request.getPart("image");
-		logger.info("Registration request for username:{}, Email:{}, File size: {}", request.getParameter("username"), request.getParameter("email"),
-				imagePart.getSize());
+		logger.info("Registration request for username:{}, Email:{}, File size: {}", request.getParameter("username"),
+				request.getParameter("email"), imagePart.getSize());
 		byte[] imageBytes = commonUtil.extractImageBytes(imagePart);
-		registrationDto = new RegistrationRequestDTO(request.getParameter("username"), request.getParameter("email"), request.getParameter("password"), request.getParameter("confirm_password"), imageBytes);
+		registrationDto = new RegistrationRequestDTO(request.getParameter("username"), request.getParameter("email"),
+				request.getParameter("password"), request.getParameter("confirm_password"), imageBytes);
 		Map<String, String> errorMessages = authenticationValidator.validateRegistration(registrationDto);
 		logger.info("error messages for validation of user:{} and error messages is:{}", registrationDto.getEmail(),
 				errorMessages);
@@ -94,9 +92,14 @@ public class AuthenticationServlet extends HttpServlet {
 		if (commonUtil.isEmpty(errorMessages)) {
 			boolean isRegistered = authenticationService.register(registrationDto);
 			if (isRegistered) {
-				logger.info("Registered successfully for user: username:{},Email:{}", registrationDto.getUsername(), registrationDto.getEmail());
+				logger.info("Registered successfully for user: username:{},Email:{}", registrationDto.getUsername(),
+						registrationDto.getEmail());
 				response.sendRedirect(request.getContextPath() + "/views/login_form.jsp");
-			}
+			}else {
+			    logger.warn("Registration failed for user: username:{}, Email:{}", registrationDto.getUsername(), registrationDto.getEmail());
+			    request.setAttribute("globalError", MessageUtil.getMessage("error.registration.fail"));
+			    request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
+			}				
 		} else {
 			request.setAttribute("errorMessages", errorMessages);
 			request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
@@ -107,27 +110,18 @@ public class AuthenticationServlet extends HttpServlet {
 		logger.info("Received login request for email:{}", request.getParameter("email"));
 		LoginRequestDto loginDto = new LoginRequestDto(request.getParameter("email"), request.getParameter("password"));
 		Map<String, String> errorMessages = authenticationValidator.validateLogin(loginDto);
-
 		if (commonUtil.isEmpty(errorMessages)) {
-			User user = userDao.findByEmail(loginDto.getEmail());
-			if (user != null) {
-				try {
-					logger.info("User:{} is registered in this system", user.getPassword());
-					UserDto authenticUser = authenticationService.authenticate(user, loginDto.getPassword());
-					logger.info("login user data:{}", authenticUser);
-					HttpSession session = request.getSession();
-					//session.setAttribute("email", email);
+				logger.info("User:{} is registered in this system", loginDto.getEmail());
+				boolean isAuthenticated = authenticationService.authenticate(loginDto.getEmail(), loginDto.getPassword());				
+				if(isAuthenticated) {
+					HttpSession session = request.getSession();	
+					session.setAttribute("email", loginDto.getEmail());
 					response.sendRedirect(request.getContextPath() + "/user/home");
-				} catch (AuthenticationPasswordException e) {
-					request.setAttribute("globalError", e.getMessage());
-					request.getRequestDispatcher("/views/login_form.jsp").forward(request, response);
+				}else {
+				    logger.warn("Login failed for user: Email:{}",loginDto.getEmail());
+				    request.setAttribute("globalError", MessageUtil.getMessage("error.login.fail"));
+				    request.getRequestDispatcher("/views/login_form.jsp").forward(request, response);
 				}
-
-			} else {
-				request.setAttribute("globalError", "User is not registered.");
-				request.getRequestDispatcher("/views/login_form.jsp").forward(request, response);
-
-			}
 		} else {
 			request.setAttribute("errorMessages", errorMessages);
 			logger.warn("error messages for login input validation:{}", errorMessages);

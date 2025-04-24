@@ -8,32 +8,31 @@ public class User {
 	private String email;
 	private String password;
 	private String salt;
-	private byte[] image;
+	private byte[] ProfileImage;
 	private String createdAt;
 	private String updatedAt;
 
-	public User(String email, String password) {  //for login dto conversion
-		this.email = email;
-		this.password = password;
-	}
+//	public User(String email, String password) {  //for login dto conversion
+//		this.email = email;
+//		this.password = password;
+//	}
+//
+//	public User(String username, String email, String password, byte[] ProfileImage,String salt) {   //for registration dto conversion
+//		super();
+//		this.username = username;
+//		this.email = email;
+//		this.password = password;
+//		this.ProfileImage = ProfileImage;
+//		this.salt=salt;
+//	}
 
-	public User(String username, String email, String password, byte[] image,String salt) {   //for registration dto conversion
-		super();
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.image = image;
-		this.salt=salt;
-	}
-
-	public User(int id, String username, String email, String password, String salt, byte[] image, String createdAt,
+	public User( String username, String email, String password, String salt, byte[] ProfileImage, String createdAt,
 			String updatedAt) {    //for resultset
-		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.salt = salt;
-		this.image = image;
+		this.ProfileImage = ProfileImage;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
@@ -78,12 +77,13 @@ public class User {
 		this.salt = salt;
 	}
 
-	public byte[] getImage() {
-		return image;
+
+	public byte[] getProfileImage() {
+		return ProfileImage;
 	}
 
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setProfileImage(byte[] profileImage) {
+		ProfileImage = profileImage;
 	}
 
 	public String getCreatedAt() {
@@ -104,9 +104,10 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", salt="
-				+ salt + ", image=" + Arrays.toString(image) + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
-				+ "]";
+		return "User [username=" + username + ", email=" + email + ", password=" + password + ", salt=" + salt
+				+ ", ProfileImage=" + Arrays.toString(ProfileImage) + ", createdAt=" + createdAt + ", updatedAt="
+				+ updatedAt + "]";
 	}
+
 
 }
