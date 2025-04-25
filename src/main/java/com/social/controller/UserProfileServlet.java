@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.LoggerFactory;
 
+import com.social.dto.UserDto;
 import com.social.model.User;
 import com.social.service.AuthenticationService;
 import com.social.service.UserService;
@@ -19,12 +20,12 @@ import org.slf4j.LoggerFactory;
 /**
  * Servlet implementation class UserProfileServlet
  */
-@WebServlet("/UserProfileServlet")
+@WebServlet("/user/profile")
 public class UserProfileServlet extends HttpServlet {
 
 	private static final Logger logger = LoggerFactory.getLogger(AuthenticationServlet.class);
 	private static final long serialVersionUID = 1L;
-	UserService userservice = null;
+	private static AuthenticationService authenticationService=AuthenticationService.getInstance();
 	User user = null;
 
 	public UserProfileServlet() {
@@ -34,25 +35,21 @@ public class UserProfileServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Integer UserId = (Integer) request.getSession().getAttribute("id");
-		logger.info("userprofile servlet called");
-		if (UserId != null) {
-			logger.info("User id:{} ", UserId);
-			userservice = new UserService();
-			user = userservice.FindUserById(UserId);
-			if (user != null) {
-				logger.info("user is:{}", user);
-				request.setAttribute("user", user);
-				request.getRequestDispatcher("/views/userProfile.jsp").forward(request, response);
-			} else {
-				logger.error("user not found");
-				response.sendRedirect(request.getContextPath() + "/views/error.jsp");
-			}
+		
+		String email = (String) request.getSession().getAttribute("email");
 
-		} else {
-			response.sendRedirect(request.getContextPath() + "/views/login.jsp");
-
+		try {
+		UserDto	user = authenticationService.getUserByEmail(email);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+			logger.info("User email:{} ", email);
+
+				request.setAttribute("user", user);
+				request.getRequestDispatcher("/views/UserProfile.jsp").forward(request, response);
+
 
 	}
 
@@ -62,4 +59,8 @@ public class UserProfileServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	public void addPost(HttpServletRequest request, HttpServletResponse response) {
+		
+		
+	}
 }

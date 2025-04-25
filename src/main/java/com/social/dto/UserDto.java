@@ -3,19 +3,29 @@ package com.social.dto;
 import java.util.Arrays;
 
 public class UserDto {
+	private int id;
 	private String username;
 	private String email;
 	private byte[] profileImage;
 	private String userCreated;
 	private String userUpdated;
 
-	public UserDto(String username, String email, byte[] profileImage, String userCreated, String userUpdated) {
+	public UserDto(int id,String username, String email, byte[] profileImage, String userCreated, String userUpdated) {
 		super();
+		this.id=id;
 		this.username = username;
 		this.email = email;
 		this.profileImage = profileImage;
 		this.userCreated = userCreated;
 		this.userUpdated = userUpdated;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public UserDto(String username, String email) {

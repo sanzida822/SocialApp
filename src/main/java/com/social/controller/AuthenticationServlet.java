@@ -28,9 +28,9 @@ public class AuthenticationServlet extends HttpServlet {
 	private static AuthenticationService authenticationService = AuthenticationService.getInstance();
 	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	public RegistrationRequestDTO registrationDto;
-	private static final String REGISTRATION_PAGE="/auth/register";
-	private static final String LOGIN_PAGE="/auth/login";
-	private static final String LOGOUT_PAGE="/auth/logout";
+	private static final String REGISTRATION="/auth/register";
+	private static final String LOGIN="/auth/login";
+	private static final String LOGOUT="/auth/logout";
 
 	public AuthenticationServlet() {
 		super();
@@ -39,18 +39,18 @@ public class AuthenticationServlet extends HttpServlet {
 	private static  Map<String, String> error_views = new HashMap<>();
 
 	static {
-		error_views.put(REGISTRATION_PAGE, "/views/registration_form.jsp");
-		error_views.put(REGISTRATION_PAGE, "/views/login_form.jsp");
+		error_views.put(REGISTRATION, "/views/RegistraionForm.jsp");
+		error_views.put(REGISTRATION, "/views/LoginForm.jsp");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String servletPath = request.getServletPath();
-		if (servletPath.equals(REGISTRATION_PAGE)) {
-			request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
-		} else if (servletPath.equals(LOGIN_PAGE)) {
-			request.getRequestDispatcher("/views/login_form.jsp").forward(request, response);
-		} else if (servletPath.equals(LOGOUT_PAGE)) {
+		if (servletPath.equals(REGISTRATION)) {
+			request.getRequestDispatcher("/views/RegistrationForm.jsp").forward(request, response);
+		} else if (servletPath.equals(LOGIN)) {
+			request.getRequestDispatcher("/views/LoginForm.jsp").forward(request, response);
+		} else if (servletPath.equals(LOGOUT)) {
 			ProcessLogout(request, response);
 		}
 	}
@@ -60,10 +60,10 @@ public class AuthenticationServlet extends HttpServlet {
 		String servletPath = request.getServletPath();
 		try {
 			switch (servletPath) {
-			case REGISTRATION_PAGE:
+			case REGISTRATION:
 				processRegistration(request, response);
 				break;
-			case LOGIN_PAGE:
+			case LOGIN:
 				processLogin(request, response);
 				break;				
 			default:
@@ -71,8 +71,8 @@ public class AuthenticationServlet extends HttpServlet {
 			}
 		}
 		catch(Exception e) {
-			logger.error("Exception occurred while processing request at {}", servletPath, e);
-			String view=error_views.getOrDefault(servletPath,"/views/error_page.jsp");
+			logger.error("Exception occurred while processing request at {}, e:{}", servletPath, e);
+			String view=error_views.getOrDefault(servletPath,"/views/ErrorPage.jsp");
 	        request.setAttribute("globalError", MessageUtil.getMessage("error.global.unexpected"));
 	        request.getRequestDispatcher(view).forward(request, response);
 		}
@@ -94,15 +94,15 @@ public class AuthenticationServlet extends HttpServlet {
 			if (isRegistered) {
 				logger.info("Registered successfully for user: username:{},Email:{}", registrationDto.getUsername(),
 						registrationDto.getEmail());
-				response.sendRedirect(request.getContextPath() + "/views/login_form.jsp");
+				response.sendRedirect(request.getContextPath() + "/views/LoginForm.jsp");
 			}else {
 			    logger.warn("Registration failed for user: username:{}, Email:{}", registrationDto.getUsername(), registrationDto.getEmail());
 			    request.setAttribute("globalError", MessageUtil.getMessage("error.registration.fail"));
-			    request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
+			    request.getRequestDispatcher("/views/RegistrationForm.jsp").forward(request, response);
 			}				
 		} else {
 			request.setAttribute("errorMessages", errorMessages);
-			request.getRequestDispatcher("/views/registration_form.jsp").forward(request, response);
+			request.getRequestDispatcher("/views/RegistrationForm.jsp").forward(request, response);
 		}
 	}
 
@@ -120,12 +120,12 @@ public class AuthenticationServlet extends HttpServlet {
 				}else {
 				    logger.warn("Login failed for user: Email:{}",loginDto.getEmail());
 				    request.setAttribute("globalError", MessageUtil.getMessage("error.login.fail"));
-				    request.getRequestDispatcher("/views/login_form.jsp").forward(request, response);
+				    request.getRequestDispatcher("/views/LoginForm.jsp").forward(request, response);
 				}
 		} else {
 			request.setAttribute("errorMessages", errorMessages);
 			logger.warn("error messages for login input validation:{}", errorMessages);
-			request.getRequestDispatcher("/views/login_form.jsp").forward(request, response);
+			request.getRequestDispatcher("/views/LoginForm.jsp").forward(request, response);
 		}
 	}
 

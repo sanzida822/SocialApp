@@ -7,41 +7,25 @@ import java.sql.PreparedStatement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.social.model.PostModel;
+import com.social.model.Post;
 import com.social.util.DBConnection;
 
 public class PostDao {
 	private static final Logger logger=LoggerFactory.getLogger(PostDao.class);
-	private PostModel postModel;
-	public PostDao(PostModel postModel) {
-		
-		this.postModel=new PostModel();
-		
+	private PostDao postDao;
+	private PostDao() {};
+	
+	public PostDao getInstance() {
+		if(postDao==null) {
+			postDao=new PostDao();
+		}
+		return postDao;		
 	}
 	
-	public void savePost(PostModel post) {
+	
+	public void savePost(Post post) {
 		
-		String sql= "insert into posts (posted_by, post_content, privacy) values(?,?,?)";
-		
-		
-		
-		try {
-			
-			DBConnection DbConnection= DBConnection.getInstance();
-			Connection connection=DbConnection.getConnection();
-			PreparedStatement ps= connection.prepareStatement(null);
-			ps.setInt(1, post.getPosted_by());
-			ps.setString(2, post.getContent());
-			ps.setString(3, post.getPrivacy().name());
-			ps.executeUpdate();
-			
-			
-			
-		}catch(Exception e) {
-			logger.error("error while saving posts");
-			
-			
-		}
+	
 		
 		
 		

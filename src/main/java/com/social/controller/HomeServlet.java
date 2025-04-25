@@ -41,16 +41,16 @@ public class HomeServlet extends HttpServlet {
 				UserDto user=authenticationService.getUserByEmail(email);
 				logger.info("user data is:{}", user);
 				request.setAttribute("user", user);
-				request.getRequestDispatcher("/views/home_page.jsp").forward(request, response);				
+				request.getRequestDispatcher("/views/HomePage.jsp").forward(request, response);				
 				break;
 			default:
 				break;
 			}
 
 		}catch(Exception e) {
-			 e.printStackTrace(); // Log to console
+			 e.printStackTrace();
 			    request.setAttribute("globalError", MessageUtil.getMessage("error.global.unexpected"));
-			    request.getRequestDispatcher("/views/error_page.jsp").forward(request, response);
+			    request.getRequestDispatcher("/views/ErrorPage.jsp").forward(request, response);
 		}
 	}
 

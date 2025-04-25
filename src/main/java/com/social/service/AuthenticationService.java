@@ -54,7 +54,7 @@ public class AuthenticationService {
 			} 		
 	}
 	
-	public User getUserById(int id) throws Exception {	
-		return userDao.findById(id);
-	}
+//	public User getUserById(int id) throws Exception {	
+//		return userDao.findById(id);
+//	}
 }

@@ -44,7 +44,7 @@ public class UserMapper {
 	}
 	
 	public UserDto toDTO(User user) {
-		return new UserDto(user.getUsername(),user.getEmail(),user.getProfileImage(),user.getCreatedAt(),user.getUpdatedAt());
+		return new UserDto(user.getId(),user.getUsername(),user.getEmail(),user.getProfileImage(),user.getCreatedAt(),user.getUpdatedAt());
 	}
 	
 }

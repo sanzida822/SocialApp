@@ -13,21 +13,21 @@ public class UserDao {
 	private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
 	private UserMapper userMapper=UserMapper.getInstance();
 
-	private static UserDao instance;
+	private static UserDao userDao;
 
 	private UserDao() {
 
 	}
 
 	public static UserDao getInstance() {
-		if (instance == null) {
+		if (userDao == null) {
 			synchronized (UserDao.class) {
-				if (instance == null) {
-					instance = new UserDao();
+				if (userDao == null) {
+					userDao = new UserDao();
 				}
 			}
 		}
-		return instance;
+		return userDao;
 	}
 
 	public boolean save(User user) throws Exception {

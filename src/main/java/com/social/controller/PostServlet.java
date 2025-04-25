@@ -1,11 +1,10 @@
 package com.social.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collection;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -13,19 +12,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.social.dto.PostDto;
+import com.social.dto.UserDto;
+import com.social.enums.Privacy;
+import com.social.model.PostImages;
+import com.social.service.AuthenticationService;
 
 
-
-/**
- * Servlet implementation class PostServlet
- */
-@WebServlet("/PostServlet")
+@WebServlet(urlPatterns= {"/add/post"})
 @MultipartConfig
 public class PostServlet extends HttpServlet {
 	private static final Logger logger = LoggerFactory.getLogger(PostServlet.class);
 	private static final long serialVersionUID = 1L;
+	AuthenticationService authenticationService= AuthenticationService.getInstance();
+	private static final String ADD_POST="/add/post";
+	private PostDto postDto;
 	//PostService postservice=null;
        
     /**
@@ -49,28 +53,44 @@ public class PostServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.info("enter post servlet post request..");
-		
-		Collection<Part> parts=request.getParts();
-		for(Part part: parts) {
-			if(part.getName().equals("images") && part.getSize()>0) {
-				String imageName=part.getSubmittedFileName();
-				logger.info(imageName);
-				String uploadPath="images/"+imageName;
-				logger.info(uploadPath);
-				
-			}
-		}
-		HttpSession session = request.getSession(false);
-		int posted_by = (Integer) session.getAttribute("id"); 
-		String privacy=request.getParameter("privacy");
-		String post_content= request.getParameter("post_content");
-		logger.info("privacy is:{},post content:{}, posted by id:{}" ,privacy, post_content, posted_by);
+       String servletPath=request.getServletPath();
+       try {
+           switch (servletPath) {
+       	case ADD_POST:
+       		addPost(request, response);		
+       		break;
 
-		
-		
-		
-		doGet(request, response);
+       	default:
+       		break;
+       	}
+
+ 
+       }catch(Exception e) {
+    	   logger.error("Exception occure when adding post:{}, e:",e.getMessage(),e);
+       }
+
+	}	
+	
+	public void addPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String email = (String)request.getSession(false).getAttribute("email");
+		logger.info("Request comes for insert a post");
+		List<byte[]> postImages = new ArrayList<>();
+		Collection<Part> parts=request.getParts();
+	    for (Part part : parts) {
+	        if (part.getName().equals("images") && part.getSize() > 0) {
+	            try (InputStream imageStream = part.getInputStream()) {
+	                byte[] imageBytes = imageStream.readAllBytes();
+	                postImages.add(imageBytes);
+	            }
+	        }
+	    }
+        String privacy=request.getParameter("privacy");
+        Privacy privacyEnum=Privacy.valueOf(privacy);
+		UserDto postedBy=authenticationService.getUserByEmail(email);
+	    postDto= new PostDto(postedBy.getId(), request.getParameter("post_content"), postImages,privacyEnum);
+	    logger.info("post dto object:{}", postDto);
+
+
 	}
 
 }

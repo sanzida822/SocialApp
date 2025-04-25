@@ -1,13 +1,8 @@
-<%@page import="com.social.dto.UserDto"%>
-<%@page import="ch.qos.logback.core.joran.action.IncludeAction"%>
+
 <%@page import="com.social.model.User"%>
-<%@ include file ="header.jsp"%>
+<%@ include file ="Header.jsp"%>
+<%@ include file="Navbar.jsp" %>
 
-<%@ include file="navbar.jsp" %>
-
-<%
-
-%>
 <section class="vh-100" style="background-color: #f4f5f7;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -16,9 +11,10 @@
           <div class="row g-0">
             <div class="col-md-4 gradient-custom text-center text-white"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-              <img src="<%=user.getUser_image()%>>"
+              <img src=""
                 alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-              <h5><%=user.getUser_name()%></h5>
+              <h5><%= user.getUsername() %></h5>
+
               <p>Web Designer</p>
               <i class="far fa-edit mb-5"></i>
             </div>
@@ -29,7 +25,7 @@
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
                     <h6>Email</h6>
-                    <p class="text-muted"><%=user.getUser_email()%></p>
+                    <p class="text-muted"><%=user.getEmail()%></p>
                   </div>
                   <div class="col-6 mb-3">
                     <h6>Phone</h6>
@@ -41,7 +37,7 @@
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
                     <h6>Account Created At</h6>
-                    <p class="text-muted"><%=user.getCreated_at()%></p>
+                    <p class="text-muted"><%=user.getUserCreated()%></p>
                   </div>
                   <div class="col-6 mb-3">
                     <h6>Most Viewed</h6>
@@ -62,4 +58,4 @@
   </div>
 </section>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="Footer.jsp" %>
