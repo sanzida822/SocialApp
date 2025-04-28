@@ -4,9 +4,6 @@
 <%@ include file="Header.jsp"%>
 <%@ include file="Navbar.jsp"%>
 
-<%
-String email = (String) session.getAttribute("email");
-%>
 
 
 <div class="container mt-5">
@@ -41,7 +38,7 @@ String email = (String) session.getAttribute("email");
 
 	<!-- Posts Section -->
 	<div class="row justify-content-center mt-5">
-		<div class="col-md-6">
+		<div class="col-md-8">
 			<!-- Post Card -->
 			<div class="card mb-4 shadow-sm">
 				<div

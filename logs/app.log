@@ -1,109 +1,74 @@
-2025-04-28 14:33:55 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
-2025-04-28 14:33:55 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 14:33:55 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 14:33:56 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 14:33:56 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 14:33:56 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 14:33:56 INFO  [c.s.controller.AuthenticationServlet] - User:sanzidasultana824@gmail.com is registered in this system
-2025-04-28 14:33:56 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 14:33:56 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 14:33:56 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: sanzidasultana824@gmail.com
-2025-04-28 14:33:56 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 14:33:56 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 14:33:56 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 14:33:56 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 14:33:56 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 14:34:07 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 14:34:07 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 14:34:07 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 14:34:07 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 14:34:07 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 14:34:07 INFO  [com.social.controller.PostServlet] - post dto object:PostDto [postedBy=33, content=ddsds, privacy=PUBLIC, images=[[B@604122ab, [B@457ea508], createdAt=null, updatedAt=null]
-2025-04-28 14:34:07 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 15:31:58 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
-2025-04-28 15:31:58 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 15:31:58 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 15:31:58 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 15:31:58 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 15:31:58 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 15:31:58 INFO  [c.s.controller.AuthenticationServlet] - User:sanzidasultana824@gmail.com is registered in this system
-2025-04-28 15:31:58 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 15:31:58 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 15:31:58 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: sanzidasultana824@gmail.com
-2025-04-28 15:31:58 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 15:31:58 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 15:31:58 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 15:31:58 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 15:31:58 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 15:32:07 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 15:32:07 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 15:32:07 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 15:32:07 INFO  [c.s.controller.AuthenticationServlet] - User email:sanzidasultana824@gmail.com 
-2025-04-28 15:32:13 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 15:32:13 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 15:32:13 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 15:32:13 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 15:32:13 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:04:22 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
-2025-04-28 16:04:22 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 16:04:22 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 16:04:23 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 16:04:23 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:04:23 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:04:23 INFO  [c.s.controller.AuthenticationServlet] - User:sanzidasultana824@gmail.com is registered in this system
-2025-04-28 16:04:23 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:04:23 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:04:23 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: sanzidasultana824@gmail.com
-2025-04-28 16:04:23 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 16:04:23 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:04:23 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:04:23 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:04:23 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:04:31 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 16:04:31 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:04:32 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:04:32 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:04:32 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:04:32 INFO  [com.social.controller.PostServlet] - post dto object:PostDto [postedBy=33, content=dss, privacy=PUBLIC, images=[[B@23a0e08e], createdAt=null, updatedAt=null]
-2025-04-28 16:04:32 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 16:12:33 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
-2025-04-28 16:12:33 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 16:12:33 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 16:12:34 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 16:12:34 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:12:34 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:12:34 INFO  [c.s.controller.AuthenticationServlet] - User:sanzidasultana824@gmail.com is registered in this system
-2025-04-28 16:12:34 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:12:34 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:12:34 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: sanzidasultana824@gmail.com
-2025-04-28 16:12:34 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 16:12:34 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:12:34 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:12:34 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:12:34 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:12:43 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 16:12:43 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:12:43 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:12:43 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:12:43 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:12:43 INFO  [com.social.service.PostService] - Post Dto:PostDto [postedBy=33, content=ds, privacy=FRIENDS, images=[[B@58ea48b2], createdAt=null, updatedAt=null]
-2025-04-28 16:12:43 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:12:43 INFO  [com.social.dao.UserDao] - user is found for id:33
-2025-04-28 16:12:43 WARN  [com.social.service.UserService] - User found for email: 33
-2025-04-28 16:12:43 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:12:43 ERROR [com.social.controller.PostServlet] - Exception occure when adding post:Cannot add or update a child row: a foreign key constraint fails (`social_media_app`.`posts`, CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE), e:
-java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`social_media_app`.`posts`, CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
-	at com.social.dao.PostDao.save(PostDao.java:38)
-	at com.social.service.PostService.save(PostService.java:28)
-	at com.social.controller.PostServlet.addPost(PostServlet.java:102)
-	at com.social.controller.PostServlet.doPost(PostServlet.java:72)
+2025-04-29 02:26:15 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:aa@gmail.com
+2025-04-29 02:26:15 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_site DB username: root DB password:root
+2025-04-29 02:26:15 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-29 02:26:16 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-29 02:26:16 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:26:16 WARN  [com.social.service.UserService] - User found for email: aa@gmail.com
+2025-04-29 02:26:16 INFO  [c.s.controller.AuthenticationServlet] - User:aa@gmail.com is registered in this system
+2025-04-29 02:26:16 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-29 02:26:16 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:26:16 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: aa@gmail.com
+2025-04-29 02:26:16 INFO  [c.s.controller.AuthenticationServlet] - user is authenticated:UserDto [id=35, username=abcde, email=aa@gmail.com, profileImage=null, userCreated=2025-04-28 22:08:34, userUpdated=2025-04-28 22:08:34]
+2025-04-29 02:32:36 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:aa@gmail.com
+2025-04-29 02:32:36 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_site DB username: root DB password:root
+2025-04-29 02:32:36 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-29 02:32:37 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-29 02:32:37 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:32:37 WARN  [com.social.service.UserService] - User found for email: aa@gmail.com
+2025-04-29 02:32:37 INFO  [c.s.controller.AuthenticationServlet] - User:aa@gmail.com is registered in this system
+2025-04-29 02:32:37 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-29 02:32:37 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:32:37 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: aa@gmail.com
+2025-04-29 02:32:37 INFO  [c.s.controller.AuthenticationServlet] - user is authenticated:UserDto [id=35, username=abcde, email=aa@gmail.com, profileImage=null, userCreated=2025-04-28 22:08:34, userUpdated=2025-04-28 22:08:34]
+2025-04-29 02:36:01 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:aa@gmail.com
+2025-04-29 02:36:01 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_site DB username: root DB password:root
+2025-04-29 02:36:01 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-29 02:36:02 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-29 02:36:02 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:36:02 WARN  [com.social.service.UserService] - User found for email: aa@gmail.com
+2025-04-29 02:36:02 INFO  [c.s.controller.AuthenticationServlet] - User:aa@gmail.com is registered in this system
+2025-04-29 02:36:02 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-29 02:36:02 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:36:02 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: aa@gmail.com
+2025-04-29 02:36:02 INFO  [c.s.controller.AuthenticationServlet] - user is authenticated:UserDto [id=35, username=abcde, email=aa@gmail.com, profileImage=null, userCreated=2025-04-28 22:08:34, userUpdated=2025-04-28 22:08:34]
+2025-04-29 02:40:31 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:aa@gmail.com
+2025-04-29 02:40:31 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_site DB username: root DB password:root
+2025-04-29 02:40:31 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-29 02:40:32 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-29 02:40:32 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:40:32 WARN  [com.social.service.UserService] - User found for email: aa@gmail.com
+2025-04-29 02:40:32 INFO  [c.s.controller.AuthenticationServlet] - User:aa@gmail.com is registered in this system
+2025-04-29 02:40:32 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-29 02:40:32 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:40:32 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: aa@gmail.com
+2025-04-29 02:40:32 INFO  [c.s.controller.AuthenticationServlet] - user is authenticated:UserDto [id=35, username=abcde, email=aa@gmail.com, profileImage=null, userCreated=2025-04-28 22:08:34, userUpdated=2025-04-28 22:08:34]
+2025-04-29 02:41:18 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:aa@gmail.com
+2025-04-29 02:41:18 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_site DB username: root DB password:root
+2025-04-29 02:41:18 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-29 02:41:18 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-29 02:41:18 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:41:18 WARN  [com.social.service.UserService] - User found for email: aa@gmail.com
+2025-04-29 02:41:18 INFO  [c.s.controller.AuthenticationServlet] - User:aa@gmail.com is registered in this system
+2025-04-29 02:41:18 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-29 02:41:18 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:41:18 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: aa@gmail.com
+2025-04-29 02:41:18 INFO  [c.s.controller.AuthenticationServlet] - user is authenticated:UserDto [id=35, username=abcde, email=aa@gmail.com, profileImage=null, userCreated=2025-04-28 22:08:34, userUpdated=2025-04-28 22:08:34]
+2025-04-29 02:44:03 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
+2025-04-29 02:44:03 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_site DB username: root DB password:root
+2025-04-29 02:44:03 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-29 02:44:04 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-29 02:44:04 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
+2025-04-29 02:44:04 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
+2025-04-29 02:44:04 INFO  [c.s.controller.AuthenticationServlet] - User:sanzidasultana824@gmail.com is registered in this system
+2025-04-29 02:44:04 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-29 02:44:04 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
+2025-04-29 02:44:04 ERROR [c.s.controller.AuthenticationServlet] - Exception occurred while processing request at /auth/login, e:{}
+java.lang.NullPointerException: Cannot invoke "String.getBytes(java.nio.charset.Charset)" because "src" is null
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:589)
+	at com.social.util.PasswordUtil.hashPassword(PasswordUtil.java:24)
+	at com.social.service.AuthenticationService.authenticate(AuthenticationService.java:35)
+	at com.social.controller.AuthenticationServlet.processLogin(AuthenticationServlet.java:116)
+	at com.social.controller.AuthenticationServlet.doPost(AuthenticationServlet.java:68)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
@@ -130,159 +95,21 @@ java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child 
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-2025-04-28 16:16:19 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 16:16:19 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 16:16:19 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 16:16:19 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 16:16:19 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:16:19 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:16:19 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:16:26 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 16:16:26 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 16:16:26 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 16:16:26 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 16:16:26 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:16:26 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:16:26 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:16:26 INFO  [com.social.service.PostService] - Post Dto:PostDto [postedBy=33, content=fddf, privacy=PUBLIC, images=[[B@1dffcf03], createdAt=null, updatedAt=null]
-2025-04-28 16:16:26 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:16:26 INFO  [com.social.dao.UserDao] - user is found for id:33
-2025-04-28 16:16:26 WARN  [com.social.service.UserService] - User found for id: 33
-2025-04-28 16:16:26 INFO  [com.social.service.PostService] - post:Post [id=0, postedBy=User [id=33, username=nitu, email=sanzidasultana824@gmail.com, password=8yltcuPX719yJbisl6k+wA==, salt=lLD9ML2cx5WeosXdtiF2fQ==, ProfileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], createdAt=2025-04-21 13:35:21, updatedAt=2025-04-21 13:35:21], content=fddf, privacy=PUBLIC, created_at=null, updated_at=null]
-2025-04-28 16:16:26 INFO  [com.social.controller.PostServlet] - post dto object:PostDto [postedBy=33, content=fddf, privacy=PUBLIC, images=[[B@1dffcf03], createdAt=null, updatedAt=null]
-2025-04-28 16:16:26 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 16:20:15 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 16:20:15 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:20:15 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:20:15 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:20:15 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:20:16 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 16:20:16 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:20:16 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:20:16 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:20:16 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:20:27 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 16:20:27 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 16:20:27 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 16:20:27 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 16:20:27 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:20:27 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:20:27 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:20:27 INFO  [com.social.service.PostService] - Post Dto:PostDto [postedBy=33, content=ddffd, privacy=PUBLIC, images=[[B@3b95690d], createdAt=null, updatedAt=null]
-2025-04-28 16:20:27 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:20:27 INFO  [com.social.dao.UserDao] - user is found for id:33
-2025-04-28 16:20:27 WARN  [com.social.service.UserService] - User found for id: 33
-2025-04-28 16:20:27 INFO  [com.social.mapper.PostMapper] - user is from postmapper:User [id=33, username=nitu, email=sanzidasultana824@gmail.com, password=8yltcuPX719yJbisl6k+wA==, salt=lLD9ML2cx5WeosXdtiF2fQ==, ProfileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], createdAt=2025-04-21 13:35:21, updatedAt=2025-04-21 13:35:21]
-2025-04-28 16:20:27 INFO  [com.social.service.PostService] - post:Post [id=0, postedBy=User [id=33, username=nitu, email=sanzidasultana824@gmail.com, password=8yltcuPX719yJbisl6k+wA==, salt=lLD9ML2cx5WeosXdtiF2fQ==, ProfileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], createdAt=2025-04-21 13:35:21, updatedAt=2025-04-21 13:35:21], content=ddffd, privacy=PUBLIC, created_at=null, updated_at=null]
-2025-04-28 16:20:27 INFO  [com.social.controller.PostServlet] - post dto object:PostDto [postedBy=33, content=ddffd, privacy=PUBLIC, images=[[B@3b95690d], createdAt=null, updatedAt=null]
-2025-04-28 16:20:27 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 16:27:31 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
-2025-04-28 16:27:31 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 16:27:31 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 16:27:32 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 16:27:32 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:27:32 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:27:32 INFO  [c.s.controller.AuthenticationServlet] - User:sanzidasultana824@gmail.com is registered in this system
-2025-04-28 16:27:32 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:27:32 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:27:32 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: sanzidasultana824@gmail.com
-2025-04-28 16:27:32 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 16:27:32 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:27:32 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:27:32 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:27:32 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:29:00 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
-2025-04-28 16:29:00 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:29:00 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:29:00 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:29:00 INFO  [c.s.controller.AuthenticationServlet] - User:sanzidasultana824@gmail.com is registered in this system
-2025-04-28 16:29:00 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:29:00 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:29:00 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: sanzidasultana824@gmail.com
-2025-04-28 16:29:00 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 16:29:00 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:29:00 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:29:00 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:29:00 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:29:09 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 16:29:09 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:29:09 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:29:09 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:29:09 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:29:09 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 16:29:09 INFO  [com.social.service.PostService] - Post Dto:PostDto [postedBy=33, content=sdsds, privacy=ONLY_ME, images=[[B@746024a7], createdAt=null, updatedAt=null]
-2025-04-28 16:29:09 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:29:09 INFO  [com.social.dao.UserDao] - user is found for id:33
-2025-04-28 16:29:09 WARN  [com.social.service.UserService] - User found for id: 33
-2025-04-28 16:29:09 INFO  [com.social.service.PostService] - post:Post [id=0, postedBy=User [id=33, username=nitu, email=sanzidasultana824@gmail.com, password=8yltcuPX719yJbisl6k+wA==, salt=lLD9ML2cx5WeosXdtiF2fQ==, ProfileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], createdAt=2025-04-21 13:35:21, updatedAt=2025-04-21 13:35:21], content=sdsds, privacy=ONLY_ME, created_at=null, updated_at=null]
-2025-04-28 16:29:09 INFO  [com.social.controller.PostServlet] - post is saved successfully for user:33
-2025-04-28 16:29:09 INFO  [com.social.controller.PostServlet] - post dto object:PostDto [postedBy=33, content=sdsds, privacy=ONLY_ME, images=[[B@746024a7], createdAt=null, updatedAt=null]
-2025-04-28 16:31:08 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
-2025-04-28 16:31:08 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 16:31:08 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 16:31:08 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 16:31:08 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:31:08 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:31:08 INFO  [c.s.controller.AuthenticationServlet] - User:sanzidasultana824@gmail.com is registered in this system
-2025-04-28 16:31:08 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:31:08 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:31:09 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: sanzidasultana824@gmail.com
-2025-04-28 16:31:09 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 16:31:09 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:31:09 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:31:09 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:31:09 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:31:20 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 16:31:20 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:31:20 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 16:31:20 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 16:31:20 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 16:31:20 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 16:31:20 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:31:20 INFO  [com.social.dao.UserDao] - user is found for id:33
-2025-04-28 16:31:20 WARN  [com.social.service.UserService] - User found for id: 33
-2025-04-28 16:31:20 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 16:31:20 INFO  [com.social.dao.PostDao] - post saved successfully for user: 0
-2025-04-28 16:31:20 INFO  [com.social.controller.PostServlet] - post is saved successfully for user:33
-2025-04-28 16:31:20 INFO  [com.social.controller.PostServlet] - post dto object:PostDto [postedBy=33, content=sdsdsds, privacy=PUBLIC, images=[[B@7cf729, [B@648d9f1c], createdAt=null, updatedAt=null]
-2025-04-28 17:59:09 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
-2025-04-28 17:59:09 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 17:59:09 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 17:59:09 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 17:59:09 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 17:59:09 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 17:59:09 INFO  [c.s.controller.AuthenticationServlet] - User:sanzidasultana824@gmail.com is registered in this system
-2025-04-28 17:59:09 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 17:59:09 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 17:59:10 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: sanzidasultana824@gmail.com
-2025-04-28 17:59:10 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 17:59:10 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 17:59:10 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 17:59:10 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 17:59:10 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 17:59:17 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 17:59:17 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 17:59:17 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 17:59:17 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 17:59:17 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 17:59:17 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 17:59:17 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 17:59:17 INFO  [com.social.dao.UserDao] - user is found for id:33
-2025-04-28 17:59:17 WARN  [com.social.service.UserService] - User found for id: 33
-2025-04-28 17:59:17 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 17:59:17 ERROR [com.social.controller.PostServlet] - Exception occure when adding post:Generated keys not requested. You need to specify Statement.RETURN_GENERATED_KEYS to Statement.executeUpdate(), Statement.executeLargeUpdate() or Connection.prepareStatement()., e:
-java.sql.SQLException: Generated keys not requested. You need to specify Statement.RETURN_GENERATED_KEYS to Statement.executeUpdate(), Statement.executeLargeUpdate() or Connection.prepareStatement().
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:98)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:90)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:64)
-	at com.mysql.cj.jdbc.StatementImpl.getGeneratedKeys(StatementImpl.java:1375)
-	at com.social.dao.PostDao.saveAndGetID(PostDao.java:41)
-	at com.social.service.PostService.save(PostService.java:34)
-	at com.social.controller.PostServlet.addPost(PostServlet.java:103)
-	at com.social.controller.PostServlet.doPost(PostServlet.java:72)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2025-04-29 02:44:14 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:aa@gmail.com
+2025-04-29 02:44:14 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-29 02:44:14 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:44:14 WARN  [com.social.service.UserService] - User found for email: aa@gmail.com
+2025-04-29 02:44:14 INFO  [c.s.controller.AuthenticationServlet] - User:aa@gmail.com is registered in this system
+2025-04-29 02:44:14 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-29 02:44:14 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:44:14 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: aa@gmail.com
+2025-04-29 02:44:14 INFO  [c.s.controller.AuthenticationServlet] - user is authenticated:UserDto [id=35, username=abcde, email=aa@gmail.com, profileImage=null, userCreated=2025-04-28 22:08:34, userUpdated=2025-04-28 22:08:34]
+2025-04-29 02:44:18 ERROR [c.s.controller.ExplorePeopleServlet] - Error occurred while exploring people
+java.lang.NullPointerException: Cannot invoke "com.social.dao.FriendsDao.getNonFriends(int)" because "com.social.service.ExplorePeopleService.friendsDao" is null
+	at com.social.service.ExplorePeopleService.getUsersNotInFriends(ExplorePeopleService.java:31)
+	at com.social.controller.ExplorePeopleServlet.doGet(ExplorePeopleServlet.java:43)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
@@ -308,45 +135,23 @@ java.sql.SQLException: Generated keys not requested. You need to specify Stateme
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-2025-04-28 18:03:42 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 18:03:42 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 18:03:42 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 18:03:42 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 18:03:42 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:03:42 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:03:42 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:03:43 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 18:03:43 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:03:43 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:03:43 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:03:43 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:03:50 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 18:03:50 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:03:50 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:03:50 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:03:50 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:03:50 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 18:03:50 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:03:50 INFO  [com.social.dao.UserDao] - user is found for id:33
-2025-04-28 18:03:50 WARN  [com.social.service.UserService] - User found for id: 33
-2025-04-28 18:03:50 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:03:50 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:03:50 ERROR [com.social.controller.PostServlet] - Exception occure when adding post:Field 'content_hash' doesn't have a default value, e:
-java.sql.SQLException: Field 'content_hash' doesn't have a default value
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
-	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
-	at com.social.dao.ImageDao.saveAndReturnId(ImageDao.java:29)
-	at com.social.service.ImageService.saveAndgetId(ImageService.java:27)
-	at com.social.service.PostService.save(PostService.java:42)
-	at com.social.controller.PostServlet.addPost(PostServlet.java:103)
-	at com.social.controller.PostServlet.doPost(PostServlet.java:72)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2025-04-29 02:51:02 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:aa@gmail.com
+2025-04-29 02:51:02 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_site DB username: root DB password:root
+2025-04-29 02:51:02 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-29 02:51:02 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-29 02:51:02 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:51:02 WARN  [com.social.service.UserService] - User found for email: aa@gmail.com
+2025-04-29 02:51:02 INFO  [c.s.controller.AuthenticationServlet] - User:aa@gmail.com is registered in this system
+2025-04-29 02:51:02 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-29 02:51:02 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:51:03 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: aa@gmail.com
+2025-04-29 02:51:03 INFO  [c.s.controller.AuthenticationServlet] - user is authenticated:UserDto [id=35, username=abcde, email=aa@gmail.com, profileImage=null, userCreated=2025-04-28 22:08:34, userUpdated=2025-04-28 22:08:34]
+2025-04-29 02:51:06 ERROR [c.s.controller.ExplorePeopleServlet] - Error occurred while exploring people
+java.lang.NullPointerException: Cannot invoke "com.social.dao.FriendsDao.getNonFriends(int)" because "com.social.service.ExplorePeopleService.friendsDao" is null
+	at com.social.service.ExplorePeopleService.getUsersNotInFriends(ExplorePeopleService.java:33)
+	at com.social.controller.ExplorePeopleServlet.doGet(ExplorePeopleServlet.java:43)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
@@ -372,41 +177,23 @@ java.sql.SQLException: Field 'content_hash' doesn't have a default value
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-2025-04-28 18:05:39 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 18:05:39 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:05:39 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:05:39 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:05:39 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:05:40 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 18:05:40 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:05:40 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:05:40 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:05:40 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:05:47 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 18:05:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:05:47 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:05:47 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:05:47 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:05:47 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 18:05:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:05:47 INFO  [com.social.dao.UserDao] - user is found for id:33
-2025-04-28 18:05:47 WARN  [com.social.service.UserService] - User found for id: 33
-2025-04-28 18:05:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:05:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:05:47 ERROR [com.social.controller.PostServlet] - Exception occure when adding post:Generated keys not requested. You need to specify Statement.RETURN_GENERATED_KEYS to Statement.executeUpdate(), Statement.executeLargeUpdate() or Connection.prepareStatement()., e:
-java.sql.SQLException: Generated keys not requested. You need to specify Statement.RETURN_GENERATED_KEYS to Statement.executeUpdate(), Statement.executeLargeUpdate() or Connection.prepareStatement().
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:98)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:90)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:64)
-	at com.mysql.cj.jdbc.StatementImpl.getGeneratedKeys(StatementImpl.java:1375)
-	at com.social.dao.ImageDao.saveAndReturnId(ImageDao.java:31)
-	at com.social.service.ImageService.saveAndgetId(ImageService.java:27)
-	at com.social.service.PostService.save(PostService.java:42)
-	at com.social.controller.PostServlet.addPost(PostServlet.java:103)
-	at com.social.controller.PostServlet.doPost(PostServlet.java:72)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2025-04-29 02:53:05 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:aa@gmail.com
+2025-04-29 02:53:05 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_site DB username: root DB password:root
+2025-04-29 02:53:05 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-29 02:53:06 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-29 02:53:06 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:53:06 WARN  [com.social.service.UserService] - User found for email: aa@gmail.com
+2025-04-29 02:53:06 INFO  [c.s.controller.AuthenticationServlet] - User:aa@gmail.com is registered in this system
+2025-04-29 02:53:06 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-29 02:53:06 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:53:06 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: aa@gmail.com
+2025-04-29 02:53:06 INFO  [c.s.controller.AuthenticationServlet] - user is authenticated:UserDto [id=35, username=abcde, email=aa@gmail.com, profileImage=null, userCreated=2025-04-28 22:08:34, userUpdated=2025-04-28 22:08:34]
+2025-04-29 02:53:10 ERROR [c.s.controller.ExplorePeopleServlet] - Error occurred while exploring people
+java.lang.NullPointerException: Cannot invoke "com.social.dao.FriendsDao.getNonFriends(int)" because "com.social.service.ExplorePeopleService.friendsDao" is null
+	at com.social.service.ExplorePeopleService.getUsersNotInFriends(ExplorePeopleService.java:33)
+	at com.social.controller.ExplorePeopleServlet.doGet(ExplorePeopleServlet.java:43)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
@@ -432,127 +219,92 @@ java.sql.SQLException: Generated keys not requested. You need to specify Stateme
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
-	at java.base/java.lang.Thread.run(Thread.java:1583)
-2025-04-28 18:07:06 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
-2025-04-28 18:07:06 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 18:07:06 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 18:07:06 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 18:07:07 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:07:07 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:07:07 INFO  [c.s.controller.AuthenticationServlet] - User:sanzidasultana824@gmail.com is registered in this system
-2025-04-28 18:07:07 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:07:07 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:07:07 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: sanzidasultana824@gmail.com
-2025-04-28 18:07:07 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 18:07:07 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:07:07 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:07:07 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:07:07 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:07:14 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 18:07:14 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:07:14 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:07:14 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:07:14 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:07:14 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 18:07:14 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:07:14 INFO  [com.social.dao.UserDao] - user is found for id:33
-2025-04-28 18:07:14 WARN  [com.social.service.UserService] - User found for id: 33
-2025-04-28 18:07:14 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:07:14 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:07:14 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:07:14 INFO  [com.social.controller.PostServlet] - post is saved successfully:PostDto [postedBy=33, content=sdfghjkl, privacy=PUBLIC, images=[[B@4a3458ba], createdAt=null, updatedAt=null]
-2025-04-28 18:07:14 INFO  [com.social.controller.PostServlet] - post dto object:PostDto [postedBy=33, content=sdfghjkl, privacy=PUBLIC, images=[[B@4a3458ba], createdAt=null, updatedAt=null]
-2025-04-28 18:42:37 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
-2025-04-28 18:42:37 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 18:42:37 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 18:42:37 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 18:42:37 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:42:37 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:42:37 INFO  [c.s.controller.AuthenticationServlet] - User:sanzidasultana824@gmail.com is registered in this system
-2025-04-28 18:42:37 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:42:37 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:42:37 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: sanzidasultana824@gmail.com
-2025-04-28 18:42:37 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 18:42:37 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:42:37 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:42:37 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:42:37 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:42:47 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 18:42:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:42:47 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:42:47 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:42:47 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:42:47 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 18:42:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:42:47 INFO  [com.social.dao.UserDao] - user is found for id:33
-2025-04-28 18:42:47 WARN  [com.social.service.UserService] - User found for id: 33
-2025-04-28 18:42:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:42:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:42:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:42:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:42:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:42:47 INFO  [com.social.controller.PostServlet] - post is saved successfully:PostDto [postedBy=33, content=rtylkjds, privacy=PUBLIC, images=[[B@3dd545ab, [B@593d16c9], createdAt=null, updatedAt=null]
-2025-04-28 18:42:47 INFO  [com.social.controller.PostServlet] - post dto object:PostDto [postedBy=33, content=rtylkjds, privacy=PUBLIC, images=[[B@3dd545ab, [B@593d16c9], createdAt=null, updatedAt=null]
-2025-04-28 18:44:38 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:sanzidasultana824@gmail.com
-2025-04-28 18:44:38 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_app DB username: root DB password:root
-2025-04-28 18:44:38 INFO  [com.social.util.DBConnection] - Initializing database connection...
-2025-04-28 18:44:39 INFO  [com.social.util.DBConnection] - Database connection created .
-2025-04-28 18:44:39 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:44:39 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:44:39 INFO  [c.s.controller.AuthenticationServlet] - User:sanzidasultana824@gmail.com is registered in this system
-2025-04-28 18:44:39 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:44:39 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:44:39 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: sanzidasultana824@gmail.com
-2025-04-28 18:44:39 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 18:44:39 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:44:39 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:44:39 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:44:39 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:44:51 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 18:44:51 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:44:51 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:44:51 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:44:51 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:44:51 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 18:44:51 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:44:52 INFO  [com.social.dao.UserDao] - user is found for id:33
-2025-04-28 18:44:52 WARN  [com.social.service.UserService] - User found for id: 33
-2025-04-28 18:44:52 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:44:52 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:44:52 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:44:52 INFO  [com.social.controller.PostServlet] - post is saved successfully:PostDto [postedBy=33, content=sfghj, privacy=PUBLIC, images=[[B@38f8f941], createdAt=null, updatedAt=null]
-2025-04-28 18:44:52 INFO  [com.social.controller.PostServlet] - post dto object:PostDto [postedBy=33, content=sfghj, privacy=PUBLIC, images=[[B@38f8f941], createdAt=null, updatedAt=null]
-2025-04-28 18:46:47 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 18:46:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:46:47 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:46:47 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:46:47 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:46:50 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 18:46:50 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:46:50 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:46:50 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:46:50 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:46:57 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 18:46:57 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:46:57 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:46:57 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:46:57 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:46:57 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{}
-2025-04-28 18:46:57 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:46:57 INFO  [com.social.dao.UserDao] - user is found for id:33
-2025-04-28 18:46:57 WARN  [com.social.service.UserService] - User found for id: 33
-2025-04-28 18:46:57 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:46:57 INFO  [com.social.controller.PostServlet] - post is saved successfully:PostDto [postedBy=33, content=';lkjhgf, privacy=PUBLIC, images=[], createdAt=null, updatedAt=null]
-2025-04-28 18:46:57 INFO  [com.social.controller.PostServlet] - post dto object:PostDto [postedBy=33, content=';lkjhgf, privacy=PUBLIC, images=[], createdAt=null, updatedAt=null]
-2025-04-28 18:47:07 INFO  [com.social.controller.HomeServlet] - Request comes for home page: for user:sanzidasultana824@gmail.com
-2025-04-28 18:47:07 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:47:07 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:47:07 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:47:07 INFO  [com.social.controller.HomeServlet] - user data is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:47:11 INFO  [com.social.controller.PostServlet] - Request comes for inserting a post
-2025-04-28 18:47:11 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
-2025-04-28 18:47:11 INFO  [com.social.dao.UserDao] - user is found for email:sanzidasultana824@gmail.com
-2025-04-28 18:47:11 WARN  [com.social.service.UserService] - User found for email: sanzidasultana824@gmail.com
-2025-04-28 18:47:11 INFO  [com.social.controller.PostServlet] - user is:UserDto [id=33, username=nitu, email=sanzidasultana824@gmail.com, profileImage=[105, 109, 97, 103, 101, 115, 47, 49, 98, 54, 51, 50, 102, 97, 52, 45, 57, 49, 98, 101, 45, 52, 51, 52, 57, 45, 97, 50, 98, 100, 45, 51, 97, 97, 52, 99, 97, 53, 101, 51, 99, 50, 55, 46, 106, 112, 103], userCreated=2025-04-21 13:35:21, userUpdated=2025-04-21 13:35:21]
-2025-04-28 18:47:11 ERROR [com.social.controller.PostServlet] - Error messages for creating post:{post=Your post cannot be empty. please add some text or upload at least one image.}
-2025-04-28 18:47:11 INFO  [com.social.controller.PostServlet] - post dto object:PostDto [postedBy=33, content=, privacy=PUBLIC, images=[], createdAt=null, updatedAt=null]
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2025-04-29 02:54:46 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:aa@gmail.com
+2025-04-29 02:54:46 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_site DB username: root DB password:root
+2025-04-29 02:54:46 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-29 02:54:47 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-29 02:54:47 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:54:47 WARN  [com.social.service.UserService] - User found for email: aa@gmail.com
+2025-04-29 02:54:47 INFO  [c.s.controller.AuthenticationServlet] - User:aa@gmail.com is registered in this system
+2025-04-29 02:54:47 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-29 02:54:47 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:54:47 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: aa@gmail.com
+2025-04-29 02:54:47 INFO  [c.s.controller.AuthenticationServlet] - user is authenticated:UserDto [id=35, username=abcde, email=aa@gmail.com, profileImage=null, userCreated=2025-04-28 22:08:34, userUpdated=2025-04-28 22:08:34]
+2025-04-29 02:54:51 INFO  [c.s.service.ExplorePeopleService] - non friend user:{}
+2025-04-29 02:54:51 ERROR [c.s.controller.ExplorePeopleServlet] - Error occurred while exploring people
+java.lang.NullPointerException: Cannot invoke "com.social.dao.FriendsDao.getNonFriends(int)" because "com.social.service.ExplorePeopleService.friendsDao" is null
+	at com.social.service.ExplorePeopleService.getUsersNotInFriends(ExplorePeopleService.java:34)
+	at com.social.controller.ExplorePeopleServlet.doGet(ExplorePeopleServlet.java:43)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at com.social.filter.AuthFilter.doFilter(AuthFilter.java:38)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2025-04-29 02:56:35 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:
+2025-04-29 02:56:35 WARN  [c.s.controller.AuthenticationServlet] - error messages for login input validation:{email=Email is required.}
+2025-04-29 02:56:41 INFO  [c.s.controller.AuthenticationServlet] - Received login request for email:aa@gmail.com
+2025-04-29 02:56:41 INFO  [com.social.util.DBConnection] - Database url:jdbc:mysql://localhost:3306/social_media_site DB username: root DB password:root
+2025-04-29 02:56:41 INFO  [com.social.util.DBConnection] - Initializing database connection...
+2025-04-29 02:56:42 INFO  [com.social.util.DBConnection] - Database connection created .
+2025-04-29 02:56:42 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:56:42 WARN  [com.social.service.UserService] - User found for email: aa@gmail.com
+2025-04-29 02:56:42 INFO  [c.s.controller.AuthenticationServlet] - User:aa@gmail.com is registered in this system
+2025-04-29 02:56:42 INFO  [com.social.util.DBConnection] - Reinitializing the database connection...
+2025-04-29 02:56:42 INFO  [com.social.dao.UserDao] - user is found for email:aa@gmail.com
+2025-04-29 02:56:42 INFO  [c.s.service.AuthenticationService] - Authentication successful for user: aa@gmail.com
+2025-04-29 02:56:42 INFO  [c.s.controller.AuthenticationServlet] - user is authenticated:UserDto [id=35, username=abcde, email=aa@gmail.com, profileImage=null, userCreated=2025-04-28 22:08:34, userUpdated=2025-04-28 22:08:34]
+2025-04-29 02:56:46 INFO  [c.s.service.ExplorePeopleService] - non friend user:{}
+2025-04-29 02:56:46 ERROR [c.s.controller.ExplorePeopleServlet] - Error occurred while exploring people
+java.lang.NullPointerException: Cannot invoke "com.social.dao.FriendsDao.getNonFriends(int)" because "com.social.service.ExplorePeopleService.friendsDao" is null
+	at com.social.service.ExplorePeopleService.getUsersNotInFriends(ExplorePeopleService.java:34)
+	at com.social.controller.ExplorePeopleServlet.doGet(ExplorePeopleServlet.java:43)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:199)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at com.social.filter.AuthFilter.doFilter(AuthFilter.java:38)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:168)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:660)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:346)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:396)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:937)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1793)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:833)

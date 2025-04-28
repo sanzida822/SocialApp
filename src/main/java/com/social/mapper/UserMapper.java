@@ -24,10 +24,6 @@ public class UserMapper {
 		return userMapper;
 	}
 
-	public LoginRequestDto toLoginRequstDTO(User user) {
-		return new LoginRequestDto(user.getEmail(), user.getPassword());
-	}
-
 	public User toEntity(RegistrationRequestDTO registrationDto)
 			throws NoSuchAlgorithmException, InvalidKeySpecException {
 		String salt = PasswordUtil.generateSalt();
@@ -38,7 +34,6 @@ public class UserMapper {
 		user.setPassword(InputHashedPassword);
 		user.setSalt(salt);
 		return user;
-
 	}
 
 	public User toEntity(ResultSet rs) throws SQLException {

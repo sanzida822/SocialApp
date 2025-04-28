@@ -37,7 +37,7 @@ public class PostServlet extends HttpServlet {
 	private static PostService postService= PostService.getInstance();
 
 	private static final String ADD_POST = "/add/post";
-	private static final String DELETE_POST = "/delete/post";
+	//private static final String DELETE_POST = "/delete/post";
 	private PostDto postDto;
 	// PostService postservice=null;
 

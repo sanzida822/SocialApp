@@ -38,10 +38,6 @@ public class HomeServlet extends HttpServlet {
 		try {
 			switch (servletPath) {
 			case HOME_PAGE:
-				logger.info("Request comes for home page: for user:{}",email);
-				UserDto user=userService.getUserByEmail(email);
-				logger.info("user data is:{}", user);
-				request.setAttribute("user", user);
 				request.getRequestDispatcher("/views/HomePage.jsp").forward(request, response);				
 				break;
 			default:

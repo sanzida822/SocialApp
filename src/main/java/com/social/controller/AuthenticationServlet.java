@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.social.dto.LoginRequestDto;
 import com.social.dto.RegistrationRequestDTO;
+import com.social.dto.UserDto;
 import com.social.service.AuthenticationService;
 import com.social.util.CommonUtil;
 import com.social.util.MessageUtil;
@@ -112,10 +113,11 @@ public class AuthenticationServlet extends HttpServlet {
 		Map<String, String> errorMessages = authenticationValidator.validateLogin(loginDto);
 		if (commonUtil.isEmpty(errorMessages)) {
 				logger.info("User:{} is registered in this system", loginDto.getEmail());
-				boolean isAuthenticated = authenticationService.authenticate(loginDto.getEmail(), loginDto.getPassword());				
-				if(isAuthenticated) {
+				UserDto authenticUser = authenticationService.authenticate(loginDto.getEmail(), loginDto.getPassword());				
+				if(authenticUser!=null) {
+					logger.info("user is authenticated:{}",authenticUser);
 					HttpSession session = request.getSession();	
-					session.setAttribute("email", loginDto.getEmail());
+					session.setAttribute("user", authenticUser);
 					response.sendRedirect(request.getContextPath() + "/user/home");
 				}else {
 				    logger.warn("Login failed for user: Email:{}",loginDto.getEmail());

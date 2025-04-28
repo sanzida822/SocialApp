@@ -28,21 +28,18 @@ public class AuthenticationService {
 		return userDao.save(user);
 	}
 	
-	public boolean authenticate(String email,String inputPassword) throws Exception {
+	public UserDto authenticate(String email,String inputPassword) throws Exception {
 		User user=userDao.findByEmail(email);
 			String storedHashPassword = user.getPassword();
 			String storedSalt = user.getSalt();
 			String inputHashPassword = PasswordUtil.hashPassword(inputPassword, storedSalt);
 			if (storedHashPassword.equals(inputHashPassword)){
 				logger.info("Authentication successful for user: {}", user.getEmail());
-				return true;
+				return userMapper.toDTO(user);
 			}else {
-				logger.error("Incorrect Password for user:{}", email);
-				return false;			
-			} 		
+				logger.error("Incorrect Password for user:{}", email);		
+				return null;
+			}				
 	}
-	
-//	public User getUserById(int id) throws Exception {	
-//		return userDao.findById(id);
-//	}
+
 }

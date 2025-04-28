@@ -1,8 +1,6 @@
 package com.social.util;
-
 import java.io.InputStream;
 import java.util.Properties;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,14 +12,12 @@ public class MessageUtil {
 	static {
 		try (InputStream messagePropertiesStream = AuthenticationValidator.class.getClassLoader()
 				.getResourceAsStream("messages.properties");) {
-
 			if (messagePropertiesStream != null) {
 				messageProperties.load(messagePropertiesStream);
 			}
 
 			else {
 				logger.error("messages.properties file not found");
-
 			}
 		}
 

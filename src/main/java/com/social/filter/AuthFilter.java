@@ -33,7 +33,7 @@ public class AuthFilter extends HttpFilter implements Filter {
 	     String regUrl=req.getContextPath()+"/auth/register";
 	     String uri = req.getRequestURI();
 	     System.out.println(uri);
-	     boolean loggedIn=(session!=null && session.getAttribute("email")!=null);
+	     boolean loggedIn=(session!=null && session.getAttribute("user")!=null);
 	     if(loggedIn || req.getRequestURI().equals(loginUrl) || req.getRequestURI().equals(regUrl)) {
 	    	 chain.doFilter(request, response); 
 	    	 return;	    	 
