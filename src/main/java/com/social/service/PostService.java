@@ -65,9 +65,6 @@ public class PostService {
 
 			}
 		}
-		return true;   
-		
+		return true;   	
 	}
-	
-
 }

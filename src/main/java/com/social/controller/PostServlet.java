@@ -37,6 +37,7 @@ public class PostServlet extends HttpServlet {
 	private static PostService postService= PostService.getInstance();
 
 	private static final String ADD_POST = "/add/post";
+	private static final String DELETE_POST = "/delete/post";
 	private PostDto postDto;
 	// PostService postservice=null;
 
@@ -55,14 +56,12 @@ public class PostServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String servletPath = request.getServletPath();
+		
+	
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String servletPath = request.getServletPath();
@@ -95,7 +94,6 @@ public class PostServlet extends HttpServlet {
 		}
 		Privacy privacy = commonUtil.toEnum(request.getParameter("privacy"));
 		UserDto user = userService.getUserByEmail(email);
-		logger.info("user is:{}", user);
 		postDto = new PostDto(user.getId(), request.getParameter("post_content"), privacy, postImages);
 		Map<String, String> errorMessages = postValidator.validate(postDto);
 		logger.error("Error messages for creating post:{}",errorMessages);
