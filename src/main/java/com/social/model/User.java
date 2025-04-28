@@ -12,22 +12,10 @@ public class User {
 	private String createdAt;
 	private String updatedAt;
 
-//	public User(String email, String password) {  //for login dto conversion
-//		this.email = email;
-//		this.password = password;
-//	}
-//
-//	public User(String username, String email, String password, byte[] ProfileImage,String salt) {   //for registration dto conversion
-//		super();
-//		this.username = username;
-//		this.email = email;
-//		this.password = password;
-//		this.ProfileImage = ProfileImage;
-//		this.salt=salt;
-//	}
-
-	public User( String username, String email, String password, String salt, byte[] ProfileImage, String createdAt,
-			String updatedAt) {    //for resultset
+    public User() {}
+	public User(int id, String username, String email, String password, String salt, byte[] ProfileImage, String createdAt,
+			String updatedAt) {   
+		this.id=id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -104,10 +92,12 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", email=" + email + ", password=" + password + ", salt=" + salt
-				+ ", ProfileImage=" + Arrays.toString(ProfileImage) + ", createdAt=" + createdAt + ", updatedAt="
+		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", salt="
+				+ salt + ", ProfileImage=" + Arrays.toString(ProfileImage) + ", createdAt=" + createdAt + ", updatedAt="
 				+ updatedAt + "]";
 	}
+
+
 
 
 }

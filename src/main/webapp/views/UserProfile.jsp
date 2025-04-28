@@ -1,7 +1,9 @@
-
 <%@page import="com.social.model.User"%>
-<%@ include file ="Header.jsp"%>
-<%@ include file="Navbar.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" session="true"%>
+<%@ include file="Header.jsp"%>
+<%@ include file="Navbar.jsp"%>
+
 
 <section class="vh-100" style="background-color: #f4f5f7;">
   <div class="container py-5 h-100">

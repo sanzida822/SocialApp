@@ -26,7 +26,7 @@ public class MessageUtil {
 		}
 
 		catch (Exception e) {
-			logger.error("Error occurred while loading messages.properties: {}", e.getMessage());
+			logger.error("Error occurred while loading messages.properties: {},e:{}", e.getMessage(),e);
 		}
 	}
 

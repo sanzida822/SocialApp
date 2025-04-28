@@ -15,6 +15,7 @@ import com.mysql.cj.Session;
 import com.social.dto.UserDto;
 import com.social.model.User;
 import com.social.service.AuthenticationService;
+import com.social.service.UserService;
 import com.social.util.MessageUtil;
 
 /**
@@ -24,7 +25,7 @@ import com.social.util.MessageUtil;
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(HomeServlet.class);
-	private static AuthenticationService authenticationService=AuthenticationService.getInstance(); 
+	private static UserService userService=UserService.getInstance(); 
 	private static final String HOME_PAGE="/user/home";
 	
     public HomeServlet() {
@@ -38,7 +39,7 @@ public class HomeServlet extends HttpServlet {
 			switch (servletPath) {
 			case HOME_PAGE:
 				logger.info("Request comes for home page: for user:{}",email);
-				UserDto user=authenticationService.getUserByEmail(email);
+				UserDto user=userService.getUserByEmail(email);
 				logger.info("user data is:{}", user);
 				request.setAttribute("user", user);
 				request.getRequestDispatcher("/views/HomePage.jsp").forward(request, response);				

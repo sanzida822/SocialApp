@@ -76,7 +76,8 @@ public class UserDto {
 
 	@Override
 	public String toString() {
-		return "UserDto [username=" + username + ", email=" + email + ", profileImage=" + Arrays.toString(profileImage)
-				+ ", userCreated=" + userCreated + ", userUpdated=" + userUpdated + "]";
+		return "UserDto [id=" + id + ", username=" + username + ", email=" + email + ", profileImage="
+				+ Arrays.toString(profileImage) + ", userCreated=" + userCreated + ", userUpdated=" + userUpdated + "]";
 	}
+
 }

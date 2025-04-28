@@ -32,19 +32,24 @@ public class UserMapper {
 			throws NoSuchAlgorithmException, InvalidKeySpecException {
 		String salt = PasswordUtil.generateSalt();
 		String InputHashedPassword = PasswordUtil.hashPassword(registrationDto.getPassword(), salt);
-		return new User(registrationDto.getUsername(), registrationDto.getEmail(), InputHashedPassword, salt,
-				registrationDto.getProfileImage(), null, null);
+		User user = new User();
+		user.setUsername(registrationDto.getUsername());
+		user.setEmail(registrationDto.getEmail());
+		user.setPassword(InputHashedPassword);
+		user.setSalt(salt);
+		return user;
 
 	}
 
 	public User toEntity(ResultSet rs) throws SQLException {
-		return new User(rs.getString("user_name"), rs.getString("user_email"), rs.getString("password"),
-				rs.getString("salt"), rs.getBytes("user_image"), rs.getString("created_at"),
+		return new User(rs.getInt("id"), rs.getString("user_name"), rs.getString("user_email"),
+				rs.getString("password"), rs.getString("salt"), rs.getBytes("user_image"), rs.getString("created_at"),
 				rs.getString("updated_at"));
 	}
-	
+
 	public UserDto toDTO(User user) {
-		return new UserDto(user.getId(),user.getUsername(),user.getEmail(),user.getProfileImage(),user.getCreatedAt(),user.getUpdatedAt());
+		return new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getProfileImage(),
+				user.getCreatedAt(), user.getUpdatedAt());
 	}
-	
+
 }

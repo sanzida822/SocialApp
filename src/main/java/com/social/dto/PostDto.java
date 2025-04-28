@@ -1,26 +1,22 @@
 package com.social.dto;
-
 import java.sql.Timestamp;
 import java.util.List;
-
 import com.social.enums.Privacy;
-import com.social.model.PostImages;
-
 
 public class PostDto {
 	private int postedBy;
-	private String postContent;
-	private List<byte[]> postImages;
-	private Timestamp created_at;
-	private Timestamp updated_at;
+	private String content;
 	private Privacy privacy;
+	private List<byte[]> images;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
 
-	public PostDto(int postedBy, String postContent, List<byte[]> postImages2, Privacy privacy) {
+	public PostDto(int postedBy, String content, Privacy privacy, List<byte[]> images) {
 		super();
 		this.postedBy = postedBy;
-		this.postContent = postContent;
-		this.postImages =postImages2;
+		this.content = content;
 		this.privacy = privacy;
+		this.images = images;
 	}
 
 	public int getPostedBy() {
@@ -31,38 +27,12 @@ public class PostDto {
 		this.postedBy = postedBy;
 	}
 
-	public String getPostContent() {
-		return postContent;
+	public String getContent() {
+		return content;
 	}
 
-	public void setPostContent(String postContent) {
-		this.postContent = postContent;
-	}
-
-
-
-	public List<byte[]> getPostImages() {
-		return postImages;
-	}
-
-	public void setPostImages(List<byte[]> postImages) {
-		this.postImages = postImages;
-	}
-
-	public Timestamp getCreated_at() {
-		return created_at;
-	}
-
-	public void setCreated_at(Timestamp created_at) {
-		this.created_at = created_at;
-	}
-
-	public Timestamp getUpdated_at() {
-		return updated_at;
-	}
-
-	public void setUpdated_at(Timestamp updated_at) {
-		this.updated_at = updated_at;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public Privacy getPrivacy() {
@@ -73,11 +43,37 @@ public class PostDto {
 		this.privacy = privacy;
 	}
 
+	public List<byte[]> getImages() {
+		return images;
+	}
+
+	public void setImages(List<byte[]> images) {
+		this.images = images;
+	}
+
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Timestamp getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Timestamp updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
 	@Override
 	public String toString() {
-		return "PostDto [postedBy=" + postedBy + ", postContent=" + postContent + ", postImages=" + postImages
-				+ ", created_at=" + created_at + ", updated_at=" + updated_at + ", privacy=" + privacy + "]";
+		return "PostDto [postedBy=" + postedBy + ", content=" + content + ", privacy=" + privacy + ", images=" + images
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
+
+
 
 
 }

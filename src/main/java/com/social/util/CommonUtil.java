@@ -2,10 +2,13 @@ package com.social.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.Part;
+
+import com.social.enums.Privacy;
 
 public class CommonUtil {
 	private static CommonUtil instance;
@@ -23,6 +26,12 @@ public class CommonUtil {
 	public boolean isEmpty(Map<?, ?> map) {
 		return map == null || map.isEmpty();
 	}
+	public boolean isNullorEmpty(byte[] image) {
+		return image == null || image.length==0;
+	}
+    public boolean isEmpty(List<?> list) {
+        return list.isEmpty();
+    }
 
 	public boolean isNullOrEmpty(String str) {
 		return str == null || str.trim().isEmpty();
@@ -30,11 +39,11 @@ public class CommonUtil {
 
 	public byte[] extractImageBytes(Part imagePart) throws IOException {
 		try (InputStream imageStream = imagePart.getInputStream()) {
-			if (imagePart != null && imagePart.getSize() > 0) {
 				return imageStream.readAllBytes();
-			}
 		}
-		return null;
+	}
+	public Privacy toEnum(String string) {
+	    return Privacy.valueOf(string.toUpperCase().replace(" ", "_"));
 	}
 
 	public boolean isValidEmail(String email) {
@@ -44,6 +53,10 @@ public class CommonUtil {
 			return false;
 		}
 		return EMAIL_PATTERN.matcher(email).matches();
+	}
+	
+	public boolean isImageSizeValid(byte[] image) {
+		return image.length < Constants.MAX_IMAGE_SIZE;
 	}
 
 }

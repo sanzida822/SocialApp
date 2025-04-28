@@ -11,6 +11,7 @@ import com.social.dto.RegistrationRequestDTO;
 import com.social.dto.UserDto;
 import com.social.model.User;
 import com.social.service.AuthenticationService;
+import com.social.service.UserService;
 import com.social.util.CommonUtil;
 import com.social.util.MessageUtil;
 
@@ -20,6 +21,7 @@ public class AuthenticationValidator {
 	private static AuthenticationValidator authenticationValidator;
 	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	private static AuthenticationService authenticationService = AuthenticationService.getInstance();
+	private static UserService userService = UserService.getInstance();
 
 	private AuthenticationValidator() {
 	}
@@ -32,7 +34,7 @@ public class AuthenticationValidator {
 	}
 
 	public Map<String, String> validateRegistration(RegistrationRequestDTO registrationDto) throws Exception {
-		Map<String, String> errorMessages = new LinkedHashMap<>();
+		Map<String, String> errorMessages = new LinkedHashMap<>();	
 		if (commonUtil.isNullOrEmpty(registrationDto.getUsername())) {
 			errorMessages.put("username", MessageUtil.getMessage("error.username.required"));
 		} else if (registrationDto.getUsername().length() < 5 || registrationDto.getUsername().length() > 30) {
@@ -42,9 +44,14 @@ public class AuthenticationValidator {
 			errorMessages.put("email", MessageUtil.getMessage("error.email.required"));
 		} else if (!commonUtil.isValidEmail(registrationDto.getEmail())) {
 			errorMessages.put("email", MessageUtil.getMessage("error.email.invalid"));
-		} else if (authenticationService.getUserByEmail(registrationDto.getEmail()) != null) {
+		} else if (userService.getUserByEmail(registrationDto.getEmail()) != null) {
 			errorMessages.put("email", MessageUtil.getMessage("error.email.duplicate"));
 		}
+		if(commonUtil.isNullorEmpty(registrationDto.getProfileImage())) {
+			errorMessages.put("image", MessageUtil.getMessage("error.image.required"));
+		}else if(commonUtil.isImageSizeValid(registrationDto.getProfileImage())) {
+			errorMessages.put("image", MessageUtil.getMessage("error.image.size"));
+		}	
 		if (commonUtil.isNullOrEmpty(registrationDto.getPassword())) {
 			errorMessages.put("password", MessageUtil.getMessage("error.password.required"));
 		} else if (registrationDto.getPassword().length() < 6 || registrationDto.getPassword().length() > 12) {
@@ -65,7 +72,7 @@ public class AuthenticationValidator {
 			errorMessages.put("password", MessageUtil.getMessage("error.password.required"));
 		}
 		if (errorMessages.isEmpty()) {
-			UserDto user = authenticationService.getUserByEmail(loginDto.getEmail());
+			UserDto user = userService.getUserByEmail(loginDto.getEmail());
 			if (user == null) {
 				errorMessages.put("email", MessageUtil.getMessage("error.email.notfound"));
 			}

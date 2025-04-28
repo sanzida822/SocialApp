@@ -23,16 +23,6 @@ public class AuthenticationService {
 		return authenticationService;
 	}	
 	
-	public UserDto getUserByEmail(String email) throws Exception {
-		User user = userDao.findByEmail(email);
-		if (user != null) {
-			logger.warn("User found for email: {}", email);
-			return userMapper.toDTO(user);
-		}
-		logger.info("No user found for email: {}", email);
-		return null;
-	}
-	
 	public boolean register(RegistrationRequestDTO registrationDto) throws Exception {
 		User user = userMapper.toEntity(registrationDto);
 		return userDao.save(user);
@@ -40,8 +30,6 @@ public class AuthenticationService {
 	
 	public boolean authenticate(String email,String inputPassword) throws Exception {
 		User user=userDao.findByEmail(email);
-		logger.info("user is now:{}",user);
-		logger.info("user is:{}",user);
 			String storedHashPassword = user.getPassword();
 			String storedSalt = user.getSalt();
 			String inputHashPassword = PasswordUtil.hashPassword(inputPassword, storedSalt);

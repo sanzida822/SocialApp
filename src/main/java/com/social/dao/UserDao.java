@@ -76,9 +76,12 @@ public class UserDao {
 
 		) {
 			ps.setInt(1, id);
-			ResultSet rowsAffect = ps.executeQuery();
-			if (rowsAffect.next()) {
-				logger.info("User found for user id:{}", id);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				logger.info("user is found for id:{}", id);
+			    return userMapper.toEntity(rs);
+			}else {				
+				logger.info("User not found for id:{}",id);
 			}
 		}
 		return null;
