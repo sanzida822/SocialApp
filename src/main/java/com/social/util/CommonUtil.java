@@ -40,6 +40,10 @@ public class CommonUtil {
 		return str == null || str.trim().isEmpty();
 	}
 
+	public boolean isValidImageType(Part imagePart) {
+	    String type = imagePart.getContentType();
+	    return "image/jpeg".equalsIgnoreCase(type) || "image/jpg".equalsIgnoreCase(type);
+	}
 	public byte[] extractImageBytes(Part imagePart) throws IOException {
 		try (InputStream imageStream = imagePart.getInputStream()) {
 				return imageStream.readAllBytes();

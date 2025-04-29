@@ -49,7 +49,10 @@ public class AuthenticationValidator {
 		}
 		if(commonUtil.isNullorEmpty(registrationDto.getProfileImage())) {
 			errorMessages.put("image", MessageUtil.getMessage("error.image.required"));
-		}else if(!commonUtil.isImageSizeValid(registrationDto.getProfileImage())) {
+		}else if(!commonUtil.isValidImageType(registrationDto.getProfileImagePart())) {
+			errorMessages.put("image", MessageUtil.getMessage("error.image.type"));
+		}		
+		else if(!commonUtil.isImageSizeValid(registrationDto.getProfileImage())) {
 			errorMessages.put("image", MessageUtil.getMessage("error.image.size"));
 		}	
 		if (commonUtil.isNullOrEmpty(registrationDto.getPassword())) {

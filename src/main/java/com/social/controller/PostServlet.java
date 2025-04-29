@@ -76,7 +76,7 @@ public class PostServlet extends HttpServlet {
 		} catch (Exception e) {
 			logger.error("Exception occure when adding post:{}, e:", e.getMessage(), e);
 	        request.setAttribute("globalError", MessageUtil.getMessage("error.global.unexpected"));
-	        request.getRequestDispatcher(HomeServlet.HOME_PAGE).forward(request, response);
+	        request.getRequestDispatcher(HomeServlet.HOME).forward(request, response);
 		}
 	}
 
@@ -101,17 +101,17 @@ public class PostServlet extends HttpServlet {
 			boolean isSaved = postService.save(postDto);
 			if (isSaved) {
 				logger.info("post is saved successfully:{}", postDto);
-				response.sendRedirect(request.getContextPath() +HomeServlet.HOME_PAGE);
+				response.sendRedirect(request.getContextPath()+HomeServlet.HOME);
 				return;
 			} else {
 				logger.error("Failed to save post: {}", postDto);
 				request.setAttribute("globalError", MessageUtil.getMessage("error.post.create"));
-				request.getRequestDispatcher(HomeServlet.HOME_PAGE).forward(request, response);
+				request.getRequestDispatcher(HomeServlet.HOME).forward(request, response);
 			}
 
 		}
 		request.setAttribute("errorMessages", errorMessages);
-		request.getRequestDispatcher(HomeServlet.HOME_PAGE).forward(request, response);
+		request.getRequestDispatcher(HomeServlet.HOME).forward(request, response);
 
 	}
 

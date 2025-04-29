@@ -1,5 +1,6 @@
 package com.social.model;
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 
 public class User {
@@ -8,21 +9,29 @@ public class User {
 	private String email;
 	private String password;
 	private String salt;
-	private byte[] ProfileImage;
-	private String createdAt;
-	private String updatedAt;
+	private Image profileImage;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
 
-    public User() {}
-	public User(int id, String username, String email, String password, String salt, byte[] ProfileImage, String createdAt,
-			String updatedAt) {   
-		this.id=id;
+	public User(int id, String username, String email, String password, String salt, Image profileImage,
+			Timestamp createdAt, Timestamp updatedAt) {
+		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.salt = salt;
-		this.ProfileImage = ProfileImage;
+		this.profileImage = profileImage;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+	}
+
+	public User(String username, String email, String password, String salt, Image profileImage) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.salt = salt;
+		this.profileImage = profileImage;
 	}
 
 	public int getId() {
@@ -65,39 +74,35 @@ public class User {
 		this.salt = salt;
 	}
 
-
-	public byte[] getProfileImage() {
-		return ProfileImage;
-	}
-
-	public void setProfileImage(byte[] profileImage) {
-		ProfileImage = profileImage;
-	}
-
-	public String getCreatedAt() {
+	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(String createdAt) {
+	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public String getUpdatedAt() {
+	public Timestamp getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(String updatedAt) {
+	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public Image getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(Image profileImae) {
+		this.profileImage = profileImae;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", salt="
-				+ salt + ", ProfileImage=" + Arrays.toString(ProfileImage) + ", createdAt=" + createdAt + ", updatedAt="
-				+ updatedAt + "]";
+				+ salt + ", profileImage=" + profileImage + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ "]";
 	}
-
-
-
 
 }

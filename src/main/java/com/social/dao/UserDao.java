@@ -31,7 +31,7 @@ public class UserDao {
 	}
 
 	public boolean save(User user) throws Exception {
-		String sql = "Insert into users (user_name,user_email,password,user_image,salt) values(?,?,?,?,?)";
+		String sql = "Insert into users (user_name,user_email,password,salt,image_id) values(?,?,?,?,?)";
 		boolean status = false;
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql)
@@ -39,8 +39,8 @@ public class UserDao {
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getEmail());
 			ps.setString(3, user.getPassword());
-			ps.setBytes(4, user.getProfileImage());	
-			ps.setString(5, user.getSalt());
+			ps.setString(4, user.getSalt());	
+			ps.setInt(5, user.getProfileImage().getId());
 			int rowsAffect = ps.executeUpdate();
             if(rowsAffect>0) {
             	status=true;
@@ -63,7 +63,7 @@ public class UserDao {
 				logger.info("user is found for email:{}", email);
 			    return userMapper.toEntity(rs);
 			}else {				
-				logger.info("duplicate email for:{} user object:{} ", email);
+				logger.info("duplicate email for:{}", email);
 			}
 		} 
 		return null;

@@ -6,13 +6,24 @@ import java.util.Arrays;
 public class Image {
 	private int id;
 	private byte[] data;
-	private Long sizeBytes;
+	private long sizeBytes;
 	private Timestamp createdAt;
+	private Timestamp updatedAt;
+	
 
-	public Image(byte[] data, Long sizeBytes) {
+	public Image(byte[] data, int sizeBytes) {
 		super();
 		this.data = data;
 		this.sizeBytes = sizeBytes;
+	}
+
+	public Image(int id, byte[] data, long sizeBytes, Timestamp createdAt, Timestamp updatedAt) {
+		super();
+		this.id = id;
+		this.data = data;
+		this.sizeBytes = sizeBytes;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 	}
 
 	public int getId() {
@@ -32,11 +43,11 @@ public class Image {
 	}
 
 
-	public Long getSizeBytes() {
+	public long getSizeBytes() {
 		return sizeBytes;
 	}
 
-	public void setSizeBytes(Long sizeBytes) {
+	public void setSizeBytes(long sizeBytes) {
 		this.sizeBytes = sizeBytes;
 	}
 
@@ -47,11 +58,20 @@ public class Image {
 	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
+	
+
+	public Timestamp getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Timestamp updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 
 	@Override
 	public String toString() {
 		return "Image [id=" + id + ", data=" + Arrays.toString(data) + ", sizeBytes=" + sizeBytes + ", createdAt="
-				+ createdAt + "]";
+				+ createdAt + ", updatedAt=" + updatedAt + "]";
 	}
 
 

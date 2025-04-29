@@ -41,7 +41,7 @@ public class AuthenticationServlet extends HttpServlet {
 
 	static {
 		error_views.put(REGISTRATION, "/views/RegistraionForm.jsp");
-		error_views.put(REGISTRATION, "/views/LoginForm.jsp");
+		error_views.put(LOGIN, "/views/LoginForm.jsp");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -80,12 +80,12 @@ public class AuthenticationServlet extends HttpServlet {
 	}
 
 	public void processRegistration(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Part imagePart = request.getPart("image");
+		Part imagePart = request.getPart("image");	
 		logger.info("Registration request for username:{}, Email:{}, File size: {}", request.getParameter("username"),
 				request.getParameter("email"), imagePart.getSize());
 		byte[] imageBytes = commonUtil.extractImageBytes(imagePart);
 		registrationDto = new RegistrationRequestDTO(request.getParameter("username"), request.getParameter("email"),
-				request.getParameter("password"), request.getParameter("confirm_password"), imageBytes);
+				request.getParameter("password"), request.getParameter("confirm_password"), imageBytes,imagePart);
 		Map<String, String> errorMessages = authenticationValidator.validateRegistration(registrationDto);
 		logger.info("error messages for validation of user:{} and error messages is:{}", registrationDto.getEmail(),
 				errorMessages);
@@ -99,11 +99,13 @@ public class AuthenticationServlet extends HttpServlet {
 			}else {
 			    logger.warn("Registration failed for user: username:{}, Email:{}", registrationDto.getUsername(), registrationDto.getEmail());
 			    request.setAttribute("globalError", MessageUtil.getMessage("error.registration.fail"));
-			    request.getRequestDispatcher(REGISTRATION).forward(request, response);
+			    request.getRequestDispatcher("/views/RegistrationForm.jsp").forward(request, response);
+
 			}				
 		} else {
 			request.setAttribute("errorMessages", errorMessages);
-			request.getRequestDispatcher(REGISTRATION).forward(request, response);
+			request.getRequestDispatcher("/views/RegistrationForm.jsp").forward(request, response);
+
 		}
 	}
 
@@ -122,7 +124,7 @@ public class AuthenticationServlet extends HttpServlet {
 				}else {
 				    logger.warn("Login failed for user: Email:{}",loginDto.getEmail());
 				    request.setAttribute("globalError", MessageUtil.getMessage("error.login.fail"));
-				    request.getRequestDispatcher(LOGIN).forward(request, response);
+				    request.getRequestDispatcher("/views/LoginForm.jsp").forward(request, response);
 				}
 		} else {
 			request.setAttribute("errorMessages", errorMessages);

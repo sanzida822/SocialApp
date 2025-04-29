@@ -1,21 +1,23 @@
 package com.social.dto;
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 
 public class UserDto {
 	private int id;
 	private String username;
 	private String email;
-	private byte[] profileImage;
-	private String userCreated;
-	private String userUpdated;
+	int profileImageId;
+	private Timestamp userCreated;
+	private Timestamp userUpdated;
 
-	public UserDto(int id,String username, String email, byte[] profileImage, String userCreated, String userUpdated) {
+	public UserDto(int id, String username, String email, int profileImageId, Timestamp userCreated,
+			Timestamp userUpdated) {
 		super();
-		this.id=id;
+		this.id = id;
 		this.username = username;
 		this.email = email;
-		this.profileImage = profileImage;
+		this.profileImageId = profileImageId;
 		this.userCreated = userCreated;
 		this.userUpdated = userUpdated;
 	}
@@ -50,34 +52,36 @@ public class UserDto {
 		this.email = email;
 	}
 
-	public byte[] getProfileImage() {
-		return profileImage;
+	
+	public int getProfileImageId() {
+		return profileImageId;
 	}
 
-	public void setProfileImage(byte[] profileImage) {
-		this.profileImage = profileImage;
+	public void setProfileImageId(int profileImageId) {
+		this.profileImageId = profileImageId;
 	}
 
-	public String getUserCreated() {
+	public Timestamp getUserCreated() {
 		return userCreated;
 	}
 
-	public void setUserCreated(String userCreated) {
+	public void setUserCreated(Timestamp userCreated) {
 		this.userCreated = userCreated;
 	}
 
-	public String getUserUpdated() {
+	public Timestamp getUserUpdated() {
 		return userUpdated;
 	}
 
-	public void setUserUpdated(String userUpdated) {
+	public void setUserUpdated(Timestamp userUpdated) {
 		this.userUpdated = userUpdated;
 	}
 
 	@Override
 	public String toString() {
-		return "UserDto [id=" + id + ", username=" + username + ", email=" + email + ", profileImage="
-				+ Arrays.toString(profileImage) + ", userCreated=" + userCreated + ", userUpdated=" + userUpdated + "]";
+		return "UserDto [id=" + id + ", username=" + username + ", email=" + email + ", profileImageId="
+				+ profileImageId + ", userCreated=" + userCreated + ", userUpdated=" + userUpdated + "]";
 	}
+
 
 }

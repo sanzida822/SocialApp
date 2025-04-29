@@ -26,7 +26,7 @@ public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(HomeServlet.class);
 	private static UserService userService=UserService.getInstance(); 
-	public static final String HOME_PAGE="/user/home";
+	public static final String HOME="/user/home";
 	
     public HomeServlet() {
         super();
@@ -35,7 +35,7 @@ public class HomeServlet extends HttpServlet {
 		String servletPath=request.getServletPath();
 		try {
 			switch (servletPath) {
-			case HOME_PAGE:
+			case HOME:
 				request.getRequestDispatcher("/views/HomePage.jsp").forward(request, response);				
 				break;
 			default:

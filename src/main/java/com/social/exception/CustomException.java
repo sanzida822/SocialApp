@@ -18,7 +18,11 @@ public class CustomException {
             super(message);
         }
     }
-    
+    public static class ImageNotFoundException extends Exception {
+        public ImageNotFoundException(String message) {
+            super(message);
+        }
+    }
     
     
     
