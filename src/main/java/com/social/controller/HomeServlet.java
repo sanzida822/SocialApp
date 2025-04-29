@@ -26,15 +26,13 @@ public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(HomeServlet.class);
 	private static UserService userService=UserService.getInstance(); 
-	private static final String HOME_PAGE="/user/home";
+	public static final String HOME_PAGE="/user/home";
 	
     public HomeServlet() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String servletPath=request.getServletPath();
-		HttpSession session=request.getSession(false);
-		String email=(String)session.getAttribute("email");
 		try {
 			switch (servletPath) {
 			case HOME_PAGE:
@@ -55,7 +53,6 @@ public class HomeServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	
-	public void  getUserById() {}
+
 
 }

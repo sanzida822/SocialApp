@@ -95,15 +95,15 @@ public class AuthenticationServlet extends HttpServlet {
 			if (isRegistered) {
 				logger.info("Registered successfully for user: username:{},Email:{}", registrationDto.getUsername(),
 						registrationDto.getEmail());
-				response.sendRedirect(request.getContextPath() + "/views/LoginForm.jsp");
+				response.sendRedirect(request.getContextPath() + LOGIN);
 			}else {
 			    logger.warn("Registration failed for user: username:{}, Email:{}", registrationDto.getUsername(), registrationDto.getEmail());
 			    request.setAttribute("globalError", MessageUtil.getMessage("error.registration.fail"));
-			    request.getRequestDispatcher("/views/RegistrationForm.jsp").forward(request, response);
+			    request.getRequestDispatcher(REGISTRATION).forward(request, response);
 			}				
 		} else {
 			request.setAttribute("errorMessages", errorMessages);
-			request.getRequestDispatcher("/views/RegistrationForm.jsp").forward(request, response);
+			request.getRequestDispatcher(REGISTRATION).forward(request, response);
 		}
 	}
 
@@ -122,12 +122,12 @@ public class AuthenticationServlet extends HttpServlet {
 				}else {
 				    logger.warn("Login failed for user: Email:{}",loginDto.getEmail());
 				    request.setAttribute("globalError", MessageUtil.getMessage("error.login.fail"));
-				    request.getRequestDispatcher("/views/LoginForm.jsp").forward(request, response);
+				    request.getRequestDispatcher(LOGIN).forward(request, response);
 				}
 		} else {
 			request.setAttribute("errorMessages", errorMessages);
 			logger.warn("error messages for login input validation:{}", errorMessages);
-			request.getRequestDispatcher("/views/LoginForm.jsp").forward(request, response);
+			request.getRequestDispatcher(LOGIN).forward(request, response);
 		}
 	}
 
@@ -139,7 +139,7 @@ public class AuthenticationServlet extends HttpServlet {
 			session.invalidate();
 			logger.info("user:{} session invalidated", email);
 		}
-		response.sendRedirect(request.getContextPath() + "/auth/login");
+		response.sendRedirect(request.getContextPath() + LOGIN);
 	}
 
 }

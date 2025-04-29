@@ -24,6 +24,7 @@ import com.social.enums.Privacy;
 import com.social.service.PostService;
 import com.social.service.UserService;
 import com.social.util.CommonUtil;
+import com.social.util.MessageUtil;
 import com.social.validation.PostValidator;
 
 @WebServlet(urlPatterns = { "/add/post" })
@@ -34,10 +35,10 @@ public class PostServlet extends HttpServlet {
 	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	private static UserService userService = UserService.getInstance();
 	private static PostValidator postValidator = PostValidator.getInstance();
-	private static PostService postService= PostService.getInstance();
+	private static PostService postService = PostService.getInstance();
 
 	private static final String ADD_POST = "/add/post";
-	//private static final String DELETE_POST = "/delete/post";
+	// private static final String DELETE_POST = "/delete/post";
 	private PostDto postDto;
 	// PostService postservice=null;
 
@@ -56,9 +57,6 @@ public class PostServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String servletPath = request.getServletPath();
-		
-	
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -77,6 +75,8 @@ public class PostServlet extends HttpServlet {
 
 		} catch (Exception e) {
 			logger.error("Exception occure when adding post:{}, e:", e.getMessage(), e);
+	        request.setAttribute("globalError", MessageUtil.getMessage("error.global.unexpected"));
+	        request.getRequestDispatcher(HomeServlet.HOME_PAGE).forward(request, response);
 		}
 	}
 
@@ -86,7 +86,7 @@ public class PostServlet extends HttpServlet {
 		List<byte[]> postImages = new ArrayList<>();
 		Collection<Part> parts = request.getParts();
 		for (Part part : parts) {
-			if (part.getName().equals("images") && part.getSize()>0) {
+			if (part.getName().equals("images") && part.getSize() > 0) {
 				byte[] imageBytes = commonUtil.extractImageBytes(part);
 				postImages.add(imageBytes);
 
@@ -96,18 +96,22 @@ public class PostServlet extends HttpServlet {
 		UserDto user = userService.getUserByEmail(email);
 		postDto = new PostDto(user.getId(), request.getParameter("post_content"), privacy, postImages);
 		Map<String, String> errorMessages = postValidator.validate(postDto);
-		logger.error("Error messages for creating post:{}",errorMessages);
-		if(commonUtil.isEmpty(errorMessages)) {
-			boolean isSaved=postService.save(postDto);
-			if(isSaved) {
-				logger.info("post is saved successfully:{}",postDto);
-			}else {
-				logger.error("failed to save post:{}",postDto);
+		logger.error("Error messages for creating post:{}", errorMessages);
+		if (commonUtil.isEmpty(errorMessages)) {
+			boolean isSaved = postService.save(postDto);
+			if (isSaved) {
+				logger.info("post is saved successfully:{}", postDto);
+				response.sendRedirect(request.getContextPath() +HomeServlet.HOME_PAGE);
+				return;
+			} else {
+				logger.error("Failed to save post: {}", postDto);
+				request.setAttribute("globalError", MessageUtil.getMessage("error.post.create"));
+				request.getRequestDispatcher(HomeServlet.HOME_PAGE).forward(request, response);
 			}
-	
-		}
-		logger.info("post dto object:{}", postDto);
 
+		}
+		request.setAttribute("errorMessages", errorMessages);
+		request.getRequestDispatcher(HomeServlet.HOME_PAGE).forward(request, response);
 
 	}
 

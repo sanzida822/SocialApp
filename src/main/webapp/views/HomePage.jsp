@@ -54,7 +54,7 @@
 							<i class="fa-solid fa-pen-to-square"></i>
 						</button>
 						<button class="btn btn-sm btn-outline-danger" title="Delete">
-							<i class="fa-duotone fa-regular fa-trash"></i>
+							<i class="fa fa-trash" aria-hidden="true"></i>
 						</button>
 					</div>
 				</div>

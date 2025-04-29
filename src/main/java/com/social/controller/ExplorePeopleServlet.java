@@ -32,28 +32,21 @@ public class ExplorePeopleServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        UserDto loggedInUser = (UserDto) session.getAttribute("user");
+		UserDto loggedInUser=commonUtil.getUserFromSession(request);
         try {
 			List<UserDto> nonFriends=explorePeopleService.getUsersNotInFriends(loggedInUser.getId());
-			logger.info("non friends:{}",nonFriends);
 			if(!commonUtil.isEmpty(nonFriends)) {
-				logger.info("User:{} has friends to explore:{}",loggedInUser.getId(),nonFriends);
-				request.setAttribute("nonFriends", nonFriends);
-				//request.getRequestDispatcher("/views/ExplorePeople.jsp").forward(request, response);
+			    logger.info("User:{} has friends to explore:{}",loggedInUser.getId(),nonFriends);
+			    request.setAttribute("nonFriends", nonFriends);
+			    request.getRequestDispatcher("/views/ExplorePeople.jsp").forward(request, response); 
 			}else {
 				logger.info("No new friends to explore");
 				request.setAttribute("globalWarn", MessageUtil.getMessage("explore.no.people"));
-				request.getRequestDispatcher("/views/ExplorePeople.jsp").forward(request, response);
-				
+				request.getRequestDispatcher("/views/ExplorePeople.jsp").forward(request, response);			
 			}
 		} catch (Exception e) {
-		    logger.error("Error occurred while exploring people", e);
+		    logger.error("Error occurred while exploring people:{}, e:{}",e.getMessage(),e);
 			e.printStackTrace();
 		}
         

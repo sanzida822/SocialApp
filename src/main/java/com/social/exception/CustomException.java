@@ -6,5 +6,21 @@ public class CustomException {
             super(message);
         }
     }
+    
+    
+    public  static class ImageInsertionFailedException extends Exception {
+        public ImageInsertionFailedException(String message) {
+            super(message);
+        }
+    }
+    public static class PostImageInsertionFailedException extends Exception {
+        public PostImageInsertionFailedException(String message) {
+            super(message);
+        }
+    }
+    
+    
+    
+    
 
 }

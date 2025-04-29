@@ -16,7 +16,7 @@ import com.social.model.User;
 public class ExplorePeopleService {
 	private static ExplorePeopleService explorePeopleService;
 	private static final Logger logger = LoggerFactory.getLogger(ExplorePeopleService.class);
-	private static FriendsDao friendsDao;
+	private static FriendsDao friendsDao=FriendsDao.getInstance();
 	private static UserMapper userMapper=UserMapper.getInstance();
 	
 	private ExplorePeopleService() {}

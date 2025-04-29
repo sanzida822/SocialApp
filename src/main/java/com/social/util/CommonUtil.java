@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import com.social.dto.UserDto;
 import com.social.enums.Privacy;
 
 public class CommonUtil {
@@ -44,6 +47,15 @@ public class CommonUtil {
 	}
 	public Privacy toEnum(String string) {
 	    return Privacy.valueOf(string.toUpperCase().replace(" ", "_"));
+	}
+	
+	public UserDto getUserFromSession(HttpServletRequest request) {
+		HttpSession session=request.getSession();
+		  if (session != null) {
+	            return (UserDto) session.getAttribute("user");
+	        }
+		  return null;
+		
 	}
 
 	public boolean isValidEmail(String email) {

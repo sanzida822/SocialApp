@@ -9,9 +9,12 @@ import org.slf4j.LoggerFactory;
 import com.social.dao.PostDao;
 import com.social.dao.PostImageDao;
 import com.social.dto.PostDto;
+import com.social.exception.CustomException.ImageInsertionFailedException;
+import com.social.exception.CustomException.PostImageInsertionFailedException;
 import com.social.mapper.PostMapper;
 import com.social.model.Post;
 import com.social.util.CommonUtil;
+import com.social.util.MessageUtil;
 
 public class PostService {
 	public static PostService postService;
@@ -45,13 +48,13 @@ public class PostService {
 				for (byte[] imageByte : postDto.getImages()) {
 					int imageId = imageService.saveAndgetId(imageByte);
 					if (imageId < 1) {
-						throw new RuntimeException("Image insert failed");
+						throw new ImageInsertionFailedException(MessageUtil.getMessage("error.image.insert"));
 					}
 					savedImagesId.add(imageId);
 
 					boolean savedPostAndImage = postImageDao.save(postId, imageId);
 					if (!savedPostAndImage) {
-						throw new RuntimeException("Failed to save Post-Image");
+						throw new PostImageInsertionFailedException(MessageUtil.getMessage("error.save.postImage"));
 					}
 				}
 				return true;
@@ -67,4 +70,5 @@ public class PostService {
 		}
 		return true;   	
 	}
+
 }

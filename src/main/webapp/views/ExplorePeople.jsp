@@ -12,38 +12,42 @@
 
 	<%
 	List<UserDto> userDtos = (List<UserDto>) request.getAttribute("nonFriends");
-	%>>
+	%>
 	<div class="row justify-content-center">
 		<div class="col-md-8">
 			<table class="table">
 				<thead>
 					<tr>
-						<th scope="col">#</th>
+						
 						<th scope="col">Name</th>
-						<th scope="col">image</th>
+
 						<th scope="col">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
-<%
-    int count = 1;
-    for (UserDto nonFriend : userDtos) {
-%>
-    <tr>
-        <th scope="row"><%= count++ %></th>
-        <td><%= nonFriend.getUsername() %></td>
-        
-        <td>
-            <button class="btn btn-sm btn-outline-primary">Send Friend Request</button>
-        </td>
-    </tr>
-<%
-    }
-%>
-</tbody>
+					<%
+			
+					for (UserDto nonFriend : userDtos) {
+					%>
+					<tr>
+					
+						<td><%=nonFriend.getUsername()%></td>
+						<td>
+							<form action="${pageContext.request.contextPath}/friend/request" method="post">
+							<input type="hidden" name="receiverId"  value="<%=nonFriend.getId() %>"/>
+								<button class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-user-group m-2"></i>Send Request</button>
+							</form>
+						</td>
+
+
+					</tr>
+					<%
+					}
+					%>
+				</tbody>
 
 			</table>
-		</div>
+		</div> 
 
 	</div>
 
