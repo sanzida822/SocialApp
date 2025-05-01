@@ -20,7 +20,8 @@ import com.social.util.PasswordUtil;
 
 public class UserMapper {
 	private static UserMapper userMapper;
-	ImageService imageService=ImageService.getInstance();
+	private static ImageService imageService = ImageService.getInstance();
+	private static ImageMapper imageMapper = ImageMapper.getInstance();
 	private static final Logger logger = LoggerFactory.getLogger(UserMapper.class);
 
 	private UserMapper() {
@@ -37,25 +38,21 @@ public class UserMapper {
 			throws NoSuchAlgorithmException, InvalidKeySpecException {
 		String salt = PasswordUtil.generateSalt();
 		String InputHashedPassword = PasswordUtil.hashPassword(registrationDto.getPassword(), salt);
-		User user= new User(registrationDto.getUsername(),registrationDto.getEmail(),InputHashedPassword,salt,profileImage);
-	logger.info("user object is:{}",user);
-	return user;
+		User user = new User(registrationDto.getUsername(), registrationDto.getEmail(), InputHashedPassword, salt,
+				profileImage);
+		logger.info("user object is:{}", user);
+		return user;
 	}
-	
+
 	public User toEntity(ResultSet rs) throws Exception {
-		int id = rs.getInt("id");
-		String username = rs.getString("user_name");
-		String email = rs.getString("user_email");
-		String password = rs.getString("password");
-		String salt = rs.getString("salt");
-		int imageId = rs.getInt("image_id");
-		Timestamp createdAt = rs.getTimestamp("created_at");
-		Timestamp updatedAt = rs.getTimestamp("updated_at");
-		Image profileImage = imageService.getImageById(imageId);
-		return new User(id, username, email, password, salt, profileImage, createdAt, updatedAt);
+    	Image profileImage=imageMapper.toEntity(rs);
+		return new User(rs.getInt("u.id"), rs.getString("u.user_name"), rs.getString("u.user_email"),
+				rs.getString("u.password"), rs.getString("salt"), profileImage, rs.getTimestamp("u.created_at"),
+				rs.getTimestamp("u.updated_at"));
 	}
+
 	public UserDto toDTO(User user) {
-		return new UserDto(user.getId(), user.getUsername(), user.getEmail(),user.getProfileImage().getId(),
+		return new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getProfileImage().getId(),
 				user.getCreatedAt(), user.getUpdatedAt());
 	}
 

@@ -11,7 +11,7 @@ public class Image {
 	private Timestamp updatedAt;
 	
 
-	public Image(byte[] data, int sizeBytes) {
+	public Image(byte[] data, long sizeBytes) {
 		super();
 		this.data = data;
 		this.sizeBytes = sizeBytes;

@@ -53,7 +53,9 @@ public class UserDao {
 	}
 
 	public User findByEmail(String email) throws SQLException, Exception {
-		String sql = "SELECT * FROM users WHERE user_email = ?";
+		String sql="SELECT u.*, i.*	FROM users u"
+				+ "		INNER JOIN images i ON u.image_id = i.id"
+				+ "		WHERE u.user_email = ?";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);
 		) {
@@ -70,7 +72,9 @@ public class UserDao {
 	}
 
 	public User findById(int id) throws Exception {
-		String sql = "Select * from users where id=?";
+		String sql="SELECT u.*, i.*	FROM users u"
+				+ "		INNER JOIN images i ON u.image_id = i.id"
+				+ "		WHERE u.id = ?";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);
 

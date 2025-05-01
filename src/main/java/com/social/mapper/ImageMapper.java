@@ -23,8 +23,8 @@ public class ImageMapper {
 		return new Image(imageBytes, (int)imageBytes.length);
 	}
 	public Image toEntity(ResultSet rs) throws SQLException {
-		return new Image(rs.getInt("id"),rs.getBytes("data"), rs.getLong("size_bytes"), rs.getTimestamp("created_at"),
-		        rs.getTimestamp("updated_at"));
+		return new Image(rs.getInt("i.id"),rs.getBytes("i.data"), rs.getLong("i.size_bytes"), rs.getTimestamp("i.created_at"),
+		        rs.getTimestamp("i.updated_at"));
 	}
 
 }

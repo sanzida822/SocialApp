@@ -32,8 +32,8 @@ public class CommonUtil {
 	public boolean isNullorEmpty(byte[] image) {
 		return image == null || image.length==0;
 	}
-    public boolean isEmpty(List<?> list) {
-        return list.isEmpty();
+    public boolean isNullOrEmpty(List<?> list) {
+        return list == null || list.isEmpty();
     }
 
 	public boolean isNullOrEmpty(String str) {

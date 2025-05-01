@@ -30,9 +30,8 @@ public class ExplorePeopleService {
 	
 	
 	public List<UserDto> getUsersNotInFriends(int loggedInUserId) throws SQLException, Exception{
-	       logger.info("non friend user:{}");
 	    List<User> users = friendsDao.getNonFriends(loggedInUserId);
-        logger.info("non friend user:{}",users);
+        logger.info("Users who are not friends:{}",users);
 	    List<UserDto> userDtos = new ArrayList<>();
 	    for (User user : users) {
 	        userDtos.add(userMapper.toDTO(user));

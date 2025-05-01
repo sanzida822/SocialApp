@@ -43,7 +43,7 @@ public class PostService {
 			return false;
 		}
 		List<Integer> savedImagesId = new ArrayList<Integer>();
-		if (!commonUtil.isEmpty(postDto.getImages())) {
+		if (!commonUtil.isNullOrEmpty(postDto.getImages())) {
 			try {
 				for (byte[] imageByte : postDto.getImages()) {
 					int imageId = imageService.saveAndgetId(imageByte);

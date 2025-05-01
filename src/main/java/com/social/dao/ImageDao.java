@@ -53,7 +53,7 @@ public class ImageDao {
 	}
 	
 	public Image getImageById(int id) throws SQLException, Exception {
-		String sql="select * from images where id=?";
+		String sql="select i.* from images i where id=?";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql))
 		{

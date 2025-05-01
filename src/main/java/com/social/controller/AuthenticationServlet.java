@@ -129,7 +129,7 @@ public class AuthenticationServlet extends HttpServlet {
 		} else {
 			request.setAttribute("errorMessages", errorMessages);
 			logger.warn("error messages for login input validation:{}", errorMessages);
-			request.getRequestDispatcher(LOGIN).forward(request, response);
+			request.getRequestDispatcher("/views/LoginForm.jsp").forward(request, response);
 		}
 	}
 

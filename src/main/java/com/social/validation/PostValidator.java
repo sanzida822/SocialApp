@@ -27,7 +27,7 @@ public class PostValidator {
 		LinkedHashMap<String, String> errorMessages = new LinkedHashMap<String, String>();
 		List<byte[]> images = postDto.getImages();
 
-		if (commonUtil.isNullOrEmpty(postDto.getContent()) && commonUtil.isEmpty(images)) {
+		if (commonUtil.isNullOrEmpty(postDto.getContent()) && commonUtil.isNullOrEmpty(images)) {
 			errorMessages.put("post", MessageUtil.getMessage("error.post.empty"));
 
 		} else {

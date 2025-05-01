@@ -36,7 +36,7 @@ public class ExplorePeopleServlet extends HttpServlet {
 		UserDto loggedInUser=commonUtil.getUserFromSession(request);
         try {
 			List<UserDto> nonFriends=explorePeopleService.getUsersNotInFriends(loggedInUser.getId());
-			if(!commonUtil.isEmpty(nonFriends)) {
+			if(!commonUtil.isNullOrEmpty(nonFriends)) {
 			    logger.info("User:{} has friends to explore:{}",loggedInUser.getId(),nonFriends);
 			    request.setAttribute("nonFriends", nonFriends);
 			    request.getRequestDispatcher("/views/ExplorePeople.jsp").forward(request, response); 
