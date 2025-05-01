@@ -25,10 +25,9 @@ import com.social.util.MessageUtil;
 public class FriendsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(FriendsServlet.class);
-
 	private static FriendRequestService friendRequestService = FriendRequestService.getInstance();
 	private static CommonUtil commonUtil = CommonUtil.getInstance();
-	public static final String SENT_REQUEST = "/friend-requests/send";
+	public static final String SEND_REQUEST = "/friend-requests/send";
 	public static final String VIEW_REQUEST="/friend-request";
 
 	public FriendsServlet() {
@@ -41,7 +40,7 @@ public class FriendsServlet extends HttpServlet {
 		String servletPath = request.getServletPath();
 		try {
 			switch (servletPath) {
-			case  SENT_REQUEST:
+			case  SEND_REQUEST:
 
 				break;
 			case VIEW_REQUEST:
@@ -68,7 +67,7 @@ public class FriendsServlet extends HttpServlet {
 
 		try {
 			switch (servletPath) {
-			case  SENT_REQUEST:
+			case  SEND_REQUEST:
 				sendRequest(request, response);
 				break;
 			case VIEW_REQUEST:
@@ -100,6 +99,7 @@ public class FriendsServlet extends HttpServlet {
 		response.sendRedirect(request.getContextPath() + "/user/explorePeople");
 	}
 	public void viewRequest(HttpServletRequest request, HttpServletResponse response) {	
+		friendRequestService.
 		
 	}
 }
