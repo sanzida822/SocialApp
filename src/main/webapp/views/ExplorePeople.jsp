@@ -1,3 +1,5 @@
+<%@page import="com.social.dto.SentRequestsViewDto"%>
+<%@page import="com.social.dto.FriendRequestViewDto"%>
 <%@page import="com.social.util.CommonUtil"%>
 <%@page import="com.social.dto.UserDto"%>
 <%@ page import="java.util.List"%>
@@ -16,6 +18,7 @@
             ${globalWarn}
         </div>
     </c:if>
+
 
     <%
         List<UserDto> userDtos = (List<UserDto>) request.getAttribute("nonFriends");
@@ -45,8 +48,56 @@
                                 <td>
                                     <form action="${pageContext.request.contextPath}/friend-requests/send" method="post" class="d-inline">
                                         <input type="hidden" name="receiverId" value="<%= nonFriend.getId() %>" />
-                                        <button class="btn btn-sm btn-outline-primary">
+                                        <button class="btn btn-sm btn-success">
                                             <i class="fa-solid fa-user-plus me-2"></i>Send Request
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <%
+                                }
+                            %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        
+         <%
+        }
+    %>
+</div>
+    <%
+        List<SentRequestsViewDto> sentedRequest = (List<SentRequestsViewDto>) request.getAttribute("sentedRequests");
+        if (!commonUtil.isNullOrEmpty(sentedRequest)) {
+    %>
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-10">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Request You have already sent</h5>
+                </div>
+                <div class="card-body p-4">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Name</th>
+                                <th style="width: 150px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                                for (SentRequestsViewDto requests : sentedRequest) {
+                            %>
+                            <tr>
+                                <td><%= requests.getReceiverName()%></td>
+                                <td>
+                                    <form action="${pageContext.request.contextPath}/friend-requests/cancel" method="post" class="d-inline">
+                                        <input type="hidden" name="receiverId" value="<%= requests.getReceiverId() %>" />
+                                        <button class="btn btn-sm btn-danger">
+                                            <i class="fa-solid fa-times me-1"></i>Cancel Request
                                         </button>
                                     </form>
                                 </td>
@@ -64,5 +115,6 @@
         }
     %>
 </div>
-
+    </div>
+   
 <%@ include file="Footer.jsp"%>

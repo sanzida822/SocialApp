@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.social.constants.RouteConstants;
 import com.social.dto.LoginRequestDto;
 import com.social.dto.RegistrationRequestDTO;
 import com.social.dto.UserDto;
@@ -29,9 +31,7 @@ public class AuthenticationServlet extends HttpServlet {
 	private static AuthenticationService authenticationService = AuthenticationService.getInstance();
 	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	public RegistrationRequestDTO registrationDto;
-	private static final String REGISTRATION="/auth/register";
-	private static final String LOGIN="/auth/login";
-	private static final String LOGOUT="/auth/logout";
+
 
 	public AuthenticationServlet() {
 		super();
@@ -40,18 +40,18 @@ public class AuthenticationServlet extends HttpServlet {
 	private static  Map<String, String> error_views = new HashMap<>();
 
 	static {
-		error_views.put(REGISTRATION, "/views/RegistraionForm.jsp");
-		error_views.put(LOGIN, "/views/LoginForm.jsp");
+		error_views.put(RouteConstants.REGISTRATION, "/views/RegistraionForm.jsp");
+		error_views.put(RouteConstants.LOGIN, "/views/LoginForm.jsp");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String servletPath = request.getServletPath();
-		if (servletPath.equals(REGISTRATION)) {
+		if (servletPath.equals(RouteConstants.REGISTRATION)) {
 			request.getRequestDispatcher("/views/RegistrationForm.jsp").forward(request, response);
-		} else if (servletPath.equals(LOGIN)) {
+		} else if (servletPath.equals(RouteConstants.LOGIN)) {
 			request.getRequestDispatcher("/views/LoginForm.jsp").forward(request, response);
-		} else if (servletPath.equals(LOGOUT)) {
+		} else if (servletPath.equals(RouteConstants.LOGOUT)) {
 			ProcessLogout(request, response);
 		}
 	}
@@ -61,10 +61,10 @@ public class AuthenticationServlet extends HttpServlet {
 		String servletPath = request.getServletPath();
 		try {
 			switch (servletPath) {
-			case REGISTRATION:
+			case RouteConstants.REGISTRATION:
 				processRegistration(request, response);
 				break;
-			case LOGIN:
+			case RouteConstants.LOGIN:
 				processLogin(request, response);
 				break;				
 			default:
@@ -95,7 +95,7 @@ public class AuthenticationServlet extends HttpServlet {
 			if (isRegistered) {
 				logger.info("Registered successfully for user: username:{},Email:{}", registrationDto.getUsername(),
 						registrationDto.getEmail());
-				response.sendRedirect(request.getContextPath() + LOGIN);
+				response.sendRedirect(request.getContextPath() + RouteConstants.LOGIN);
 			}else {
 			    logger.warn("Registration failed for user: username:{}, Email:{}", registrationDto.getUsername(), registrationDto.getEmail());
 			    request.setAttribute("globalError", MessageUtil.getMessage("error.registration.fail"));
@@ -141,7 +141,7 @@ public class AuthenticationServlet extends HttpServlet {
 			session.invalidate();
 			logger.info("user:{} session invalidated", email);
 		}
-		response.sendRedirect(request.getContextPath() + LOGIN);
+		response.sendRedirect(request.getContextPath() + RouteConstants.LOGIN);
 	}
 
 }

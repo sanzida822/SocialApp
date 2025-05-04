@@ -10,12 +10,11 @@ public class MessageUtil {
 	private static final Logger logger = LoggerFactory.getLogger(MessageUtil.class);
 	private static final Properties messageProperties = new Properties();
 	static {
-		try (InputStream messagePropertiesStream = AuthenticationValidator.class.getClassLoader()
-				.getResourceAsStream("messages.properties");) {
+		try (InputStream messagePropertiesStream = MessageUtil.class.getClassLoader()
+				.getResourceAsStream("messages.properties")) {
 			if (messagePropertiesStream != null) {
 				messageProperties.load(messagePropertiesStream);
 			}
-
 			else {
 				logger.error("messages.properties file not found");
 			}

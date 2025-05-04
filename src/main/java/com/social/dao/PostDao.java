@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import com.social.dto.PostDto;
 import com.social.mapper.PostMapper;
 import com.social.model.Post;
-import com.social.util.DBConnection;
+import com.social.config.DBConnection;
 
 public class PostDao {
 	private static final Logger logger=LoggerFactory.getLogger(PostDao.class);

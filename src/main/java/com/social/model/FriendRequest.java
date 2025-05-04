@@ -7,25 +7,25 @@ import com.social.enums.FriendRequestStatus;
 public class FriendRequest {
 	private int id;
 	private User senderId;
-	private User friendId;;
+	private User receiverId;;
 	private FriendRequestStatus friendRequestStatus;
 	private Timestamp createdAt;
 	
 	
 	
-	public FriendRequest(int id, User senderId, User friendId, FriendRequestStatus friendRequestStatus,
+	public FriendRequest(int id, User senderId, User receiverId, FriendRequestStatus friendRequestStatus,
 			Timestamp createdAt) {
 		super();
 		this.id = id;
 		this.senderId = senderId;
-		this.friendId = friendId;
+		this.receiverId = receiverId;
 		this.friendRequestStatus = friendRequestStatus;
 		this.createdAt = createdAt;
 	}
-	public FriendRequest(User senderId, User friendId, FriendRequestStatus friendRequestStatus) {
+	public FriendRequest(User senderId, User receiverId, FriendRequestStatus friendRequestStatus) {
 		super();
 		this.senderId = senderId;
-		this.friendId=friendId;	
+		this.receiverId=receiverId;	
 		this.friendRequestStatus = friendRequestStatus;
 	}
 	public int getId() {
@@ -41,11 +41,12 @@ public class FriendRequest {
 		this.senderId = senderId;
 	}
 	
-	public User getFriendId() {
-		return friendId;
+
+	public User getReceiverId() {
+		return receiverId;
 	}
-	public void setFriendId(User friendId) {
-		this.friendId = friendId;
+	public void setReceiverId(User receiverId) {
+		this.receiverId = receiverId;
 	}
 	public FriendRequestStatus getFriendRequestStatus() {
 		return friendRequestStatus;
@@ -61,10 +62,11 @@ public class FriendRequest {
 	}
 	@Override
 	public String toString() {
-		return "FriendRequest [id=" + id + ", senderId=" + senderId + ", friendId=" + friendId + ", friendRequestStatus="
-				+ friendRequestStatus + ", created_at=" + createdAt + "]";
+		return "FriendRequest [id=" + id + ", senderId=" + senderId + ", receiverId=" + receiverId
+				+ ", friendRequestStatus=" + friendRequestStatus + ", createdAt=" + createdAt + "]";
 	}
 
+	
 	
 	
 	

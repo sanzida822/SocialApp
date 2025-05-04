@@ -44,12 +44,38 @@ public class UserMapper {
 		return user;
 	}
 
-	public User toEntity(ResultSet rs) throws Exception {
-    	Image profileImage=imageMapper.toEntity(rs);
-		return new User(rs.getInt("u.id"), rs.getString("u.user_name"), rs.getString("u.user_email"),
-				rs.getString("u.password"), rs.getString("salt"), profileImage, rs.getTimestamp("u.created_at"),
-				rs.getTimestamp("u.updated_at"));
-	}
+
+//    public User toEntity(ResultSet rs) throws SQLException {
+//        return new User(
+//            rs.getInt("user_id"),                     
+//            rs.getString("user_name"),                 
+//            rs.getString("user_email"),                
+//            rs.getString("password"),                
+//            rs.getString("salt"),                       
+//            new Image(
+//                rs.getInt("image_id"),                 
+//                rs.getBytes("image_data"),              
+//                rs.getLong("image_size"),               
+//                rs.getTimestamp("image_created_at"),   
+//                rs.getTimestamp("image_updated_at")    
+//            ),
+//            rs.getTimestamp("user_created_at"),          
+//            rs.getTimestamp("user_updated_at")          
+//        );
+//    }
+    
+    public User toEntity(ResultSet rs) throws SQLException, Exception {
+    	Image profileImage=imageService.getImageById(rs.getInt("image_id"));
+    	return new User(rs.getInt("id"),
+    		rs.getString("user_name"),
+    		rs.getString("user_email"),
+    		rs.getString("password"),
+    		rs.getString("salt"),
+    		profileImage,
+    		rs.getTimestamp("created_at"),
+    		rs.getTimestamp("updated_at")
+    		);
+    }
 
 	public UserDto toDTO(User user) {
 		return new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getProfileImage().getId(),

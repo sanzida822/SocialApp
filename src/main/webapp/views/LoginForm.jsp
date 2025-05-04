@@ -57,8 +57,6 @@
 										class="form-control form-control-lg" /> <label
 										class="form-label" for="typePasswordX-2">Password</label>
 								</div>
-
-
 								<button data-mdb-button-init data-mdb-ripple-init
 									class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
 							</form>

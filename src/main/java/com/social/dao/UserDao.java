@@ -5,9 +5,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.social.config.DBConnection;
 import com.social.mapper.UserMapper;
 import com.social.model.User;
-import com.social.util.DBConnection;
+
 
 public class UserDao {
 	private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
@@ -53,9 +55,10 @@ public class UserDao {
 	}
 
 	public User findByEmail(String email) throws SQLException, Exception {
-		String sql="SELECT u.*, i.*	FROM users u"
-				+ "		INNER JOIN images i ON u.image_id = i.id"
-				+ "		WHERE u.user_email = ?";
+		String sql = "SELECT * from users where user_email=?";
+
+
+
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);
 		) {
@@ -72,13 +75,13 @@ public class UserDao {
 	}
 
 	public User findById(int id) throws Exception {
-		String sql="SELECT u.*, i.*	FROM users u"
-				+ "		INNER JOIN images i ON u.image_id = i.id"
-				+ "		WHERE u.id = ?";
+		String sql = "SELECT * from users where id=?";
+
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);
 
 		) {
+			logger.info("connection is:{}",connection);
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {

@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 import com.social.mapper.ImageMapper;
 import com.social.model.Image;
-import com.social.util.DBConnection;
+import com.social.config.DBConnection;
 
 public class ImageDao {
 	private static ImageDao imageDao;

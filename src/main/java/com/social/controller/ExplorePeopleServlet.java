@@ -13,8 +13,11 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.social.dto.FriendRequestViewDto;
+import com.social.dto.SentRequestsViewDto;
 import com.social.dto.UserDto;
 import com.social.service.ExplorePeopleService;
+import com.social.service.FriendRequestService;
 import com.social.util.CommonUtil;
 import com.social.util.MessageUtil;
 
@@ -26,8 +29,9 @@ public class ExplorePeopleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(ExplorePeopleServlet.class);
 	private static ExplorePeopleService explorePeopleService=ExplorePeopleService.getInstance();
+	public static FriendRequestService friendRequestService=FriendRequestService.getInstance();
 	private static CommonUtil commonUtil=CommonUtil.getInstance();
-	private static final String EXPLORE_PEOPLE="/user/explorePeople";
+	
     public ExplorePeopleServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -36,9 +40,12 @@ public class ExplorePeopleServlet extends HttpServlet {
 		UserDto loggedInUser=commonUtil.getUserFromSession(request);
         try {
 			List<UserDto> nonFriends=explorePeopleService.getUsersNotInFriends(loggedInUser.getId());
-			if(!commonUtil.isNullOrEmpty(nonFriends)) {
+			List<SentRequestsViewDto> sentedRequest=friendRequestService.getSentedRequest(loggedInUser.getId());
+			logger.info("Friend request list you have sent:{}",sentedRequest);
+			if(!commonUtil.isNullOrEmpty(nonFriends) || !commonUtil.isNullOrEmpty(sentedRequest)) {
 			    logger.info("User:{} has friends to explore:{}",loggedInUser.getId(),nonFriends);
 			    request.setAttribute("nonFriends", nonFriends);
+			    request.setAttribute("sentedRequests", sentedRequest); 
 			    request.getRequestDispatcher("/views/ExplorePeople.jsp").forward(request, response); 
 			}else {
 				logger.info("No new friends to explore");

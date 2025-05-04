@@ -5,8 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.social.dto.FriendRequestsDto;
+import com.social.dto.FriendshipDto;
 import com.social.enums.FriendRequestStatus;
+import com.social.enums.FriendshipStatus;
 import com.social.model.FriendRequest;
+import com.social.model.Friendship;
+import com.social.model.Friendship;
 import com.social.model.User;
 import com.social.service.UserService;
 
@@ -25,8 +29,12 @@ public class FriendMapper {
 	
 	public FriendRequest toEntity(FriendRequestsDto friendRequestDto) throws Exception {
 		User senderId=userService.getUserById(friendRequestDto.getSenderId());
-		User receiverId=userService.getUserById(friendRequestDto.getFriendId());
+		User receiverId=userService.getUserById(friendRequestDto.getReceiverId());
 		return new FriendRequest(senderId,receiverId,friendRequestDto.getFriendRequestStatus());
+	}
+	
+	public Friendship toEntity(FriendshipDto friendshipDto) {
+		return new Friendship(friendshipDto.getSenderId(), friendshipDto.getReceiverId(), friendshipDto.getStatus());
 	}
 	
 //	public FriendRequest toViewRequestEntity(ResultSet rs) throws SQLException, Exception {

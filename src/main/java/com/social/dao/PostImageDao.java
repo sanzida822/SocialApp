@@ -7,7 +7,7 @@ import java.sql.Statement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.social.util.DBConnection;
+import com.social.config.DBConnection;
 
 public class PostImageDao {
 	private static final Logger logger = LoggerFactory.getLogger(PostImageDao.class);

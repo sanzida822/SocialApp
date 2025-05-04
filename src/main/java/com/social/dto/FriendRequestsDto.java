@@ -5,14 +5,14 @@ import com.social.enums.FriendRequestStatus;
 public class FriendRequestsDto {
 	int id;
 	private int senderId;
-	private int friendId;
+	private int receiverId;
 	private FriendRequestStatus friendRequestStatus;
 	private String friendRequestSent;
 
-	public FriendRequestsDto(int senderId, int friendId, FriendRequestStatus friendRequestStatus) {
+	public FriendRequestsDto(int senderId, int receiverId, FriendRequestStatus friendRequestStatus) {
 		super();
 		this.senderId = senderId;
-		this.friendId = friendId;
+		this.receiverId = receiverId;
 		this.friendRequestStatus = friendRequestStatus;
 	}
 
@@ -32,12 +32,13 @@ public class FriendRequestsDto {
 		this.senderId = senderId;
 	}
 
-	public int getFriendId() {
-		return friendId;
+	
+	public int getReceiverId() {
+		return receiverId;
 	}
 
-	public void setFriendId(int friendId) {
-		this.friendId = friendId;
+	public void setReceiverId(int receiverId) {
+		this.receiverId = receiverId;
 	}
 
 	public FriendRequestStatus getFriendRequestStatus() {
@@ -58,8 +59,10 @@ public class FriendRequestsDto {
 
 	@Override
 	public String toString() {
-		return "FriendRequestsDto [id=" + id + ", senderId=" + senderId + ", friendId=" + friendId
+		return "FriendRequestsDto [id=" + id + ", senderId=" + senderId + ", receiverId=" + receiverId
 				+ ", friendRequestStatus=" + friendRequestStatus + ", friendRequestSent=" + friendRequestSent + "]";
 	}
+
+	
 
 }

@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.mysql.cj.Session;
+import com.social.constants.RouteConstants;
 import com.social.dto.UserDto;
 import com.social.model.User;
 import com.social.service.AuthenticationService;
@@ -26,7 +27,7 @@ public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(HomeServlet.class);
 	private static UserService userService=UserService.getInstance(); 
-	public static final String HOME="/user/home";
+
 	
     public HomeServlet() {
         super();
@@ -35,7 +36,7 @@ public class HomeServlet extends HttpServlet {
 		String servletPath=request.getServletPath();
 		try {
 			switch (servletPath) {
-			case HOME:
+			case RouteConstants.HOME:
 				request.getRequestDispatcher("/views/HomePage.jsp").forward(request, response);				
 				break;
 			default:

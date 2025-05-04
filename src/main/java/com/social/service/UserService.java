@@ -27,6 +27,7 @@ public class UserService {
 	
 	public UserDto getUserByEmail(String email) throws Exception {
 		User user = userDao.findByEmail(email);
+		logger.info("logged in user details:{}",user);
 		if (user != null) {
 			logger.warn("User found for email: {}", email);
 			return userMapper.toDTO(user);

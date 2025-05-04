@@ -8,10 +8,10 @@ import com.social.model.Image;
 public class FriendRequestViewDto {
 	private int requestId;
 	private String senderUsername;
-	private Image SenderProfileImage;
+	private byte[] SenderProfileImage;
 	private int senderId;
 	private Timestamp requestDate;
-	public FriendRequestViewDto(int requestId, String senderUsername, Image SenderProfileImage, int senderId,
+	public FriendRequestViewDto(int requestId, String senderUsername, byte[] SenderProfileImage, int senderId,
 			Timestamp timestamp) {
 		super();
 		this.requestId = requestId;
@@ -29,11 +29,12 @@ public class FriendRequestViewDto {
 	public String getSenderUsername() {
 		return senderUsername;
 	}
-	public Image getSenderProfileImage() {
+
+	public byte[] getSenderProfileImage() {
 		return SenderProfileImage;
 	}
-	public void setSenderProfileImage(Image profileImage) {
-		this.SenderProfileImage = profileImage;
+	public void setSenderProfileImage(byte[] senderProfileImage) {
+		SenderProfileImage = senderProfileImage;
 	}
 	public void setSenderUsername(String senderUsername) {
 		this.senderUsername = senderUsername;
@@ -53,9 +54,10 @@ public class FriendRequestViewDto {
 	}
 	@Override
 	public String toString() {
-		return "FriendRequestViewDto [requestId=" + requestId + ", senderUsername=" + senderUsername + ", profileImage="
-				+ SenderProfileImage + ", senderId=" + senderId + ", requestDate=" + requestDate + "]";
+		return "FriendRequestViewDto [requestId=" + requestId + ", senderUsername=" + senderUsername
+				+ ", SenderProfileImage=" + Arrays.toString(SenderProfileImage) + ", senderId=" + senderId
+				+ ", requestDate=" + requestDate + "]";
 	}
-	
+
 	
 }
