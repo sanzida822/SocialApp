@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.social.constants.RouteConstants;
+import com.social.dto.ImageDto;
 import com.social.dto.PostDto;
 import com.social.dto.UserDto;
 import com.social.enums.Privacy;
@@ -71,20 +72,21 @@ public class PostServlet extends HttpServlet {
 	}
 
 	public void addPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String email = (String) request.getSession(false).getAttribute("email");
+		UserDto loggedInUser=commonUtil.getUserFromSession(request);
 		logger.info("Request comes for inserting a post");
-		List<byte[]> postImages = new ArrayList<>();
+		List<ImageDto> images = new ArrayList<>();
 		Collection<Part> parts = request.getParts();
 		for (Part part : parts) {
 			if (part.getName().equals("images") && part.getSize() > 0) {
-				byte[] imageBytes = commonUtil.extractImageBytes(part);
-				postImages.add(imageBytes);
-
+		        byte[] imageBytes = commonUtil.extractImageBytes(part);
+		        String contentType = part.getContentType();
+		        long size = part.getSize();
+		        ImageDto imageDto=new ImageDto(imageBytes, size, contentType);
+		        images.add(imageDto);
 			}
 		}
 		Privacy privacy = commonUtil.toEnum(request.getParameter("privacy"));
-		UserDto user = userService.getUserByEmail(email);
-		postDto = new PostDto(user.getId(), request.getParameter("post_content"), privacy, postImages);
+		postDto = new PostDto(loggedInUser.getId(), request.getParameter("post_content"),privacy, images);
 		Map<String, String> errorMessages = postValidator.validate(postDto);
 		logger.error("Error messages for creating post:{}", errorMessages);
 		if (commonUtil.isEmpty(errorMessages)) {

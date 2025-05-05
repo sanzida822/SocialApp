@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.social.constants.Constants;
+import com.social.dto.ImageDto;
 import com.social.dto.PostDto;
 import com.social.util.CommonUtil;
 
@@ -26,25 +27,25 @@ public class PostValidator {
 
 	public Map<String, String> validate(PostDto postDto) {
 		LinkedHashMap<String, String> errorMessages = new LinkedHashMap<String, String>();
-		List<byte[]> images = postDto.getImages();
 
-		if (commonUtil.isNullOrEmpty(postDto.getContent()) && commonUtil.isNullOrEmpty(images)) {
+		if (commonUtil.isNullOrEmpty(postDto.getContent()) && commonUtil.isNullOrEmpty(postDto.getImages())) {
 			errorMessages.put("post", MessageUtil.getMessage("error.post.empty"));
 
 		} else {
 			if (postDto.getContent().length() > Constants.MAX_CONTENT_LENGTH) {
 				errorMessages.put("content", MessageUtil.getMessage("error.content.length"));
 			}
-
-			if (!images.isEmpty()) {
-				for (byte[] image : images) {
-					if (!commonUtil.isImageSizeValid(image)){
-						errorMessages.put("image", MessageUtil.getMessage("error.image.size"));
-						break;
-					}
-
+			for(ImageDto image:postDto.getImages()) {
+				if(!commonUtil.isValidImageType(image.getContentType())) {
+					errorMessages.put("imageType", MessageUtil.getMessage("error.image.type"));					
 				}
+		        if (image.getSize() > Constants.MAX_IMAGE_SIZE) {
+		            errorMessages.put("imageSize", MessageUtil.getMessage("error.image.size.exceed"));
+		        }
 			}
+
+
+		
 
 		}
 

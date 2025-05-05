@@ -1,5 +1,7 @@
 package com.social.model;
 
+import java.sql.Timestamp;
+
 import com.social.enums.FriendshipStatus;
 
 public class Friendship {
@@ -7,9 +9,11 @@ public class Friendship {
 	private int senderId;
 	private int receiverId;
 	private FriendshipStatus friendShipstatus;
-	private int createdAt;
+	private Timestamp createdAt;
 
-	public Friendship(int id, int senderId, int receiverId, FriendshipStatus friendShipstatus, int createdAt) {
+
+
+	public Friendship(int id, int senderId, int receiverId, FriendshipStatus friendShipstatus, Timestamp createdAt) {
 		super();
 		this.id = id;
 		this.senderId = senderId;
@@ -57,18 +61,12 @@ public class Friendship {
 		this.friendShipstatus = friendShipstatus;
 	}
 
-	public int getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(int createdAt) {
-		this.createdAt = createdAt;
-	}
-
 	@Override
 	public String toString() {
-		return "FriendShip [id=" + id + ", senderId=" + senderId + ", receiverId=" + receiverId + ", friendShipstatus="
+		return "Friendship [id=" + id + ", senderId=" + senderId + ", receiverId=" + receiverId + ", friendShipstatus="
 				+ friendShipstatus + ", createdAt=" + createdAt + "]";
 	}
+
+
 
 }

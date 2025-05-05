@@ -9,7 +9,6 @@ import com.social.util.LoadApplicationProperties;
 public class DBConnection {
 	private static final Logger logger = LoggerFactory.getLogger(DBConnection.class);
 	private static DBConnection instance;
-	private Connection connection;
 	String url = LoadApplicationProperties.getProperty("mysql.url");
 	String username = LoadApplicationProperties.getProperty("mysql.username");
 	String password = LoadApplicationProperties.getProperty("mysql.password");
@@ -19,7 +18,7 @@ public class DBConnection {
 		Class.forName(dbDriver);
 		try {
 			Class.forName(dbDriver);
-			this.connection = DriverManager.getConnection(url, username, password);
+			DriverManager.getConnection(url, username, password);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error("Exception occur when creating database connection");

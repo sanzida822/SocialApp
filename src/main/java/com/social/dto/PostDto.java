@@ -7,11 +7,11 @@ public class PostDto {
 	private int postedBy;
 	private String content;
 	private Privacy privacy;
-	private List<byte[]> images;
+	private List<ImageDto> images;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
 
-	public PostDto(int postedBy, String content, Privacy privacy, List<byte[]> images) {
+	public PostDto(int postedBy, String content, Privacy privacy, List<ImageDto> images) {
 		super();
 		this.postedBy = postedBy;
 		this.content = content;
@@ -43,14 +43,6 @@ public class PostDto {
 		this.privacy = privacy;
 	}
 
-	public List<byte[]> getImages() {
-		return images;
-	}
-
-	public void setImages(List<byte[]> images) {
-		this.images = images;
-	}
-
 	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
@@ -67,11 +59,20 @@ public class PostDto {
 		this.updatedAt = updatedAt;
 	}
 
+	public List<ImageDto> getImages() {
+		return images;
+	}
+
+	public void setImages(List<ImageDto> images) {
+		this.images = images;
+	}
+
 	@Override
 	public String toString() {
 		return "PostDto [postedBy=" + postedBy + ", content=" + content + ", privacy=" + privacy + ", images=" + images
 				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
+
 
 
 

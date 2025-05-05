@@ -28,37 +28,45 @@ public class CommonUtil {
 	public boolean isEmpty(Map<?, ?> map) {
 		return map == null || map.isEmpty();
 	}
+
 	public boolean isNullorEmpty(byte[] image) {
-		return image == null || image.length==0;
+		return image == null || image.length == 0;
 	}
-    public boolean isNullOrEmpty(List<?> list) {
-        return list == null || list.isEmpty();
-    }
+
+	public boolean isNullOrEmpty(List<?> list) {
+		return list == null || list.isEmpty();
+	}
 
 	public boolean isNullOrEmpty(String str) {
 		return str == null || str.trim().isEmpty();
 	}
 
 	public boolean isValidImageType(Part imagePart) {
-	    String type = imagePart.getContentType();
-	    return "image/jpeg".equalsIgnoreCase(type) || "image/jpg".equalsIgnoreCase(type);
+		String type = imagePart.getContentType();
+		return "image/jpeg".equalsIgnoreCase(type) || "image/jpg".equalsIgnoreCase(type);
 	}
+
+	public boolean isValidImageType(String contentType) {
+		return "image/jpeg".equals(contentType) || "image/jpg".equals(contentType);
+	}
+
 	public byte[] extractImageBytes(Part imagePart) throws IOException {
 		try (InputStream imageStream = imagePart.getInputStream()) {
-				return imageStream.readAllBytes();
+			return imageStream.readAllBytes();
 		}
 	}
+
 	public Privacy toEnum(String string) {
-	    return Privacy.valueOf(string.toUpperCase().replace(" ", "_"));
+		return Privacy.valueOf(string.toUpperCase().replace(" ", "_"));
 	}
-	
+
 	public UserDto getUserFromSession(HttpServletRequest request) {
-		HttpSession session=request.getSession();
-		  if (session != null) {
-	            return (UserDto) session.getAttribute("user");
-	        }
-		  return null;
-		
+		HttpSession session = request.getSession();
+		if (session != null) {
+			return (UserDto) session.getAttribute("user");
+		}
+		return null;
+
 	}
 
 	public boolean isValidEmail(String email) {
@@ -69,7 +77,7 @@ public class CommonUtil {
 		}
 		return EMAIL_PATTERN.matcher(email).matches();
 	}
-	
+
 	public boolean isImageSizeValid(byte[] image) {
 		return image.length < Constants.MAX_IMAGE_SIZE;
 	}

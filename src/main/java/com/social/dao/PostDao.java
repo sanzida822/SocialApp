@@ -50,6 +50,9 @@ public class PostDao {
 
 	}
 	
+	
+	
+	
 	public boolean deleteById(int id) throws SQLException, Exception {
 		String sql="delete * from posts where id=?";
 		try (Connection connection = DBConnection.getInstance().getConnection();

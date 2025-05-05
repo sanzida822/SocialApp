@@ -97,7 +97,6 @@ public class FriendsServlet extends HttpServlet {
 		boolean isSent = friendRequestService.addRequest(friendRequestDto);
 		if (isSent) {
 			logger.info("User1:{} sends request to user2:{}", senderId, receiverId);
-
 		} else {
 			logger.info("failed to send friend request:{}", isSent);
 		}
