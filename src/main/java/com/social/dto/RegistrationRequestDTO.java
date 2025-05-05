@@ -9,19 +9,20 @@ public class RegistrationRequestDTO {
 	private String email;
 	private String password;
 	private String confirmPassword;
-	private Part profileImagePart;
-	private byte[] profileImage;
+	private ImageDto imageDto;
+//	private Part profileImagePart;
+//	private byte[] profileImage;
 
 	public RegistrationRequestDTO() {}
 	public RegistrationRequestDTO(String username, String email, String password, String confirmPassword,
-			byte[] profileImage,Part profileImagePart) {
+			ImageDto imageDto) {
 		super();
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.confirmPassword = confirmPassword;
-		this.profileImage = profileImage;
-		this.profileImagePart=profileImagePart;
+		this.imageDto=imageDto;
+
 	}
 	
 	public String getUsername() {
@@ -55,27 +56,19 @@ public class RegistrationRequestDTO {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-
-	public byte[] getProfileImage() {
-		return profileImage;
+	public ImageDto getImageDto() {
+		return imageDto;
 	}
-
-	public Part getProfileImagePart() {
-		return profileImagePart;
-	}
-	public void setProfileImagePart(Part profileImagePart) {
-		this.profileImagePart = profileImagePart;
-	}
-	public void setProfileImage(byte[] profileImage) {
-		this.profileImage = profileImage;
+	public void setImageDto(ImageDto imageDto) {
+		this.imageDto = imageDto;
 	}
 	@Override
 	public String toString() {
 		return "RegistrationRequestDTO [username=" + username + ", email=" + email + ", password=" + password
-				+ ", confirmPassword=" + confirmPassword + ", profileImagePart=" + profileImagePart + ", profileImage="
-				+ Arrays.toString(profileImage) + "]";
+				+ ", confirmPassword=" + confirmPassword + ", imageDto=" + imageDto + "]";
 	}
 
+	
 
 
 }

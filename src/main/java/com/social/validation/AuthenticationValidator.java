@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.social.constants.Constants;
 import com.social.dto.LoginRequestDto;
 import com.social.dto.RegistrationRequestDTO;
 import com.social.dto.UserDto;
@@ -34,7 +36,7 @@ public class AuthenticationValidator {
 	}
 
 	public Map<String, String> validateRegistration(RegistrationRequestDTO registrationDto) throws Exception {
-		Map<String, String> errorMessages = new LinkedHashMap<>();	
+		Map<String, String> errorMessages = new LinkedHashMap<>();
 		if (commonUtil.isNullOrEmpty(registrationDto.getUsername())) {
 			errorMessages.put("username", MessageUtil.getMessage("error.username.required"));
 		} else if (registrationDto.getUsername().length() < 5 || registrationDto.getUsername().length() > 30) {
@@ -47,14 +49,14 @@ public class AuthenticationValidator {
 		} else if (userService.getUserByEmail(registrationDto.getEmail()) != null) {
 			errorMessages.put("email", MessageUtil.getMessage("error.email.duplicate"));
 		}
-		if(commonUtil.isNullorEmpty(registrationDto.getProfileImage())) {
+		if (registrationDto.getImageDto() == null
+				|| commonUtil.isNullorEmpty(registrationDto.getImageDto().getData())) {
 			errorMessages.put("image", MessageUtil.getMessage("error.image.required"));
-		}else if(!commonUtil.isValidImageType(registrationDto.getProfileImagePart())) {
+		} else if (!commonUtil.isValidImageType(registrationDto.getImageDto().getContentType())) {
 			errorMessages.put("image", MessageUtil.getMessage("error.image.type"));
-		}		
-		else if(!commonUtil.isImageSizeValid(registrationDto.getProfileImage())) {
+		} else if (registrationDto.getImageDto().getSize() > Constants.MAX_IMAGE_SIZE) {
 			errorMessages.put("image", MessageUtil.getMessage("error.image.size"));
-		}	
+		}
 		if (commonUtil.isNullOrEmpty(registrationDto.getPassword())) {
 			errorMessages.put("password", MessageUtil.getMessage("error.password.required"));
 		} else if (registrationDto.getPassword().length() < 6 || registrationDto.getPassword().length() > 12) {

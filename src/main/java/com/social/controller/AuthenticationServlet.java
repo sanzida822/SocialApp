@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.social.constants.RouteConstants;
+import com.social.dto.ImageDto;
 import com.social.dto.LoginRequestDto;
 import com.social.dto.RegistrationRequestDTO;
 import com.social.dto.UserDto;
@@ -73,19 +74,24 @@ public class AuthenticationServlet extends HttpServlet {
 		}
 		catch(Exception e) {
 			logger.error("Exception occurred while processing request at {}, e:{}", servletPath, e);
-			String view=error_views.getOrDefault(servletPath,"/views/ErrorPage.jsp");
+			String Errorview=error_views.getOrDefault(servletPath,"/views/ErrorPage.jsp");
 	        request.setAttribute("globalError", MessageUtil.getMessage("error.global.unexpected"));
-	        request.getRequestDispatcher(view).forward(request, response);
+	        request.getRequestDispatcher(Errorview).forward(request, response);
 		}
 	}
 
 	public void processRegistration(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Part imagePart = request.getPart("image");	
+		ImageDto image=null;
 		logger.info("Registration request for username:{}, Email:{}, File size: {}", request.getParameter("username"),
 				request.getParameter("email"), imagePart.getSize());
-		byte[] imageBytes = commonUtil.extractImageBytes(imagePart);
+		 if (imagePart != null && imagePart.getSize() > 0) {
+				byte[] imageBytes = commonUtil.extractImageBytes(imagePart);			
+				image=new ImageDto(imageBytes, imagePart.getSize(), imagePart.getContentType());	 
+			 
+		 }
 		registrationDto = new RegistrationRequestDTO(request.getParameter("username"), request.getParameter("email"),
-				request.getParameter("password"), request.getParameter("confirm_password"), imageBytes,imagePart);
+				request.getParameter("password"), request.getParameter("confirm_password"), image);
 		Map<String, String> errorMessages = authenticationValidator.validateRegistration(registrationDto);
 		logger.info("error messages for validation of user:{} and error messages is:{}", registrationDto.getEmail(),
 				errorMessages);
