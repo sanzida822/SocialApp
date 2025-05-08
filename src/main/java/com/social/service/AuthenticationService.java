@@ -26,7 +26,7 @@ public class AuthenticationService {
 	}	
 	
 	public boolean register(RegistrationRequestDTO registrationDto) throws Exception {
-		int imageId=imageService.saveAndgetId(registrationDto.getProfileImage());
+		int imageId=imageService.saveAndgetId(registrationDto.getImageDto());
 		Image image=imageService.getImageById(imageId);
 		logger.info("image id for profile image:{}, and the image object:{}",imageId,image);
 		User user = userMapper.toEntity(registrationDto,image);

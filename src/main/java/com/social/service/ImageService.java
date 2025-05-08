@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.social.dao.ImageDao;
+import com.social.dto.ImageDto;
 import com.social.exception.CustomException;
 import com.social.exception.CustomException.ImageNotFoundException;
 import com.social.mapper.ImageMapper;
@@ -25,8 +26,8 @@ public class ImageService {
 		return imageService;
 	}
 	
-	public int saveAndgetId(byte[] imageBytes) throws SQLException, Exception {
-		Image image=imageMapper.toEntity(imageBytes);
+	public int saveAndgetId(ImageDto imageDto) throws SQLException, Exception {
+		Image image=imageMapper.toEntity(imageDto);
 		return imageDao.saveAndReturnId(image);
 	}
 	

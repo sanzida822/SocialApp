@@ -6,12 +6,15 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.social.dao.ImageDao;
 import com.social.dao.PostDao;
 import com.social.dao.PostImageDao;
+import com.social.dto.ImageDto;
 import com.social.dto.PostDto;
 import com.social.exception.CustomException.ImageInsertionFailedException;
 import com.social.exception.CustomException.PostImageInsertionFailedException;
 import com.social.mapper.PostMapper;
+import com.social.model.Image;
 import com.social.model.Post;
 import com.social.util.CommonUtil;
 import com.social.util.MessageUtil;
@@ -24,6 +27,7 @@ public class PostService {
 	private static ImageService imageService = ImageService.getInstance();
 	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	private static PostImageDao postImageDao = PostImageDao.getInstance();
+	private static ImageDao imageDao=ImageDao.getInstance();
 
 	private PostService() {
 	}
@@ -45,8 +49,8 @@ public class PostService {
 		List<Integer> savedImagesId = new ArrayList<Integer>();
 		if (!commonUtil.isNullOrEmpty(postDto.getImages())) {
 			try {
-				for (byte[] imageByte : postDto.getImages()) {
-					int imageId = imageService.saveAndgetId(imageByte);
+				for (ImageDto imageDto : postDto.getImages()) {
+					int imageId = imageService.saveAndgetId(imageDto);
 					if (imageId < 1) {
 						throw new ImageInsertionFailedException(MessageUtil.getMessage("error.image.insert"));
 					}
@@ -61,8 +65,8 @@ public class PostService {
 			} catch (Exception e) {
 				logger.error("Failure saving images or post with image id, rolling back manually");
 				postDao.deleteById(postId);
-				for (int imgId : savedImagesId) {
-					imageService.deleteImagebyId(imgId);
+				for (int imageId : savedImagesId) {
+					imageService.deleteImagebyId(imageId);
 				}
 				return false;
 
@@ -70,5 +74,18 @@ public class PostService {
 		}
 		return true;   	
 	}
+	
+	
+	List <Post> getPostDtosWithImages(int loggedInUserId) throws Exception{
+		List<Post> visiblePosts= postDao.getPostForUser(loggedInUserId);
+		for(Post post:visiblePosts ) {
+			List<Image> images=imageDao.
+			
+	
+			
+		}
+	}
+	
+
 
 }

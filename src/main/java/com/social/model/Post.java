@@ -18,6 +18,16 @@ public class Post {
 		this.content = content;
 		this.privacy = privacy;
 	}
+	
+	public Post(int id,User postedBy, String content, Privacy privacy, Timestamp createdAt, Timestamp updated_at) {
+		super();
+		this.id=id;
+		this.postedBy = postedBy;
+		this.content = content;
+		this.privacy = privacy;
+		this.created_at=createdAt;
+		this.updated_at=updated_at;
+	}
 
 	public int getId() {
 		return id;

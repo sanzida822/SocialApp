@@ -9,7 +9,6 @@ public class Image {
 	private long sizeBytes;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;
-	
 
 	public Image(byte[] data, long sizeBytes) {
 		super();
@@ -42,7 +41,6 @@ public class Image {
 		this.data = data;
 	}
 
-
 	public long getSizeBytes() {
 		return sizeBytes;
 	}
@@ -58,7 +56,6 @@ public class Image {
 	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
-	
 
 	public Timestamp getUpdatedAt() {
 		return updatedAt;
@@ -73,7 +70,5 @@ public class Image {
 		return "Image [id=" + id + ", data=" + Arrays.toString(data) + ", sizeBytes=" + sizeBytes + ", createdAt="
 				+ createdAt + ", updatedAt=" + updatedAt + "]";
 	}
-
-
 
 }

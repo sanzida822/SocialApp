@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.social.mapper.ImageMapper;
 import com.social.model.Image;
@@ -66,4 +68,19 @@ public class ImageDao {
 		return null;
 	}
 	
+	List<Image> getImagesByPostId(int postId) throws ClassNotFoundException, SQLException{
+		List<Image> imageList = new ArrayList<>();
+		String sql="select * from images where id in(select image_id from post_images where post_id=?)";
+		try (Connection connection = DBConnection.getInstance().getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql))
+		{
+			ps.setInt(1, postId);
+			ResultSet rs=ps.executeQuery();
+			  while (rs.next()) {
+				  Image image=ImageMapper.getInstance().toEntity(rs);
+				  imageList.add(image);				  
+			  }			
+		}		
+		return imageList;		
+	}
 }

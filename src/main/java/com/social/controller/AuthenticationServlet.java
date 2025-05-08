@@ -106,12 +106,10 @@ public class AuthenticationServlet extends HttpServlet {
 			    logger.warn("Registration failed for user: username:{}, Email:{}", registrationDto.getUsername(), registrationDto.getEmail());
 			    request.setAttribute("globalError", MessageUtil.getMessage("error.registration.fail"));
 			    request.getRequestDispatcher("/views/RegistrationForm.jsp").forward(request, response);
-
 			}				
 		} else {
 			request.setAttribute("errorMessages", errorMessages);
 			request.getRequestDispatcher("/views/RegistrationForm.jsp").forward(request, response);
-
 		}
 	}
 
@@ -149,5 +147,4 @@ public class AuthenticationServlet extends HttpServlet {
 		}
 		response.sendRedirect(request.getContextPath() + RouteConstants.LOGIN);
 	}
-
 }

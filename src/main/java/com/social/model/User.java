@@ -25,6 +25,13 @@ public class User {
 		this.updatedAt = updatedAt;
 	}
 
+	public User(int id, String username, String email) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.email = email;
+	}
+
 	public User(String username, String email, String password, String salt, Image profileImage) {
 		super();
 		this.username = username;
