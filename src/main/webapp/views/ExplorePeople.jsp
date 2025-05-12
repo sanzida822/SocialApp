@@ -46,7 +46,7 @@
                             <tr>
                                 <td><%= nonFriend.getUsername() %></td>
                                 <td>
-                                    <form action="${pageContext.request.contextPath}/friend-requests/send" method="post" class="d-inline">
+                                    <form action="${pageContext.request.contextPath}/friend-request/send" method="post" class="d-inline">
                                         <input type="hidden" name="receiverId" value="<%= nonFriend.getId() %>" />
                                         <button class="btn btn-sm btn-success">
                                             <i class="fa-solid fa-user-plus me-2"></i>Send Request
@@ -94,7 +94,7 @@
                             <tr>
                                 <td><%= requests.getReceiverName()%></td>
                                 <td>
-                                    <form action="${pageContext.request.contextPath}/friend-requests/cancel" method="post" class="d-inline">
+                                    <form action="${pageContext.request.contextPath}/friend-request/cancel" method="post" class="d-inline">
                                         <input type="hidden" name="receiverId" value="<%= requests.getReceiverId() %>" />
                                         <button class="btn btn-sm btn-danger">
                                             <i class="fa-solid fa-times me-1"></i>Cancel Request

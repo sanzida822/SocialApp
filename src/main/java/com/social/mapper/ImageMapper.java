@@ -19,13 +19,21 @@ public class ImageMapper {
 		}
 		return imageMapper;
 	}
-	
+
 	public Image toEntity(ImageDto imageDto) {
-		return new Image(imageDto.getData(), (int)imageDto.getData().length);
+		return new Image(imageDto.getData(), (int) imageDto.getData().length);
 	}
+
 	public Image toEntity(ResultSet rs) throws SQLException {
-		return new Image(rs.getInt("id"),rs.getBytes("data"), rs.getLong("size_bytes"), rs.getTimestamp("created_at"),
-		        rs.getTimestamp("updated_at"));
+		return new Image(rs.getInt("id"), rs.getBytes("data"), rs.getLong("size_bytes"), rs.getTimestamp("created_at"),
+				rs.getTimestamp("updated_at"));
+	}
+
+	public ImageDto toDto(Image image) {
+		ImageDto imageDto= new ImageDto();
+        imageDto.setId(image.getId());
+		imageDto.setData(image.getData());		
+		return imageDto;
 	}
 
 }

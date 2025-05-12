@@ -4,8 +4,6 @@ import java.sql.DriverManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.social.util.LoadApplicationProperties;
-
 public class DBConnection {
 	private static final Logger logger = LoggerFactory.getLogger(DBConnection.class);
 	private static DBConnection instance;

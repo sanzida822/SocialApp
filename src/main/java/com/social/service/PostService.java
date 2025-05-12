@@ -13,6 +13,7 @@ import com.social.dto.ImageDto;
 import com.social.dto.PostDto;
 import com.social.exception.CustomException.ImageInsertionFailedException;
 import com.social.exception.CustomException.PostImageInsertionFailedException;
+import com.social.mapper.ImageMapper;
 import com.social.mapper.PostMapper;
 import com.social.model.Image;
 import com.social.model.Post;
@@ -27,7 +28,8 @@ public class PostService {
 	private static ImageService imageService = ImageService.getInstance();
 	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	private static PostImageDao postImageDao = PostImageDao.getInstance();
-	private static ImageDao imageDao=ImageDao.getInstance();
+	private static ImageDao imageDao = ImageDao.getInstance();
+	private static ImageMapper imageMapper = ImageMapper.getInstance();
 
 	private PostService() {
 	}
@@ -69,23 +71,28 @@ public class PostService {
 					imageService.deleteImagebyId(imageId);
 				}
 				return false;
-
 			}
 		}
-		return true;   	
+		return true;
 	}
-	
-	
-	List <Post> getPostDtosWithImages(int loggedInUserId) throws Exception{
-		List<Post> visiblePosts= postDao.getPostForUser(loggedInUserId);
-		for(Post post:visiblePosts ) {
-			List<Image> images=imageDao.
-			
-	
-			
-		}
-	}
-	
 
+	public List<PostDto> getPostDtosWithImages(int loggedInUserId) throws Exception {
+		List<Post> visiblePosts = postDao.getVisiblePostForUser(loggedInUserId);
+		List<PostDto> postDtos = new ArrayList<>();
+		for (Post post : visiblePosts) {
+			List<Image> images = imageDao.getImagesByPostId(post.getId());
+			List<ImageDto> imageDtos = new ArrayList<>();
+			for (Image image : images) {
+				ImageDto imageDto = imageMapper.toDto(image);
+				imageDtos.add(imageDto);
+
+			}
+			PostDto postDto = postMapper.toDto(post, imageDtos);
+			postDtos.add(postDto);
+			logger.info("postDtos are :{}", postDto);
+		}
+		return postDtos;
+
+	}
 
 }

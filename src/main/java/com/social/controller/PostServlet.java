@@ -17,8 +17,6 @@ import javax.servlet.http.Part;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.social.constants.RouteConstants;
 import com.social.dto.ImageDto;
 import com.social.dto.PostDto;
 import com.social.dto.UserDto;
@@ -38,7 +36,7 @@ public class PostServlet extends HttpServlet {
 	private static UserService userService = UserService.getInstance();
 	private static PostValidator postValidator = PostValidator.getInstance();
 	private static PostService postService = PostService.getInstance();
-	private PostDto postDto;
+	public static final String ADD_POST = "/add/post";
 
 	public PostServlet() {
 		super();
@@ -56,7 +54,7 @@ public class PostServlet extends HttpServlet {
 		String servletPath = request.getServletPath();
 		try {
 			switch (servletPath) {
-			case RouteConstants.ADD_POST:
+			case ADD_POST:
 				addPost(request, response);
 				break;
 
@@ -67,13 +65,12 @@ public class PostServlet extends HttpServlet {
 		} catch (Exception e) {
 			logger.error("Exception occurs when adding post:{}, e:", e.getMessage(), e);
 	        request.setAttribute("globalError", MessageUtil.getMessage("error.global.unexpected"));
-	        request.getRequestDispatcher(RouteConstants.HOME).forward(request, response);
+	        request.getRequestDispatcher(HomeServlet.HOME).forward(request, response);
 		}
 	}
 
 	public void addPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		UserDto loggedInUser=commonUtil.getUserFromSession(request);
-		logger.info("Request comes for inserting a post");
 		List<ImageDto> images = new ArrayList<>();
 		Collection<Part> parts = request.getParts();
 		for (Part part : parts) {
@@ -86,25 +83,25 @@ public class PostServlet extends HttpServlet {
 			}
 		}
 		Privacy privacy = commonUtil.toEnum(request.getParameter("privacy"));
-		postDto = new PostDto(loggedInUser.getId(), request.getParameter("post_content"),privacy, images);
+		PostDto postDto = new PostDto(loggedInUser.getId(), request.getParameter("post_content"),privacy, images);
 		Map<String, String> errorMessages = postValidator.validate(postDto);
 		logger.error("Error messages for creating post:{}", errorMessages);
 		if (commonUtil.isEmpty(errorMessages)) {
 			boolean isSaved = postService.save(postDto);
 			if (isSaved) {
 				logger.info("post is saved successfully:{}", postDto);
-				response.sendRedirect(request.getContextPath()+ RouteConstants.HOME);
+				response.sendRedirect(request.getContextPath()+ HomeServlet.HOME);
 				return;
 			} else {
 				logger.error("Failed to save post: {}", postDto);
 				request.setAttribute("globalError", MessageUtil.getMessage("error.post.create"));
-				request.getRequestDispatcher(RouteConstants.HOME).forward(request, response);
+				request.getRequestDispatcher(HomeServlet.HOME).forward(request, response);
 			}
 
 		}
 		request.setAttribute("errorMessages", errorMessages);
-		request.getRequestDispatcher(RouteConstants.HOME).forward(request, response);
-
+		request.getRequestDispatcher(HomeServlet.HOME).forward(request, response);
 	}
+	
 
 }

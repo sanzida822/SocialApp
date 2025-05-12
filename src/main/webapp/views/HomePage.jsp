@@ -1,9 +1,14 @@
+<%@page import="com.social.dto.PostDto"%>
+
 <%@page import="com.social.model.User"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="true"%>
 <%@ include file="Header.jsp"%>
 <%@ include file="Navbar.jsp"%>
-
+<%
+List<PostDto> postDtos= (List<PostDto>)request.getAttribute("postList");
+%>
 
 
 <div class="container mt-5">
@@ -40,14 +45,18 @@
 	<div class="row justify-content-center mt-5">
 		<div class="col-md-8">
 			<!-- Post Card -->
+			<% for(PostDto post: postDtos){%>
+
+				
+	
 			<div class="card mb-4 shadow-sm">
 				<div
 					class="card-header d-flex justify-content-between align-items-center">
 					<div>
 						<h5 class="mb-0">
-							Sanzida Sultana <span class="post-privacy">public</span>
+						<%= post.getName() %> <span style="color: RebeccaPurple" class="post-privacy"><%= post.getPrivacy().toString().toLowerCase() %></span>
 						</h5>
-						<small class="text-muted">April 24, 2025</small>
+						<small class="text-muted"><%=post.getCreatedAt() %></small>
 					</div>
 					<div>
 						<button class="btn btn-sm btn-outline-secondary me-2" title="Edit">
@@ -60,7 +69,7 @@
 				</div>
 
 				<div class="card-body">
-					<p>You can write your thoughts here!</p>
+					<p><%= post.getContent() %>></p>
 
 					<!-- Image Carousel -->
 					<div id="carouselExampleControls" class="carousel slide"
@@ -88,6 +97,8 @@
 					</div>
 				</div>
 			</div>
+			
+				<%} %>
 			<!-- End Post Card -->
 
 			<!-- You can copy and paste the above card to add more posts dynamically -->

@@ -47,7 +47,7 @@ CommonUtil commonUtil = CommonUtil.getInstance();
 								<td>
 									<div class="d-flex gap-2">
 										<form
-											action="${pageContext.request.contextPath}/friend-requests/accept"
+											action="${pageContext.request.contextPath}/friend-request/accept"
 											method="post">
 											<input type="hidden" name="senderId"
 												value="<%=friendRequest.getSenderId()%>" />
@@ -56,7 +56,7 @@ CommonUtil commonUtil = CommonUtil.getInstance();
 											</button>
 										</form>
 										<form
-											action="${pageContext.request.contextPath}/friend-requests/decline"
+											action="${pageContext.request.contextPath}/friend-request/decline"
 											method="post">
 											<input type="hidden" name="senderId"
 												value="<%=friendRequest.getSenderId()%>" />

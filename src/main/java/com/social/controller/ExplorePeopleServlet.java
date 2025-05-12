@@ -31,6 +31,7 @@ public class ExplorePeopleServlet extends HttpServlet {
 	private static ExplorePeopleService explorePeopleService=ExplorePeopleService.getInstance();
 	public static FriendRequestService friendRequestService=FriendRequestService.getInstance();
 	private static CommonUtil commonUtil=CommonUtil.getInstance();
+	//
 	
     public ExplorePeopleServlet() {
         super();

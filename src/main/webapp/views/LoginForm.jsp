@@ -60,11 +60,14 @@
 								<button data-mdb-button-init data-mdb-ripple-init
 									class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
 							</form>
+									<p>Don't have an account? <a href="${pageContext.request.contextPath}/auth/register">Register here</a></p>
+							
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 	</section>
 </body>
 </html>

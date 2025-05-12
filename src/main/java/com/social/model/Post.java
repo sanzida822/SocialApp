@@ -9,8 +9,8 @@ public class Post {
 	private User postedBy;
 	private String content;
 	private Privacy privacy;
-	private Timestamp created_at;
-	private Timestamp updated_at;
+	private Timestamp createdAt;
+	private Timestamp updatedAt;
 
 	public Post(User postedBy, String content, Privacy privacy) {
 		super();
@@ -19,14 +19,14 @@ public class Post {
 		this.privacy = privacy;
 	}
 	
-	public Post(int id,User postedBy, String content, Privacy privacy, Timestamp createdAt, Timestamp updated_at) {
+	public Post(int id,User postedBy, String content, Privacy privacy, Timestamp createdAt, Timestamp updatedAt) {
 		super();
 		this.id=id;
 		this.postedBy = postedBy;
 		this.content = content;
 		this.privacy = privacy;
-		this.created_at=createdAt;
-		this.updated_at=updated_at;
+		this.createdAt=createdAt;
+		this.updatedAt=updatedAt;
 	}
 
 	public int getId() {
@@ -61,26 +61,28 @@ public class Post {
 		this.privacy = privacy;
 	}
 
-	public Timestamp getCreated_at() {
-		return created_at;
+	public Timestamp getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreated_at(Timestamp created_at) {
-		this.created_at = created_at;
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
 	}
 
-	public Timestamp getUpdated_at() {
-		return updated_at;
+	public Timestamp getUpdatedAt() {
+		return updatedAt;
 	}
 
-	public void setUpdated_at(Timestamp updated_at) {
-		this.updated_at = updated_at;
+	public void setUpdatedAt(Timestamp updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", postedBy=" + postedBy + ", content=" + content + ", privacy=" + privacy
-				+ ", created_at=" + created_at + ", updated_at=" + updated_at + "]";
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
+
+
 
 }

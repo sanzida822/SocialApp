@@ -124,20 +124,7 @@ public class FriendRequestDao {
 			return rowsAffected > 0;
 		}
 	}
-	
-//	public boolean cancelRequest(FriendRequest friendRequest) throws SQLException, Exception {
-//		String sql = "Insert into friend_requests (sender_id,receiver_id,status) values(?,?,?)";
-//		try (Connection connection = DBConnection.getInstance().getConnection();
-//				PreparedStatement ps = connection.prepareStatement(sql);) {
-//			ps.setInt(1, friendRequest.getSenderId().getId());
-//			ps.setInt(2, friendRequest.getReceiverId().getId());
-//			ps.setString(3, friendRequest.getFriendRequestStatus().name());
-//			int rowsAffected = ps.executeUpdate();
-//			return rowsAffected > 0;
-//		}
-//	}
-	
-	
+
 	public boolean cancelRequest(int senderId,int receiverId) throws ClassNotFoundException, SQLException {
 		String sql="delete from friend_requests fr where sender_id=? and receiver_id=?";
 		try (Connection connection = DBConnection.getInstance().getConnection();

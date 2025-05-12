@@ -1,7 +1,5 @@
 @charset "UTF-8";
 .post-privacy{
-  font-size: 0.675em; 
-  
-  
-  color: blue;
+ font-size: 0.675em; 
+ color: rgb(255, 128, 128) !important;
 }

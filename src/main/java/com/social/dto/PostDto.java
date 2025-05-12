@@ -5,6 +5,7 @@ import com.social.enums.Privacy;
 
 public class PostDto {
 	private int postedBy;
+	private String name;
 	private String content;
 	private Privacy privacy;
 	private List<ImageDto> images;
@@ -12,15 +13,33 @@ public class PostDto {
 	private Timestamp updatedAt;
 
 	public PostDto(int postedBy, String content, Privacy privacy, List<ImageDto> images) {
-		super();
-		this.postedBy = postedBy;
+		super();	this.postedBy = postedBy;
 		this.content = content;
 		this.privacy = privacy;
 		this.images = images;
 	}
+	
+	public PostDto(int postedBy,String name, String content, Privacy privacy, List<ImageDto> images, Timestamp createdAt, Timestamp updatedAt) {
+		super();
+		this.postedBy = postedBy;
+		this.name=name;
+		this.content = content;
+		this.privacy = privacy;
+		this.images = images;
+		this.createdAt=createdAt;
+		this.updatedAt=updatedAt;
+	}
 
 	public int getPostedBy() {
 		return postedBy;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void setPostedBy(int postedBy) {
@@ -69,9 +88,10 @@ public class PostDto {
 
 	@Override
 	public String toString() {
-		return "PostDto [postedBy=" + postedBy + ", content=" + content + ", privacy=" + privacy + ", images=" + images
-				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+		return "PostDto [postedBy=" + postedBy + ", name=" + name + ", content=" + content + ", privacy=" + privacy
+				+ ", images=" + images + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
+
 
 
 

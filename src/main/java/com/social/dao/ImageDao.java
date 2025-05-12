@@ -68,7 +68,7 @@ public class ImageDao {
 		return null;
 	}
 	
-	List<Image> getImagesByPostId(int postId) throws ClassNotFoundException, SQLException{
+	public List<Image> getImagesByPostId(int postId) throws ClassNotFoundException, SQLException{
 		List<Image> imageList = new ArrayList<>();
 		String sql="select * from images where id in(select image_id from post_images where post_id=?)";
 		try (Connection connection = DBConnection.getInstance().getConnection();

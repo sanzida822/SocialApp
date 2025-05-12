@@ -30,7 +30,7 @@ UserDto user=(UserDto)session.getAttribute("user");
 					href="${pageContext.request.contextPath}/user/explorePeople">Explore People</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="${pageContext.request.contextPath}/views/friends.jsp">Friends</a>
+					href="${pageContext.request.contextPath}/views/Friends.jsp">Friends</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
 					href="${pageContext.request.contextPath}/friend-request/view">Friend

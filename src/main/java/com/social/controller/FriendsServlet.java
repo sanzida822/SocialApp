@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.social.constants.RouteConstants;
 import com.social.dto.FriendRequestViewDto;
 import com.social.dto.FriendRequestsDto;
 import com.social.dto.FriendshipDto;
@@ -29,14 +27,20 @@ import com.social.util.MessageUtil;
 /**
  * Servlet implementation class FriendsServlet
  */
-@WebServlet(urlPatterns = { "/friend-requests/send", "/friend-request/view", "/friend-requests/cancel",
-		"/friend-requests/decline", "/friend-requests/accept" })
+@WebServlet(urlPatterns = { "/friend-request/send", "/friend-request/view", "/friend-request/cancel",
+		"/friend-request/decline", "/friend-request/accept" })
 public class FriendsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(FriendsServlet.class);
 	private static FriendRequestService friendRequestService = FriendRequestService.getInstance();
 	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	private static FriendsService friendService = FriendsService.getInstance();
+	public static final String EXPLORE_PEOPLE="/user/explorePeople";
+	public static final String SEND_REQUEST = "/friend-request/send";
+	public static final String VIEW_REQUEST = "/friend-request/view";
+	public static final String CANCEL_REQUEST = "/friend-request/cancel";
+	public static final String DECLINE_REQUEST="/friend-request/decline";
+	public static final String ACCEPT_REQUEST="/friend-request/accept";
 
 	public FriendsServlet() {
 		super();
@@ -48,7 +52,7 @@ public class FriendsServlet extends HttpServlet {
 		String servletPath = request.getServletPath();
 		try {
 			switch (servletPath) {
-			case RouteConstants.VIEW_REQUEST:
+			case VIEW_REQUEST:
 				viewRequest(request, response);
 				break;
 
@@ -64,20 +68,18 @@ public class FriendsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String servletPath = request.getServletPath();
-		logger.info(">>> doPost() triggered. servletPath: {}", servletPath);
-
 		try {
 			switch (servletPath) {
-			case RouteConstants.SEND_REQUEST:
+			case SEND_REQUEST:
 				sendRequest(request, response);
 				break;
-			case RouteConstants.CANCEL_REQUEST:
+			case CANCEL_REQUEST:
 				cancelRequest(request, response);
 				break;
-			case RouteConstants.DECLINE_REQUEST:
+			case DECLINE_REQUEST:
 				declineReceivedRequest(request, response);
 				break;
-			case RouteConstants.ACCEPT_REQUEST:
+			case ACCEPT_REQUEST:
 				acceptFriendRequest(request, response);
 				break;
 			default:
@@ -125,7 +127,7 @@ public class FriendsServlet extends HttpServlet {
 		boolean isCancelled = friendRequestService.cancelRequest(loggedInUser.getId(), receiverId);
 		if (isCancelled) {
 			logger.info("sender:{} cancelled friend request to receiver:{}", loggedInUser.getUsername(), receiverId);
-			response.sendRedirect(request.getContextPath() + RouteConstants.EXPLORE_PEOPLE);
+			response.sendRedirect(request.getContextPath() + EXPLORE_PEOPLE);
 		} else {
 			logger.error("Error occured while processing cancel friend request");
 		}
@@ -138,7 +140,7 @@ public class FriendsServlet extends HttpServlet {
 		boolean isCancelled = friendService.declineReceivedRequest(loggedInUser.getId(), senderId);
 		if (isCancelled) {
 			logger.info("user:{} decline friend request of user:{}", loggedInUser.getUsername(), senderId);
-			response.sendRedirect(request.getContextPath() + RouteConstants.VIEW_REQUEST);
+			response.sendRedirect(request.getContextPath() + VIEW_REQUEST);
 		} else {
 			logger.error("Error occured while processing cancel friend request");
 		}
@@ -155,7 +157,7 @@ public class FriendsServlet extends HttpServlet {
 		logger.info("accept request:{}", isAccepted);
 		if (isAccepted) {
 			logger.info("accepted friend request");
-			response.sendRedirect(request.getContextPath() + RouteConstants.VIEW_REQUEST);
+			response.sendRedirect(request.getContextPath() + VIEW_REQUEST);
 		} else {
 			logger.error("Error occured while processing accept friend request");
 		}

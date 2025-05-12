@@ -1,6 +1,4 @@
 package com.social.dao;
-
-import java.lang.System.LoggerFinder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,9 +9,6 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.social.dto.PostDto;
-import com.social.enums.Privacy;
 import com.social.mapper.PostMapper;
 import com.social.mapper.UserMapper;
 import com.social.model.Post;
@@ -24,7 +19,6 @@ public class PostDao {
 	private static final Logger logger=LoggerFactory.getLogger(PostDao.class);
 	private static PostDao postDao;
 	private static PostMapper postMaper=PostMapper.getInstance();
-	private static UserMapper userMapper= UserMapper.getInstance();
 	private PostDao() {};
 	
 	public static PostDao getInstance() {
@@ -35,7 +29,7 @@ public class PostDao {
 	}
 	
 	public int saveAndGetID(Post post) throws Exception {
-		String sql="Insert into posts (user_id,content,privacy) values (?,?,?)";
+		String sql="Insert into posts (posted_by,content,privacy) values (?,?,?)";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
 		{
@@ -67,9 +61,9 @@ public class PostDao {
 		}
 	}
 	
-	public List<Post> getPostForUser(int loggedInUserId) throws Exception{
+	public List<Post> getVisiblePostForUser(int loggedInUserId) throws Exception{
 		List<Post> postList= new ArrayList<>();
-		String sql="Select p.id as post_id, p.content,p.privacy,p.created_at,p.updated_at,u.id as user_id, u.username as user_name, "
+		String sql="Select p.id as post_id, p.content,p.privacy,p.created_at,p.updated_at,u.id as user_id, u.user_name as user_name, "
 				+ "u.user_email as user_email from posts p join users u on "
 				+ "p.posted_by=u.id where p.posted_by=? or p.privacy='PUBLIC' "
 				+ "or (p.privacy='FRIENDS' AND p.posted_by in ("
@@ -87,7 +81,7 @@ public class PostDao {
 			ResultSet rs= ps.executeQuery();
 			while(rs.next()) {
 				User postedBy= new User(rs.getInt("user_id"),rs.getString("user_name"),rs.getString("user_email"));		
-				Post post=new Post(rs.getInt("post_id"),postedBy, rs.getString("content"),Privacy.valueOf(rs.getString("privacy")), rs.getTimestamp("created_at"),rs.getTimestamp("updated_at"));
+				Post post=postMaper.toEntity(rs, postedBy);
 				postList.add(post);
 			}			
 		}	
