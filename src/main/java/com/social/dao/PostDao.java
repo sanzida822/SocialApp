@@ -28,7 +28,7 @@ public class PostDao {
 		return postDao;		
 	}
 	
-	public int saveAndGetID(Post post) throws Exception {
+	public int save(Post post) throws Exception {
 		String sql="Insert into posts (posted_by,content,privacy) values (?,?,?)";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))

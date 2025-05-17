@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import javax.servlet.http.Part;
 
-public class RegistrationRequestDTO {
+public class RegistrationRequestDto {
 	private String username;
 	private String email;
 	private String password;
@@ -13,8 +13,8 @@ public class RegistrationRequestDTO {
 //	private Part profileImagePart;
 //	private byte[] profileImage;
 
-	public RegistrationRequestDTO() {}
-	public RegistrationRequestDTO(String username, String email, String password, String confirmPassword,
+	public RegistrationRequestDto() {}
+	public RegistrationRequestDto(String username, String email, String password, String confirmPassword,
 			ImageDto imageDto) {
 		super();
 		this.username = username;

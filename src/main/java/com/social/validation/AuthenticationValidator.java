@@ -1,15 +1,13 @@
 package com.social.validation;
-
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.social.constants.Constants;
+import com.social.util.Constants;
 import com.social.dto.LoginRequestDto;
-import com.social.dto.RegistrationRequestDTO;
+import com.social.dto.RegistrationRequestDto;
 import com.social.dto.UserDto;
 import com.social.model.User;
 import com.social.service.AuthenticationService;
@@ -22,7 +20,6 @@ public class AuthenticationValidator {
 	private static final Logger logger = LoggerFactory.getLogger(AuthenticationValidator.class);
 	private static AuthenticationValidator authenticationValidator;
 	private static CommonUtil commonUtil = CommonUtil.getInstance();
-	private static AuthenticationService authenticationService = AuthenticationService.getInstance();
 	private static UserService userService = UserService.getInstance();
 
 	private AuthenticationValidator() {
@@ -35,7 +32,7 @@ public class AuthenticationValidator {
 		return authenticationValidator;
 	}
 
-	public Map<String, String> validateRegistration(RegistrationRequestDTO registrationDto) throws Exception {
+	public Map<String, String> validateRegistration(RegistrationRequestDto registrationDto) throws Exception {
 		Map<String, String> errorMessages = new LinkedHashMap<>();
 		if (commonUtil.isNullOrEmpty(registrationDto.getUsername())) {
 			errorMessages.put("username", MessageUtil.getMessage("error.username.required"));

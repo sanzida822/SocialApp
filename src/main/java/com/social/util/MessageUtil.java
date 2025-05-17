@@ -25,8 +25,7 @@ public class MessageUtil {
 		}
 	}
 
-	private MessageUtil() {
-	}
+	private MessageUtil() {}
 
 	public static String getMessage(String key) {
 		return messageProperties.getProperty(key);

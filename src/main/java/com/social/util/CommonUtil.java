@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import com.social.constants.Constants;
 import com.social.dto.UserDto;
 import com.social.enums.Privacy;
 
@@ -63,7 +62,7 @@ public class CommonUtil {
 	public UserDto getUserFromSession(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if (session != null) {
-			return (UserDto) session.getAttribute("user");
+			return (UserDto)session.getAttribute("user");
 		}
 		return null;
 

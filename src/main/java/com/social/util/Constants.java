@@ -1,4 +1,4 @@
-package com.social.constants;
+package com.social.util;
 
 public final class Constants {
 	private Constants() {}

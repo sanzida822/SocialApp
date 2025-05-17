@@ -3,12 +3,10 @@ package com.social.validation;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.social.constants.Constants;
 import com.social.dto.ImageDto;
 import com.social.dto.PostDto;
 import com.social.util.CommonUtil;
-
+import com.social.util.Constants;
 import com.social.util.MessageUtil;
 
 public class PostValidator {

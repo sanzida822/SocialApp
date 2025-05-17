@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.social.dto.LoginRequestDto;
-import com.social.dto.RegistrationRequestDTO;
+import com.social.dto.RegistrationRequestDto;
 import com.social.dto.UserDto;
 import com.social.model.Image;
 import com.social.model.User;
@@ -34,13 +34,12 @@ public class UserMapper {
 		return userMapper;
 	}
 
-	public User toEntity(RegistrationRequestDTO registrationDto, Image profileImage)
+	public User toEntity(RegistrationRequestDto registrationDto, Image profileImage)
 			throws NoSuchAlgorithmException, InvalidKeySpecException {
 		String salt = PasswordUtil.generateSalt();
-		String InputHashedPassword = PasswordUtil.hashPassword(registrationDto.getPassword(), salt);
+		String InputHashedPassword = PasswordUtil.hashPassword(registrationDto.getPassword(), PasswordUtil.generateSalt());
 		User user = new User(registrationDto.getUsername(), registrationDto.getEmail(), InputHashedPassword, salt,
 				profileImage);
-		logger.info("user object is:{}", user);
 		return user;
 	}
 
@@ -77,7 +76,7 @@ public class UserMapper {
     		);
     }
 
-	public UserDto toDTO(User user) {
+	public UserDto toDto(User user) {
 		return new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getProfileImage().getId(),
 				user.getCreatedAt(), user.getUpdatedAt());
 	}

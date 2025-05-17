@@ -26,9 +26,9 @@ public class ImageService {
 		return imageService;
 	}
 	
-	public int saveAndgetId(ImageDto imageDto) throws SQLException, Exception {
+	public Image save(ImageDto imageDto) throws SQLException, Exception {
 		Image image=imageMapper.toEntity(imageDto);
-		return imageDao.saveAndReturnId(image);
+		return imageDao.save(image);
 	}
 	
 	public boolean deleteImagebyId(int id) throws SQLException, Exception {

@@ -43,7 +43,7 @@ public class PostService {
 
 	public boolean save(PostDto postDto) throws Exception {
 		Post post = postMapper.toEntity(postDto);
-		int postId = postDao.saveAndGetID(post);
+		int postId = postDao.save(post);
 		if (postId < 1) {
 			logger.warn("Error while saving post in database");
 			return false;
@@ -52,13 +52,13 @@ public class PostService {
 		if (!commonUtil.isNullOrEmpty(postDto.getImages())) {
 			try {
 				for (ImageDto imageDto : postDto.getImages()) {
-					int imageId = imageService.saveAndgetId(imageDto);
-					if (imageId < 1) {
+					Image image = imageService.save(imageDto);
+					if (image.getId() < 1) {
 						throw new ImageInsertionFailedException(MessageUtil.getMessage("error.image.insert"));
 					}
-					savedImagesId.add(imageId);
+					savedImagesId.add(image.getId());
 
-					boolean savedPostAndImage = postImageDao.save(postId, imageId);
+					boolean savedPostAndImage = postImageDao.save(postId, image.getId());
 					if (!savedPostAndImage) {
 						throw new PostImageInsertionFailedException(MessageUtil.getMessage("error.save.postImage"));
 					}

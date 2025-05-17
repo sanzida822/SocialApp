@@ -2,7 +2,7 @@ package com.social.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.social.dao.UserDao;
-import com.social.dto.RegistrationRequestDTO;
+import com.social.dto.RegistrationRequestDto;
 import com.social.dto.UserDto;
 import com.social.mapper.UserMapper;
 import com.social.model.Image;
@@ -25,10 +25,10 @@ public class AuthenticationService {
 		return authenticationService;
 	}	
 	
-	public boolean register(RegistrationRequestDTO registrationDto) throws Exception {
-		int imageId=imageService.saveAndgetId(registrationDto.getImageDto());
-		Image image=imageService.getImageById(imageId);
-		logger.info("image id for profile image:{}, and the image object:{}",imageId,image);
+	public boolean register(RegistrationRequestDto registrationDto) throws Exception {
+		Image image=imageService.save(registrationDto.getImageDto());
+		//Image image=imageService.getImageById(imageId);
+		logger.info("Image id for profile image:{}, and the image object:{}",image.getId(),image);
 		User user = userMapper.toEntity(registrationDto,image);
 		logger.info("User for registration:{}",user);
 		return userDao.save(user);
@@ -36,16 +36,16 @@ public class AuthenticationService {
 	
 	public UserDto authenticate(String email,String inputPassword) throws Exception {
 		User user=userDao.findByEmail(email);
-			String storedHashPassword = user.getPassword();
-			String storedSalt = user.getSalt();
-			String inputHashPassword = PasswordUtil.hashPassword(inputPassword, storedSalt);
-			if (storedHashPassword.equals(inputHashPassword)){
-				logger.info("Authentication successful for user: {}", user.getEmail());
-				return userMapper.toDTO(user);
-			}else {
-				logger.error("Incorrect Password for user:{}", email);		
-				return null;
-			}				
+		String storedHashPassword = user.getPassword();
+		String storedSalt = user.getSalt();
+		String inputHashPassword = PasswordUtil.hashPassword(inputPassword, storedSalt);
+		if (storedHashPassword.equals(inputHashPassword)){
+			logger.info("Authentication successful for user: {}", user.getEmail());
+			return userMapper.toDto(user);
+		}else {
+			logger.error("Incorrect Password for user:{}", email);		
+			return null;
+		}				
 	}
 
 }

@@ -94,7 +94,7 @@ public class PostServlet extends HttpServlet {
 				return;
 			} else {
 				logger.error("Failed to save post: {}", postDto);
-				request.setAttribute("globalError", MessageUtil.getMessage("error.post.create"));
+				request.setAttribute("globalError", MessageUtil.getMessage("error.global.internal"));
 				request.getRequestDispatcher(HomeServlet.HOME).forward(request, response);
 			}
 
