@@ -32,11 +32,10 @@ public class UserDao {
 		return userDao;
 	}
 
-	public boolean save(User user) throws Exception {
+	public boolean save(User user,Connection connection) throws Exception {
 		String sql = "Insert into users (user_name,user_email,password,salt,image_id) values(?,?,?,?,?)";
 		boolean status = false;
-		try (Connection connection = DBConnection.getInstance().getConnection();
-				PreparedStatement ps = connection.prepareStatement(sql)
+		try (PreparedStatement ps = connection.prepareStatement(sql)
 		) {
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getEmail());

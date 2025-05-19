@@ -34,7 +34,7 @@ public class ExplorePeopleService {
         logger.info("Users who are not friends:{}",users);
 	    List<UserDto> userDtos = new ArrayList<>();
 	    for (User user : users) {
-	        userDtos.add(userMapper.toDTO(user));
+	        userDtos.add(userMapper.toDto(user));
 	    }
 	    return userDtos;
 	

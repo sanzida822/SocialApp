@@ -1,11 +1,13 @@
 package com.social.service;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.social.config.DBConnection;
 import com.social.dao.ImageDao;
 import com.social.dao.PostDao;
 import com.social.dao.PostImageDao;
@@ -41,39 +43,83 @@ public class PostService {
 		return postService;
 	}
 
+//	public boolean save(PostDto postDto) throws Exception {
+//		Post post = postMapper.toEntity(postDto);
+//		int postId = postDao.save(post);
+//		if (postId < 1) {
+//			logger.warn("Error while saving post in database");
+//			return false;
+//		}
+//		List<Integer> savedImagesId = new ArrayList<Integer>();
+//		if (!commonUtil.isNullOrEmpty(postDto.getImages())) {
+//			try {
+//				for (ImageDto imageDto : postDto.getImages()) {
+//					Image image = imageService.save(imageDto);
+//					if (image.getId() < 1) {
+//						throw new ImageInsertionFailedException(MessageUtil.getMessage("error.image.insert"));
+//					}
+//					savedImagesId.add(image.getId());
+//
+//					boolean savedPostAndImage = postImageDao.save(postId, image.getId());
+//					if (!savedPostAndImage) {
+//						throw new PostImageInsertionFailedException(MessageUtil.getMessage("error.save.postImage"));
+//					}
+//				}
+//				return true;
+//			} catch (Exception e) {
+//				logger.error("Failure saving images or post with image id, rolling back manually");
+//				postDao.deleteById(postId);
+//				for (int imageId : savedImagesId) {
+//					imageService.deleteImagebyId(imageId);
+//				}
+//				return false;
+//			}
+//		}
+//		return true;
+//	}
+
 	public boolean save(PostDto postDto) throws Exception {
-		Post post = postMapper.toEntity(postDto);
-		int postId = postDao.save(post);
-		if (postId < 1) {
-			logger.warn("Error while saving post in database");
-			return false;
-		}
-		List<Integer> savedImagesId = new ArrayList<Integer>();
-		if (!commonUtil.isNullOrEmpty(postDto.getImages())) {
-			try {
+		Connection connection = null;
+		try {
+			connection = DBConnection.getInstance().getConnection();
+			connection.setAutoCommit(false);
+			Post post = postMapper.toEntity(postDto);
+			int postId = postDao.save(post, connection);
+			if (postId < 1) {
+				logger.warn("Error while saving post in database");
+				connection.rollback();
+				return false;
+			}
+
+			if (!commonUtil.isNullOrEmpty(postDto.getImages())) {
 				for (ImageDto imageDto : postDto.getImages()) {
-					Image image = imageService.save(imageDto);
+					Image image = imageService.save(imageDto, connection);
 					if (image.getId() < 1) {
 						throw new ImageInsertionFailedException(MessageUtil.getMessage("error.image.insert"));
 					}
-					savedImagesId.add(image.getId());
 
-					boolean savedPostAndImage = postImageDao.save(postId, image.getId());
+					boolean savedPostAndImage = postImageDao.save(postId, image.getId(), connection);
 					if (!savedPostAndImage) {
 						throw new PostImageInsertionFailedException(MessageUtil.getMessage("error.save.postImage"));
 					}
 				}
-				return true;
-			} catch (Exception e) {
-				logger.error("Failure saving images or post with image id, rolling back manually");
-				postDao.deleteById(postId);
-				for (int imageId : savedImagesId) {
-					imageService.deleteImagebyId(imageId);
-				}
-				return false;
+			}
+
+			connection.commit();
+			return true;
+		} catch (Exception e) {
+			if (connection != null) {
+				connection.rollback();
+			}
+			logger.error("Transaction failed, rolled back", e);
+			return false;
+
+		} finally {
+			if (connection != null) {
+				connection.setAutoCommit(true);
+				connection.close();
 			}
 		}
-		return true;
 	}
 
 	public List<PostDto> getPostDtosWithImages(int loggedInUserId) throws Exception {

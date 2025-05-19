@@ -1,5 +1,6 @@
 package com.social.service;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import org.slf4j.Logger;
@@ -26,9 +27,9 @@ public class ImageService {
 		return imageService;
 	}
 	
-	public Image save(ImageDto imageDto) throws SQLException, Exception {
+	public Image save(ImageDto imageDto, Connection connection) throws SQLException, Exception {
 		Image image=imageMapper.toEntity(imageDto);
-		return imageDao.save(image);
+		return imageDao.save(image,connection);
 	}
 	
 	public boolean deleteImagebyId(int id) throws SQLException, Exception {

@@ -30,7 +30,7 @@ public class UserService {
 		logger.info("logged in user details:{}",user);
 		if (user != null) {
 			logger.warn("User found for email: {}", email);
-			return userMapper.toDTO(user);
+			return userMapper.toDto(user);
 		}
 		logger.info("No user found for email: {}", email);
 		return null;

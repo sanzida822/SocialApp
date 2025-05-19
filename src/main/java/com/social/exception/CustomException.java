@@ -24,6 +24,11 @@ public class CustomException {
         }
     }
     
+    public static class UserInsertionException extends Exception {
+        public UserInsertionException(String message) {
+            super(message);
+        }
+    }
     
     
 
