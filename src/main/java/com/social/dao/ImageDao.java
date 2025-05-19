@@ -26,7 +26,7 @@ public class ImageDao {
 	
 	public Image save(Image image,Connection connection) throws SQLException, Exception {
 		String sql="Insert into images (data,size_bytes) values (?,?)";
-		try (PreparedStatement ps = connection.prepareStatement(sql)
+		try (PreparedStatement ps = connection.prepareStatement(sql,  Statement.RETURN_GENERATED_KEYS)
 		){
 			ps.setBytes(1, image.getData() );
 			ps.setLong(2, image.getSizeBytes());
@@ -36,8 +36,7 @@ public class ImageDao {
 	                if (generatedKeys.next()) {
 	                    int id= generatedKeys.getInt(1);
 	                    image.setId(id);
-	                    return image;
-	                    
+	                    return image;	                    
 	                }
 	            }
 	        }		
@@ -45,7 +44,7 @@ public class ImageDao {
 		return null;
 	}
 	
-	public Image getImageById(int id) throws SQLException, Exception {
+	public Image findById(int id) throws SQLException, Exception {
 		String sql="select i.* from images i where id=?";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql))

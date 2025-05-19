@@ -52,7 +52,8 @@ public class AuthenticationService {
 				connection.rollback();
 
 			}
-			return false;
+		    logger.error("Registration failed", e); 
+		    return false;
 
 		} finally {
 			if (connection != null) {

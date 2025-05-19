@@ -23,14 +23,14 @@ import com.social.util.MessageUtil;
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet("/user/home")
+@WebServlet("/")
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(HomeServlet.class);
 	private static UserService userService = UserService.getInstance();
 	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	private static PostService postservice = PostService.getInstance();
-	public static final String HOME="/user/home";
+
 	public HomeServlet() {
 		super();
 	}
@@ -39,14 +39,7 @@ public class HomeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String servletPath = request.getServletPath();
 		try {
-			switch (servletPath) {
-			case HOME:
-				getVisiblePosts(request, response);
-				break;
-			default:
-				break;
-			}
-
+			getVisiblePosts(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("globalError", MessageUtil.getMessage("error.global.unexpected"));
@@ -64,12 +57,11 @@ public class HomeServlet extends HttpServlet {
 		int loggedInUserId = user.getId();
 		List<PostDto> postDtos = postservice.getPostDtosWithImages(loggedInUserId);
 		if (!commonUtil.isNullOrEmpty(postDtos)) {
-			logger.info("visible posts for user:{}  are {}", loggedInUserId,postDtos);
+			logger.info("visible posts for user:{}  are {}", loggedInUserId, postDtos);
 			request.setAttribute("postList", postDtos);
 		} else {
-			logger.info("No post available to show for user:{}",loggedInUserId);
+			logger.info("No post available to show for user:{}", loggedInUserId);
 			request.setAttribute("message", MessageUtil.getMessage("no.visible.posts"));
-
 		}
 		request.getRequestDispatcher("/views/HomePage.jsp").forward(request, response);
 	}

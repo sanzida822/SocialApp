@@ -1,3 +1,4 @@
+<%@page import="com.social.util.CommonUtil"%>
 <%@page import="com.social.dto.PostDto"%>
 
 <%@page import="com.social.model.User"%>
@@ -8,6 +9,7 @@
 <%@ include file="Navbar.jsp"%>
 <%
 List<PostDto> postDtos= (List<PostDto>)request.getAttribute("postList");
+CommonUtil commonUtil=CommonUtil.getInstance();
 %>
 
 
@@ -42,6 +44,7 @@ List<PostDto> postDtos= (List<PostDto>)request.getAttribute("postList");
 	</div>
 
 	<!-- Posts Section -->
+	<% if(!commonUtil.isNullOrEmpty(postDtos)){ %>
 	<div class="row justify-content-center mt-5">
 		<div class="col-md-8">
 			<!-- Post Card -->
@@ -98,7 +101,7 @@ List<PostDto> postDtos= (List<PostDto>)request.getAttribute("postList");
 				</div>
 			</div>
 			
-				<%} %>
+				<%}} %>
 			<!-- End Post Card -->
 
 			<!-- You can copy and paste the above card to add more posts dynamically -->

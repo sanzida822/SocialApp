@@ -29,6 +29,7 @@ public class ImageService {
 	
 	public Image save(ImageDto imageDto, Connection connection) throws SQLException, Exception {
 		Image image=imageMapper.toEntity(imageDto);
+		logger.debug("image is not save:{}", imageDao.save(image, connection));
 		return imageDao.save(image,connection);
 	}
 	
@@ -36,12 +37,12 @@ public class ImageService {
 		return imageDao.deleteById(id);
 	}
 	
-	public Image getImageById(int id) throws SQLException, Exception {
-		Image image=imageDao.getImageById(id);
+	public Image findById(int id) throws SQLException, Exception {
+		Image image=imageDao.findById(id);
 		if(image==null) {
 		    throw new CustomException.ImageNotFoundException(MessageUtil.getMessage("error.image.found"));
 		}
-		return imageDao.getImageById(id);
+		return image;
 	}
 
 }

@@ -24,7 +24,7 @@ UserDto user=(UserDto)session.getAttribute("user");
 				<li class="nav-item">
 					<!-- pageContext.request.contextPath return SocialApp   --> <a
 					class="nav-link"
-					href="${pageContext.request.contextPath}/user/home">Home</a>
+					href="${pageContext.request.contextPath}/">Home</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
 					href="${pageContext.request.contextPath}/user/explorePeople">Explore People</a>
