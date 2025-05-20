@@ -23,11 +23,10 @@ import com.social.util.MessageUtil;
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet("/")
+@WebServlet("")
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(HomeServlet.class);
-	private static UserService userService = UserService.getInstance();
 	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	private static PostService postservice = PostService.getInstance();
 
@@ -37,12 +36,11 @@ public class HomeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String servletPath = request.getServletPath();
 		try {
 			getVisiblePosts(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("globalError", MessageUtil.getMessage("error.global.unexpected"));
+			request.setAttribute("globalError", MessageUtil.getMessage("error.global.internal"));
 			request.getRequestDispatcher("/views/ErrorPage.jsp").forward(request, response);
 		}
 	}

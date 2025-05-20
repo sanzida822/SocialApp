@@ -53,7 +53,7 @@ public class AuthenticationServlet extends HttpServlet {
 		} else if (servletPath.equals(LOGIN_PATH)) {
 			request.getRequestDispatcher("/views/LoginForm.jsp").forward(request, response);
 		} else if (servletPath.equals(LOGOUT_PATH)) {
-			ProcessLogout(request, response);
+			processLogout(request, response);
 		}
 	}
 
@@ -72,7 +72,7 @@ public class AuthenticationServlet extends HttpServlet {
 				break;
 			}
 		} catch (Exception e) {
-			logger.error("Exception occurred while processing request at {},{}", servletPath,e);
+			logger.error("Exception occurred while processing request at {}", servletPath,e);
 			String Errorview = errorViews.getOrDefault(servletPath, "/views/ErrorPage.jsp");
 			request.setAttribute("globalError", MessageUtil.getMessage("error.global.internal"));
 			request.getRequestDispatcher(Errorview).forward(request, response);
@@ -126,7 +126,7 @@ public class AuthenticationServlet extends HttpServlet {
 				logger.info("User is authenticated:{}", authenticUser);
 				HttpSession session = request.getSession();
 				session.setAttribute("user", authenticUser);
-				response.sendRedirect(request.getContextPath() + "/user/home");
+				response.sendRedirect(request.getContextPath());
 			} else {
 				logger.warn("Login failed for user: Email:{}", loginDto.getEmail());
 				request.setAttribute("globalError", MessageUtil.getMessage("error.global.internal"));
@@ -139,7 +139,7 @@ public class AuthenticationServlet extends HttpServlet {
 		}
 	}
 
-	public void ProcessLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void processLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession(false);
 		String email = (String) session.getAttribute("email");
 		logger.info("Logout request comes in for user email:{}", email);

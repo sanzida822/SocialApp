@@ -64,7 +64,7 @@ public class UserMapper {
 //    }
     
     public User toEntity(ResultSet rs) throws SQLException, Exception {
-    	Image profileImage=imageService.getImageById(rs.getInt("image_id"));
+    	Image profileImage=imageService.findById(rs.getInt("image_id"));
     	return new User(rs.getInt("id"),
     		rs.getString("user_name"),
     		rs.getString("user_email"),

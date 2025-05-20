@@ -7,10 +7,10 @@ import org.slf4j.LoggerFactory;
 public class DBConnection {
 	private static final Logger logger = LoggerFactory.getLogger(DBConnection.class);
 	private static DBConnection instance;
-	String url = LoadApplicationProperties.getProperty("mysql.url");
-	String username = LoadApplicationProperties.getProperty("mysql.username");
-	String password = LoadApplicationProperties.getProperty("mysql.password");
-	String dbDriver = LoadApplicationProperties.getProperty("db.driver");
+	String url = DatabaseConfig.getProperty("mysql.url");
+	String username = DatabaseConfig.getProperty("mysql.username");
+	String password = DatabaseConfig.getProperty("mysql.password");
+	String dbDriver = DatabaseConfig.getProperty("db.driver");
 
 	private DBConnection() throws ClassNotFoundException {
 		Class.forName(dbDriver);

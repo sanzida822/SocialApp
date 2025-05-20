@@ -5,11 +5,11 @@ import java.util.Properties;
 import java.io.InputStream;
 
 
-public class LoadApplicationProperties {
+public class DatabaseConfig {
     private static final Properties messageProperties = new Properties();
 
     static {
-        try (InputStream in = LoadApplicationProperties.class.getClassLoader()
+        try (InputStream in = DatabaseConfig.class.getClassLoader()
                 .getResourceAsStream("application.properties")) {
             if (in != null) {
                 messageProperties.load(in);
