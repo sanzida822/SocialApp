@@ -9,7 +9,6 @@
 <%@ include file="Navbar.jsp"%>
 <%
 List<PostDto> postDtos= (List<PostDto>)request.getAttribute("postList");
-CommonUtil commonUtil=CommonUtil.getInstance();
 %>
 
 
@@ -44,7 +43,7 @@ CommonUtil commonUtil=CommonUtil.getInstance();
 	</div>
 
 	<!-- Posts Section -->
-	<% if(!commonUtil.isNullOrEmpty(postDtos)){ %>
+	<% if(CommonUtil.isNullOrEmpty(postDtos)){ %>
 	<div class="row justify-content-center mt-5">
 		<div class="col-md-8">
 			<!-- Post Card -->

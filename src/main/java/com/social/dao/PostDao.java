@@ -15,6 +15,7 @@ import com.social.mapper.UserMapper;
 import com.social.model.Image;
 import com.social.model.Post;
 import com.social.model.User;
+import com.social.util.CommonUtil;
 import com.social.util.MessageUtil;
 import com.social.config.DBConnection;
 import com.social.exception.ImageInsertionFailedException;
@@ -55,7 +56,7 @@ public class PostDao {
 		return 0;
 	}
 
-	public boolean saveWithImage(Post post, Image image) throws SQLException {
+	public boolean saveWithImage(Post post, List<Image> images) throws SQLException {
 		Connection connection = null;
 		try {
 			connection = DBConnection.getInstance().getConnection();
@@ -65,15 +66,20 @@ public class PostDao {
 				logger.error("Error while saving post in database");
 				throw new PostSaveFailedException(MessageUtil.getMessage("post.save.fail"));
 			}
-			Image PostImage = imageDao.save(image, connection);
-			if (PostImage == null) {
-				logger.error("Error while saving post's image in database");
-				throw new ImageInsertionFailedException(MessageUtil.getMessage("error.image.insert"));
 
-			}
-			boolean savedPostAndImage = postImageDao.save(postId, image.getId(), connection);
-			if (!savedPostAndImage) {
-				throw new ImageInsertionFailedException(MessageUtil.getMessage("error.image.insert"));
+			if (!CommonUtil.isNullOrEmpty(images)) {
+				for (Image image : images) {
+					Image savedImage = imageDao.save(image, connection);
+					if (savedImage == null) {
+						logger.error("Error while saving post's image in database");
+						throw new ImageInsertionFailedException(MessageUtil.getMessage("error.image.insert"));
+					}
+
+					boolean savedPostAndImage = postImageDao.save(postId, savedImage.getId(), connection);
+					if (!savedPostAndImage) {
+						throw new ImageInsertionFailedException(MessageUtil.getMessage("error.image.insert"));
+					}
+				}
 			}
 			connection.commit();
 			return true;
@@ -105,7 +111,7 @@ public class PostDao {
 				+ "p.posted_by=u.id where p.posted_by=? or p.privacy='PUBLIC' "
 				+ "or (p.privacy='FRIENDS' AND p.posted_by in ("
 				+ "select sender_id from friendship where receiver_id=? "
-				+ "uion select receiver_id from friendship where sender_id=?" + " )" + ")"
+				+ "union select receiver_id from friendship where sender_id=?" + " )" + ")"
 				+ " order by p.created_at desc";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql)) {

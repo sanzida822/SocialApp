@@ -122,6 +122,17 @@ public class PostService {
 	
 	public boolean save(PostDto postDto) {
 		Post post=postMapper.toEntity(postDto);
+		if(!CommonUtil.isNullOrEmpty(postDto.getImages())) {
+			List<Image> images = new ArrayList<>();
+			for (ImageDto imageDto : postDto.getImages()) {
+			    Image image = imageMapper.toEntity(imageDto); 
+			    images.add(image);                           
+			}
+			return postDao.saveWithImage(post, images);
+			
+		}else {
+			return postDao.save(post);
+		}
 	}
 
 	public List<PostDto> getPostDtosWithImages(int loggedInUserId) throws Exception {
