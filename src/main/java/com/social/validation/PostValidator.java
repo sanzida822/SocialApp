@@ -11,7 +11,6 @@ import com.social.util.MessageUtil;
 
 public class PostValidator {
 	private static PostValidator postValidator;
-	private static CommonUtil commonUtil = CommonUtil.getInstance();
 
 	private PostValidator() {
 	}
@@ -26,7 +25,7 @@ public class PostValidator {
 	public Map<String, String> validate(PostDto postDto) {
 		LinkedHashMap<String, String> errorMessages = new LinkedHashMap<String, String>();
 
-		if (commonUtil.isNullOrEmpty(postDto.getContent()) && commonUtil.isNullOrEmpty(postDto.getImages())) {
+		if (CommonUtil.isNullOrEmpty(postDto.getContent()) && CommonUtil.isNullOrEmpty(postDto.getImages())) {
 			errorMessages.put("post", MessageUtil.getMessage("error.post.empty"));
 
 		} else {
@@ -34,7 +33,7 @@ public class PostValidator {
 				errorMessages.put("content", MessageUtil.getMessage("error.content.length"));
 			}
 			for(ImageDto image:postDto.getImages()) {
-				if(!commonUtil.isValidImageType(image.getContentType())) {
+				if(CommonUtil.isValidImageType(image.getContentType())) {
 					errorMessages.put("imageType", MessageUtil.getMessage("error.image.type"));					
 				}
 		        if (image.getSize() > Constants.MAX_IMAGE_SIZE) {

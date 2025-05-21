@@ -13,8 +13,7 @@ import com.social.dao.PostDao;
 import com.social.dao.PostImageDao;
 import com.social.dto.ImageDto;
 import com.social.dto.PostDto;
-import com.social.exception.CustomException.ImageInsertionFailedException;
-import com.social.exception.CustomException.PostImageInsertionFailedException;
+import com.social.exception.ImageInsertionFailedException;
 import com.social.mapper.ImageMapper;
 import com.social.mapper.PostMapper;
 import com.social.model.Image;
@@ -28,7 +27,6 @@ public class PostService {
 	private static PostMapper postMapper = PostMapper.getInstance();
 	private static PostDao postDao = PostDao.getInstance();
 	private static ImageService imageService = ImageService.getInstance();
-	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	private static PostImageDao postImageDao = PostImageDao.getInstance();
 	private static ImageDao imageDao = ImageDao.getInstance();
 	private static ImageMapper imageMapper = ImageMapper.getInstance();
@@ -91,7 +89,7 @@ public class PostService {
 				return false;
 			}
 
-			if (!commonUtil.isNullOrEmpty(postDto.getImages())) {
+			if (CommonUtil.isNullOrEmpty(postDto.getImages())) {
 				for (ImageDto imageDto : postDto.getImages()) {
 					Image image = imageService.save(imageDto, connection);
 					if (image.getId() < 1) {
@@ -100,7 +98,7 @@ public class PostService {
 
 					boolean savedPostAndImage = postImageDao.save(postId, image.getId(), connection);
 					if (!savedPostAndImage) {
-						throw new PostImageInsertionFailedException(MessageUtil.getMessage("error.save.postImage"));
+						throw new ImageInsertionFailedException(MessageUtil.getMessage("error.image.insert"));
 					}
 				}
 			}
@@ -120,6 +118,10 @@ public class PostService {
 				connection.close();
 			}
 		}
+	}
+	
+	public boolean save(PostDto postDto) {
+		Post post=postMapper.toEntity(postDto);
 	}
 
 	public List<PostDto> getPostDtosWithImages(int loggedInUserId) throws Exception {

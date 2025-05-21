@@ -30,20 +30,18 @@ public class ExplorePeopleServlet extends HttpServlet {
 	private static final Logger logger = LoggerFactory.getLogger(ExplorePeopleServlet.class);
 	private static ExplorePeopleService explorePeopleService=ExplorePeopleService.getInstance();
 	public static FriendRequestService friendRequestService=FriendRequestService.getInstance();
-	private static CommonUtil commonUtil=CommonUtil.getInstance();
-	//
-	
+
     public ExplorePeopleServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserDto loggedInUser=commonUtil.getUserFromSession(request);
+		UserDto loggedInUser=CommonUtil.getUserFromSession(request);
         try {
 			List<UserDto> nonFriends=explorePeopleService.getUsersNotInFriends(loggedInUser.getId());
 			List<SentRequestsViewDto> sentedRequest=friendRequestService.getSentedRequest(loggedInUser.getId());
 			logger.info("Friend request list you have sent:{}",sentedRequest);
-			if(!commonUtil.isNullOrEmpty(nonFriends) || !commonUtil.isNullOrEmpty(sentedRequest)) {
+			if(CommonUtil.isNullOrEmpty(nonFriends) || CommonUtil.isNullOrEmpty(sentedRequest)) {
 			    logger.info("User:{} has friends to explore:{}",loggedInUser.getId(),nonFriends);
 			    request.setAttribute("nonFriends", nonFriends);
 			    request.setAttribute("sentedRequests", sentedRequest); 

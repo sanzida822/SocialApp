@@ -8,8 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.social.dao.ImageDao;
 import com.social.dto.ImageDto;
-import com.social.exception.CustomException;
-import com.social.exception.CustomException.ImageNotFoundException;
+import com.social.exception.ImageNotFoundException;
 import com.social.mapper.ImageMapper;
 import com.social.model.Image;
 import com.social.util.MessageUtil;
@@ -40,7 +39,7 @@ public class ImageService {
 	public Image findById(int id) throws SQLException, Exception {
 		Image image=imageDao.findById(id);
 		if(image==null) {
-		    throw new CustomException.ImageNotFoundException(MessageUtil.getMessage("error.image.found"));
+		    throw new ImageNotFoundException(MessageUtil.getMessage("error.image.found"));
 		}
 		return image;
 	}

@@ -33,7 +33,6 @@ public class FriendsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(FriendsServlet.class);
 	private static FriendRequestService friendRequestService = FriendRequestService.getInstance();
-	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	private static FriendsService friendService = FriendsService.getInstance();
 	public static final String EXPLORE_PEOPLE="/user/explorePeople";
 	public static final String SEND_REQUEST = "/friend-request/send";
@@ -92,7 +91,7 @@ public class FriendsServlet extends HttpServlet {
 	}
 
 	public void sendRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		UserDto user = commonUtil.getUserFromSession(request);
+		UserDto user = CommonUtil.getUserFromSession(request);
 		int senderId = user.getId();
 		int receiverId = Integer.parseInt(request.getParameter("receiverId"));
 		FriendRequestsDto friendRequestDto = new FriendRequestsDto(senderId, receiverId, FriendRequestStatus.PENDING);
@@ -106,10 +105,10 @@ public class FriendsServlet extends HttpServlet {
 	}
 
 	public void viewRequest(HttpServletRequest request, HttpServletResponse response) throws SQLException, Exception {
-		UserDto loggedInUser = commonUtil.getUserFromSession(request);
+		UserDto loggedInUser = CommonUtil.getUserFromSession(request);
 		List<FriendRequestViewDto> friendRequests = friendRequestService.getFriendRequests(loggedInUser.getId());
 		logger.info("friend requests for user:{} are", loggedInUser.getUsername(), friendRequests);
-		if (!commonUtil.isNullOrEmpty(friendRequests)) {
+		if (CommonUtil.isNullOrEmpty(friendRequests)) {
 			logger.info("user:{} has friend request list:{}", loggedInUser.getUsername(), friendRequests);
 			request.setAttribute("friendRequests", friendRequests);
 			request.getRequestDispatcher("/views/FriendRequests.jsp").forward(request, response);
@@ -122,7 +121,7 @@ public class FriendsServlet extends HttpServlet {
 
 	public void cancelRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ClassNotFoundException, SQLException, IOException {
-		UserDto loggedInUser = commonUtil.getUserFromSession(request);
+		UserDto loggedInUser = CommonUtil.getUserFromSession(request);
 		int receiverId = Integer.parseInt(request.getParameter("receiverId"));
 		boolean isCancelled = friendRequestService.cancelRequest(loggedInUser.getId(), receiverId);
 		if (isCancelled) {
@@ -135,7 +134,7 @@ public class FriendsServlet extends HttpServlet {
 
 	public void declineReceivedRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ClassNotFoundException, SQLException, IOException {
-		UserDto loggedInUser = commonUtil.getUserFromSession(request);
+		UserDto loggedInUser = CommonUtil.getUserFromSession(request);
 		int senderId = Integer.parseInt(request.getParameter("senderId"));
 		boolean isCancelled = friendService.declineReceivedRequest(loggedInUser.getId(), senderId);
 		if (isCancelled) {
@@ -149,7 +148,7 @@ public class FriendsServlet extends HttpServlet {
 	public void acceptFriendRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ClassNotFoundException, SQLException, IOException {
 		logger.info("accepting request come ins");
-		UserDto loggedInUser = commonUtil.getUserFromSession(request);
+		UserDto loggedInUser = CommonUtil.getUserFromSession(request);
 		int loggedInUserId = loggedInUser.getId();
 		int senderId = Integer.parseInt(request.getParameter("senderId"));
 		FriendshipDto friendshipDto = new FriendshipDto(senderId, loggedInUserId, FriendshipStatus.ACTIVE);

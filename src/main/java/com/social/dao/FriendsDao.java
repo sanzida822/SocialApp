@@ -33,7 +33,7 @@ public class FriendsDao {
 
 	public List<FriendRequest> getFriendRequests(int receiverId) throws Exception { // to show logged in users available
 																					// friend request
-		String sql = "SELECT * FROM friend_requests WHERE receiver_id = ? AND status = 'PENDING'";
+		String sql = "select * from friend_requests where receiver_id = ? and status = 'PENDING'";
 		List<FriendRequest> requests = new ArrayList<>();
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);) {
@@ -62,7 +62,7 @@ public class FriendsDao {
 	}
 
 	public boolean acceptRequest(Friendship frienship) throws ClassNotFoundException, SQLException {
-		String sql = "Insert into friendship (sender_id,receiver_id,status) values(?,?,?)";
+		String sql = "insert into friendship (sender_id,receiver_id,status) values(?,?,?)";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);) {
 			ps.setInt(1, frienship.getSenderId());

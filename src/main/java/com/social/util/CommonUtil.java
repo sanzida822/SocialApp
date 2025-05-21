@@ -12,54 +12,44 @@ import com.social.dto.UserDto;
 import com.social.enums.Privacy;
 
 public class CommonUtil {
-	private static CommonUtil instance;
 
-	private CommonUtil() {
-	}
 
-	public static CommonUtil getInstance() {
-		if (instance == null) {
-			instance = new CommonUtil();
-		}
-		return instance;
-	}
-
-	public boolean isEmpty(Map<?, ?> map) {
+	public static boolean isEmpty(Map<?, ?> map) {
 		return map == null || map.isEmpty();
 	}
 
-	public boolean isNullorEmpty(byte[] image) {
+	public static boolean isNullorEmpty(byte[] image) {
 		return image == null || image.length == 0;
 	}
 
-	public boolean isNullOrEmpty(List<?> list) {
+	public static boolean isNullOrEmpty(List<?> list) {
 		return list == null || list.isEmpty();
 	}
 
-	public boolean isNullOrEmpty(String str) {
+	public static boolean isNullOrEmpty(String str) {
 		return str == null || str.trim().isEmpty();
 	}
 
-	public boolean isValidImageType(Part imagePart) {
+	public static boolean isValidImageType(Part imagePart) {
 		String type = imagePart.getContentType();
 		return "image/jpeg".equalsIgnoreCase(type) || "image/jpg".equalsIgnoreCase(type);
 	}
 
-	public boolean isValidImageType(String contentType) {
+	public static boolean isValidImageType(String contentType) {
 		return "image/jpeg".equals(contentType) || "image/jpg".equals(contentType);
 	}
 
-	public byte[] extractImageBytes(Part imagePart) throws IOException {
+	public static byte[] extractImageBytes(Part imagePart) throws IOException {
 		try (InputStream imageStream = imagePart.getInputStream()) {
 			return imageStream.readAllBytes();
 		}
 	}
 
-	public Privacy toEnum(String string) {
+	public static Privacy toEnum(String string) {
 		return Privacy.valueOf(string.toUpperCase().replace(" ", "_"));
 	}
 
-	public UserDto getUserFromSession(HttpServletRequest request) {
+	public static UserDto getUserFromSession(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		if (session != null) {
 			return (UserDto)session.getAttribute("user");
@@ -68,7 +58,7 @@ public class CommonUtil {
 
 	}
 
-	public boolean isValidEmail(String email) {
+	public static boolean isValidEmail(String email) {
 		String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
 		Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
 		if (email == null) {
@@ -77,7 +67,7 @@ public class CommonUtil {
 		return EMAIL_PATTERN.matcher(email).matches();
 	}
 
-	public boolean isImageSizeValid(byte[] image) {
+	public static boolean isImageSizeValid(byte[] image) {
 		return image.length < Constants.MAX_IMAGE_SIZE;
 	}
 

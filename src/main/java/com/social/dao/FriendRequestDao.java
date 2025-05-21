@@ -42,20 +42,20 @@ public class FriendRequestDao {
 
 	public List<User> getNonFriends(int loggedInUserId) throws SQLException, Exception {
 		List<User> nonFriends = new ArrayList<>();
-		String sql="SELECT * FROM users u "
-				+ "WHERE u.id != ? "
-				+ "AND NOT EXISTS( "
-				+ "    SELECT 1 "
-				+ "    FROM friendship f "
-				+ "    WHERE (f.sender_id = ? AND f.receiver_id = u.id)"
-				+ "    OR (f.receiver_id = ? AND f.sender_id = u.id) "
+		String sql="select * from users u "
+				+ "where u.id != ? "
+				+ "and not exists( "
+				+ "    select 1 "
+				+ "    from friendship f "
+				+ "    where (f.sender_id = ? and f.receiver_id = u.id)"
+				+ "    or (f.receiver_id = ? and f.sender_id = u.id) "
 				+ ") "
-				+ "AND NOT EXISTS ( "
-				+ "    SELECT 1 "
-				+ "    FROM friend_requests fr "
-				+ "    WHERE (fr.sender_id = ? AND fr.receiver_id = u.id) "
-				+ "    OR (fr.receiver_id = ? AND fr.sender_id = u.id) "
-				+ "    AND fr.status = 'PENDING'"
+				+ "and not exists ( "
+				+ "    select 1 "
+				+ "    from friend_requests fr "
+				+ "    where (fr.sender_id = ? and fr.receiver_id = u.id) "
+				+ "    or (fr.receiver_id = ? and fr.sender_id = u.id) "
+				+ "    and fr.status = 'PENDING'"
 				  + ");";
 				
 		try (Connection connection = DBConnection.getInstance().getConnection();
@@ -114,7 +114,7 @@ public class FriendRequestDao {
 //	}
 
 	public boolean addRequest(FriendRequest friendRequest) throws SQLException, Exception {
-		String sql = "Insert into friend_requests (sender_id,receiver_id,status) values(?,?,?)";
+		String sql = "insert into friend_requests (sender_id,receiver_id,status) values(?,?,?)";
 		try (Connection connection = DBConnection.getInstance().getConnection();
 				PreparedStatement ps = connection.prepareStatement(sql);) {
 			ps.setInt(1, friendRequest.getSenderId().getId());

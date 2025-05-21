@@ -19,7 +19,6 @@ public class AuthenticationValidator {
 
 	private static final Logger logger = LoggerFactory.getLogger(AuthenticationValidator.class);
 	private static AuthenticationValidator authenticationValidator;
-	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	private static UserService userService = UserService.getInstance();
 
 	private AuthenticationValidator() {
@@ -34,27 +33,27 @@ public class AuthenticationValidator {
 
 	public Map<String, String> validateRegistration(RegistrationRequestDto registrationDto) throws Exception {
 		Map<String, String> errorMessages = new LinkedHashMap<>();
-		if (commonUtil.isNullOrEmpty(registrationDto.getUsername())) {
+		if (CommonUtil.isNullOrEmpty(registrationDto.getUsername())) {
 			errorMessages.put("username", MessageUtil.getMessage("error.username.required"));
 		} else if (registrationDto.getUsername().length() < 5 || registrationDto.getUsername().length() > 30) {
 			errorMessages.put("username", MessageUtil.getMessage("error.username.length"));
 		}
-		if (commonUtil.isNullOrEmpty(registrationDto.getEmail())) {
+		if (CommonUtil.isNullOrEmpty(registrationDto.getEmail())) {
 			errorMessages.put("email", MessageUtil.getMessage("error.email.required"));
-		} else if (!commonUtil.isValidEmail(registrationDto.getEmail())) {
+		} else if (!CommonUtil.isValidEmail(registrationDto.getEmail())) {
 			errorMessages.put("email", MessageUtil.getMessage("error.email.invalid"));
 		} else if (userService.getUserByEmail(registrationDto.getEmail()) != null) {
 			errorMessages.put("email", MessageUtil.getMessage("error.email.duplicate"));
 		}
 		if (registrationDto.getImageDto() == null
-				|| commonUtil.isNullorEmpty(registrationDto.getImageDto().getData())) {
+				|| CommonUtil.isNullorEmpty(registrationDto.getImageDto().getData())) {
 			errorMessages.put("image", MessageUtil.getMessage("error.image.required"));
-		} else if (!commonUtil.isValidImageType(registrationDto.getImageDto().getContentType())) {
+		} else if (!CommonUtil.isValidImageType(registrationDto.getImageDto().getContentType())) {
 			errorMessages.put("image", MessageUtil.getMessage("error.image.type"));
 		} else if (registrationDto.getImageDto().getSize() > Constants.MAX_IMAGE_SIZE) {
 			errorMessages.put("image", MessageUtil.getMessage("error.image.size"));
 		}
-		if (commonUtil.isNullOrEmpty(registrationDto.getPassword())) {
+		if (CommonUtil.isNullOrEmpty(registrationDto.getPassword())) {
 			errorMessages.put("password", MessageUtil.getMessage("error.password.required"));
 		} else if (registrationDto.getPassword().length() < 6 || registrationDto.getPassword().length() > 12) {
 			errorMessages.put("password", MessageUtil.getMessage("error.password.length"));
@@ -67,10 +66,10 @@ public class AuthenticationValidator {
 
 	public Map<String, String> validateLogin(LoginRequestDto loginDto) throws Exception {
 		Map<String, String> errorMessages = new LinkedHashMap<>();
-		if (commonUtil.isNullOrEmpty(loginDto.getEmail())) {
+		if (CommonUtil.isNullOrEmpty(loginDto.getEmail())) {
 			errorMessages.put("email", MessageUtil.getMessage("error.email.required"));
 		}
-		if (commonUtil.isNullOrEmpty(loginDto.getPassword())) {
+		if (CommonUtil.isNullOrEmpty(loginDto.getPassword())) {
 			errorMessages.put("password", MessageUtil.getMessage("error.password.required"));
 		}
 		if (errorMessages.isEmpty()) {

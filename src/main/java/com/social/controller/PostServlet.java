@@ -32,7 +32,6 @@ import com.social.validation.PostValidator;
 public class PostServlet extends HttpServlet {
 	private static final Logger logger = LoggerFactory.getLogger(PostServlet.class);
 	private static final long serialVersionUID = 1L;
-	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	private static UserService userService = UserService.getInstance();
 	private static PostValidator postValidator = PostValidator.getInstance();
 	private static PostService postService = PostService.getInstance();
@@ -70,23 +69,23 @@ public class PostServlet extends HttpServlet {
 	}
 
 	public void addPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		UserDto loggedInUser=commonUtil.getUserFromSession(request);
+		UserDto loggedInUser=CommonUtil.getUserFromSession(request);
 		List<ImageDto> images = new ArrayList<>();
 		Collection<Part> parts = request.getParts();
 		for (Part part : parts) {
 			if (part.getName().equals("images") && part.getSize() > 0) {
-		        byte[] imageBytes = commonUtil.extractImageBytes(part);
+		        byte[] imageBytes = CommonUtil.extractImageBytes(part);
 		        String contentType = part.getContentType();
 		        long size = part.getSize();
 		        ImageDto imageDto=new ImageDto(imageBytes, size, contentType);
 		        images.add(imageDto);
 			}
 		}
-		Privacy privacy = commonUtil.toEnum(request.getParameter("privacy"));
+		Privacy privacy = CommonUtil.toEnum(request.getParameter("privacy"));
 		PostDto postDto = new PostDto(loggedInUser.getId(), request.getParameter("post_content"),privacy, images);
 		Map<String, String> errorMessages = postValidator.validate(postDto);
 		logger.error("Error messages for creating post:{}", errorMessages);
-		if (commonUtil.isEmpty(errorMessages)) {
+		if (CommonUtil.isEmpty(errorMessages)) {
 			boolean isSaved = postService.save(postDto);
 			if (isSaved) {
 				logger.info("post is saved successfully:{}", postDto);

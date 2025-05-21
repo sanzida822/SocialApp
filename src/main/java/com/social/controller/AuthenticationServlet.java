@@ -29,7 +29,6 @@ public class AuthenticationServlet extends HttpServlet {
 	private static final Logger logger = LoggerFactory.getLogger(AuthenticationServlet.class);
 	private static AuthenticationValidator authenticationValidator = AuthenticationValidator.getInstance();
 	private static AuthenticationService authenticationService = AuthenticationService.getInstance();
-	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	public static final String REGISTRATION_PATH = "/auth/register";
 	public static final String LOGIN_PATH = "/auth/login";
 	public static final String LOGOUT_PATH = "/auth/logout";
@@ -85,7 +84,7 @@ public class AuthenticationServlet extends HttpServlet {
 		logger.info("Registration request for username:{}, Email:{}, File size: {}", request.getParameter("username"),
 				request.getParameter("email"), imagePart.getSize());
 		if (imagePart != null && imagePart.getSize() > 0) {
-			byte[] imageBytes = commonUtil.extractImageBytes(imagePart);
+			byte[] imageBytes = CommonUtil.extractImageBytes(imagePart);
 			image = new ImageDto(imageBytes, imagePart.getSize(), imagePart.getContentType());
 
 		}
@@ -97,7 +96,7 @@ public class AuthenticationServlet extends HttpServlet {
 		logger.info("Error messages for validation of user:{} and error messages is:{}", registrationDto.getEmail(),
 				errorMessages);
 
-		if (commonUtil.isEmpty(errorMessages)) {
+		if (CommonUtil.isEmpty(errorMessages)) {
 			boolean isRegistered = authenticationService.register(registrationDto);
 			if (isRegistered) {
 				logger.info("Registered successfully for user: username:{},Email:{}", registrationDto.getUsername(),
@@ -119,7 +118,7 @@ public class AuthenticationServlet extends HttpServlet {
 		logger.info("Received login request for email:{}", request.getParameter("email"));
 		LoginRequestDto loginDto = new LoginRequestDto(request.getParameter("email"), request.getParameter("password"));
 		Map<String, String> errorMessages = authenticationValidator.validateLogin(loginDto);
-		if (commonUtil.isEmpty(errorMessages)) {
+		if (CommonUtil.isEmpty(errorMessages)) {
 			logger.info("User:{} is registered in this system", loginDto.getEmail());
 			UserDto authenticUser = authenticationService.authenticate(loginDto.getEmail(), loginDto.getPassword());
 			if (authenticUser != null) {

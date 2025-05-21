@@ -24,7 +24,7 @@ public class PostImageDao {
 	}
 
 	public boolean save(int postId, int imageId, Connection connection) throws Exception {
-		String sql = "INSERT INTO post_images (post_id, image_id) VALUES (?, ?)";
+		String sql = "insert into post_images (post_id, image_id) values (?, ?)";
 		try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 			ps.setInt(1, postId);
 			ps.setInt(2, imageId);

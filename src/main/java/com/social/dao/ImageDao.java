@@ -25,7 +25,7 @@ public class ImageDao {
 	}
 	
 	public Image save(Image image,Connection connection) throws SQLException, Exception {
-		String sql="Insert into images (data,size_bytes) values (?,?)";
+		String sql="insert into images (data,size_bytes) values (?,?)";
 		try (PreparedStatement ps = connection.prepareStatement(sql,  Statement.RETURN_GENERATED_KEYS)
 		){
 			ps.setBytes(1, image.getData() );

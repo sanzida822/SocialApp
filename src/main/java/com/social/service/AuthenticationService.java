@@ -1,14 +1,14 @@
 package com.social.service;
-
-import java.sql.Connection;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.sql.SQLException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.social.config.DBConnection;
 import com.social.dao.UserDao;
 import com.social.dto.RegistrationRequestDto;
 import com.social.dto.UserDto;
+import com.social.mapper.ImageMapper;
 import com.social.mapper.UserMapper;
 import com.social.model.Image;
 import com.social.model.User;
@@ -19,6 +19,7 @@ public class AuthenticationService {
 	private static AuthenticationService authenticationService;
 	private static UserDao userDao = UserDao.getInstance();
 	private static UserMapper userMapper = UserMapper.getInstance();
+	private static ImageMapper imageMapper=ImageMapper.getInstance();
 	private static ImageService imageService = ImageService.getInstance();
 
 	private AuthenticationService() {
@@ -31,37 +32,43 @@ public class AuthenticationService {
 		return authenticationService;
 	}
 
-	public boolean register(RegistrationRequestDto registrationDto) throws Exception {
-		Connection connection = null;
+//	public boolean register(RegistrationRequestDto registrationDto) throws Exception {
+//		Connection connection = null;
+//
+//		try {
+//			connection = DBConnection.getInstance().getConnection();
+//			connection.setAutoCommit(false);
+//			Image image = imageService.save(registrationDto.getImageDto(), connection);
+//			logger.info("Image id for profile image:{}, and the image object:{}", image.getId(), image);
+//			User user = userMapper.toEntity(registrationDto, image);
+//			logger.info("User for registration:{}", user);
+//			boolean isSaved = userDao.save(user, connection);
+//			if (!isSaved) {
+//				throw new Exception("Failed to save user");
+//			}
+//			connection.commit();
+//			return true;
+//		} catch (Exception e) {
+//			if (connection != null) {
+//				connection.rollback();
+//
+//			}
+//		    logger.error("Registration failed", e); 
+//		    return false;
+//
+//		} finally {
+//			if (connection != null) {
+//				connection.setAutoCommit(true);
+//				connection.close();
+//			}
+//		}
+//
+//	}
 
-		try {
-			connection = DBConnection.getInstance().getConnection();
-			connection.setAutoCommit(false);
-			Image image = imageService.save(registrationDto.getImageDto(), connection);
-			logger.info("Image id for profile image:{}, and the image object:{}", image.getId(), image);
-			User user = userMapper.toEntity(registrationDto, image);
-			logger.info("User for registration:{}", user);
-			boolean isSaved = userDao.save(user, connection);
-			if (!isSaved) {
-				throw new Exception("Failed to save user");
-			}
-			connection.commit();
-			return true;
-		} catch (Exception e) {
-			if (connection != null) {
-				connection.rollback();
-
-			}
-		    logger.error("Registration failed", e); 
-		    return false;
-
-		} finally {
-			if (connection != null) {
-				connection.setAutoCommit(true);
-				connection.close();
-			}
-		}
-
+	public boolean register(RegistrationRequestDto registrationRequestDto) throws NoSuchAlgorithmException, InvalidKeySpecException, SQLException {
+		Image image=imageMapper.toEntity(registrationRequestDto.getImageDto());
+		User user=userMapper.toEntity(registrationRequestDto, image);
+		return userDao.register(user, image);
 	}
 
 	public UserDto authenticate(String email, String inputPassword) throws Exception {

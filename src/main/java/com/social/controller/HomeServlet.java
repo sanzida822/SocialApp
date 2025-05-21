@@ -27,7 +27,6 @@ import com.social.util.MessageUtil;
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(HomeServlet.class);
-	private static CommonUtil commonUtil = CommonUtil.getInstance();
 	private static PostService postservice = PostService.getInstance();
 
 	public HomeServlet() {
@@ -51,10 +50,10 @@ public class HomeServlet extends HttpServlet {
 	}
 
 	public void getVisiblePosts(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		UserDto user = commonUtil.getUserFromSession(request);
+		UserDto user = CommonUtil.getUserFromSession(request);
 		int loggedInUserId = user.getId();
 		List<PostDto> postDtos = postservice.getPostDtosWithImages(loggedInUserId);
-		if (!commonUtil.isNullOrEmpty(postDtos)) {
+		if (CommonUtil.isNullOrEmpty(postDtos)) {
 			logger.info("visible posts for user:{}  are {}", loggedInUserId, postDtos);
 			request.setAttribute("postList", postDtos);
 		} else {
